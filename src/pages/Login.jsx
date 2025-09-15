@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { Logo } from "@/components/Logo";
+
 import { Eye, EyeOff } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useLoginMutation } from "../services/authAPI";
 import { showToast } from "@/utils/toast"; // your react-toastify wrapper
 import { validateField, validateForm } from "../utils/validation";
+import { Logo } from "../components/logo";
 
 const Login = () => {
   const navigate = useNavigate();

@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Logo } from "@/components/Logo";
+
 import { useForgotPasswordMutation } from '../services/authAPI';
+import { Logo } from '../components/logo';
 
 const ForgotPassword = () => {
 
