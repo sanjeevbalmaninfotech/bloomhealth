@@ -155,7 +155,7 @@ export function Footer() {
             {socialLinksContent}
           </div>
         </div>
-        {location.pathname == '/home' ? 
+        {location.pathname == '/' ? 
         <div className='mt-5 mb-12'>
           <div className='h-[280px] sm:h-[340px] md:h-[400px] w-full rounded-lg overflow-hidden shadow-lg'>
             <iframe

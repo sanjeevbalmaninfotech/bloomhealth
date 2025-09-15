@@ -35,15 +35,14 @@ export default function App() {
       <BrowserRouter future={{ v7_startTransition: true }}>
         <Suspense fallback={<div>Loading…</div>}>
           <Routes>
-   
-               <Route path="/" element={<HomePage />} />
+            {/* <Route path="/" element={<Navigate to="/home" />} /> */}
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Registration />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/reset-password" element={<ResetPassword />} />
             <Route element={<MainLayout />}>
               <Route path="/profile" element={<Profile />} />
-           
+              <Route path="/" element={<HomePage />} />
               <Route path="/services/:slug" element={<ServicePage />} />
               <Route path="/hospitalsDoctors" element={<HospitalsDoctors/>} />
               <Route path="/bookAppointment" element={<BookAnAppointment/>} />
