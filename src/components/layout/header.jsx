@@ -3,9 +3,10 @@ import { Menu, Phone as PhoneIconLucide, Mail, Search, ChevronDown, Layers } fro
 import { Button } from '@/components/ui/button';
 import { Link, useNavigate } from 'react-router-dom';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Logo } from '@/components/logo';
+
 import { useEffect, useRef, useState } from 'react';
 import { featureOptions, medicalServicesMenu, specialtyColumns } from './MenuUtils';
+import { Logo } from '../logo';
 
 export function Header() {
   const [openMenu, setOpenMenu] = useState(null);

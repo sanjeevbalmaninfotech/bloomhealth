@@ -12,8 +12,9 @@ import {
   Mail,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Logo } from '@/components/logo';
+
 import { Link } from 'react-router-dom';
+import { Logo } from '../logo';
 const footerColumns = [
   {
     title: 'OUR SERVICES',
