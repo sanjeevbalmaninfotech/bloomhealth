@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import { Logo } from '@/components/Logo';
 import { EyeOff, Eye, CheckCircle, XCircle } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useRegisterMutation } from '../services/authAPI';
 import { validateField, validateForm } from '../utils/validation';
 import { toast } from 'react-toastify';
+import { Logo } from '../components/logo';
 
 const Registration = () => {
   const [formData, setFormData] = useState({
