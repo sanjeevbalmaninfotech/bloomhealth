@@ -66,6 +66,9 @@ const footerColumns = [
             </a>
           </div>
         </div>
+
+
+        
         <div className='flex items-start space-x-3'>
           <Mail className='h-6 w-6 text-primary mt-1 flex-shrink-0' />
           <div>
