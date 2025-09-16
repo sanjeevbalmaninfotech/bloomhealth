@@ -50,9 +50,7 @@ const footerColumns = [
           <div>
             <p className='text-sm font-medium text-foreground'>Address</p>
             <p className='text-sm text-muted-foreground'>
-              123 Health St, Wellness City,
-              <br />
-              London, UK
+              163-175 Grafton Gate, Milton Keynes, MK9 1AE UK
             </p>
           </div>
         </div>
