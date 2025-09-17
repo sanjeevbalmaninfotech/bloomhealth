@@ -1,6 +1,7 @@
 import { Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route, Navigate  } from 'react-router-dom';
 import Providers from '@/components/providers';
+import LoadingSpinner from './components/loader/Loader';
 
 
 // Lazy-loaded pages and layout
@@ -32,8 +33,9 @@ const TermsAndConditions = lazy(() => import('@/pages/TermsAndConditions'));
 export default function App() {
   return (
     <Providers>
+      
       <BrowserRouter future={{ v7_startTransition: true }}>
-        <Suspense fallback={<div>Loading…</div>}>
+        <Suspense fallback={<LoadingSpinner />}>
           <Routes>
             {/* <Route path="/" element={<Navigate to="/home" />} /> */}
             <Route path="/login" element={<Login />} />

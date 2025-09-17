@@ -220,7 +220,7 @@ const Department = ({
             </p>
             <p className='text-gray-800 mt-2'>
               please contact our call center every day between 7:00 am
-              and 10:00 pm:<br/><br/> <strong>+974 4400 4400</strong>
+              and 10:00 pm:<br/><br/> <strong>07949 301632</strong>
             </p>
           </section>
         </div>
