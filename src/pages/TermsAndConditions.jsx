@@ -58,6 +58,8 @@ const TermsAndConditions = () => {
   };
 
   useEffect(() => {
+console.log('Terms accepted state changed:', token);
+    if(!token) return;  
     const handleBeforeUnload = (e) => {
       // Only block if terms not formally accepted via button
       if (!termsAccepted) {
