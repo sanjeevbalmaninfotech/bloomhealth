@@ -3,6 +3,9 @@ import { Eye, Check } from 'lucide-react';
 import { colorClassMap, pdfSections } from '../constants/terms';
 import SuccessTermsPopup from '../components/ui/terms-dialog';
 import { validateTokenTime } from '../hooks/validToken';
+import axios from 'axios';
+import { env } from '../config/env.config';
+import { endpoints } from '../constants/endpoints';
 
 const TermsAndConditions = () => {
   const [token, setToken] = useState(null);
@@ -18,7 +21,7 @@ const TermsAndConditions = () => {
 
   const validToken = async () => {
     try {
-      const match = window.location.pathname.match(/^\/terms-conditions\/([^/]+)\/?$/);
+      const match = window.location.pathname.match(/^\/consentDetails\/([^/]+)\/?$/);
       console.log('Extracted token from URL:', match ? match[1] : 'No token found');
       if (match && match[1]) {
         const token = match[1];
@@ -64,22 +67,38 @@ const TermsAndConditions = () => {
     };
 
     window.addEventListener('beforeunload', handleBeforeUnload);
-    
+
     return () => {
       window.removeEventListener('beforeunload', handleBeforeUnload);
     };
-  }, [termsAccepted]); 
+  }, [termsAccepted]);
 
-  const allCheckboxesChecked = checkboxes.termsOfUse && checkboxes.privacyPolicy && checkboxes.shareWithGP;
+  const allCheckboxesChecked =
+    checkboxes.termsOfUse && checkboxes.privacyPolicy && checkboxes.shareWithGP;
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!allCheckboxesChecked) return;
 
-    setTermsAccepted(true);
-    setShowSuccessPopup(true);
-    redirectTimeoutRef.current = setTimeout(() => {
-      window.location.href = '/';
-    }, 3000);
+    try {
+     const response = await axios.get(
+  `${env.VITE_BLOOM_API_BASE_URL}${endpoints.updateConsent}`,
+  {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`, 
+    },
+  }
+);
+      console.log('Response:', response.data);
+      setTermsAccepted(true);
+      setShowSuccessPopup(true);
+      redirectTimeoutRef.current = setTimeout(() => {
+        window.location.href = '/';
+      }, 3000);
+    } catch (error) {
+      console.error('Error:', error);
+      throw error;
+    }
   };
 
   const openPDF = (pdfUrl) => {
@@ -194,8 +213,8 @@ const TermsAndConditions = () => {
                         className={`w-5 h-5 rounded-md border-2 transition-all duration-200 flex items-center justify-center ${
                           checked
                             ? colorClassMap[color]
-                            : required 
-                              ? 'border-red-400 group-hover:border-red-500' 
+                            : required
+                              ? 'border-red-400 group-hover:border-red-500'
                               : 'border-gray-300 group-hover:border-gray-400'
                         }`}
                       >

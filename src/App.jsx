@@ -59,7 +59,7 @@ export default function App() {
               <Route path="/generalMedicine" element={<GeneralMedicine/>}/>
               <Route path="/travelMedicine&Vaccinations" element={<TravelMedicineAndVaccinations/>}/>
               <Route path="/services/:slug/:subServiceSlug" element={<SubServicePage />} />
-             <Route path="/terms-conditions/:userId?" element={<TermsAndConditions />} />
+             <Route path="/consentDetails/:userId?" element={<TermsAndConditions />} />
 
 
             </Route>
