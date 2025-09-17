@@ -83,7 +83,7 @@ const TermsAndConditions = () => {
      const response = await axios.get(
   `${env.VITE_BLOOM_API_BASE_URL}${endpoints.updateConsent}`,
   {
-    headers: {
+    headers: { 
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`, 
     },
