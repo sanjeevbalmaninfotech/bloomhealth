@@ -19,7 +19,6 @@ export async function validateTokenTime(token) {
       return { valid: false, expired: true, payload: decoded };
     }
 
-    console.log('✅ Token is still valid');
     return { valid: true, expired: false, payload: decoded };
   } catch (err) {
     console.error('❌ Invalid token:', err.message);

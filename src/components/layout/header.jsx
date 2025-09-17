@@ -26,12 +26,12 @@ export function Header() {
   };
 
   const handleNavClick = (item) => {
-    if (location.pathname === '/home') {
+    if (location.pathname === '/') {
       // Already on /home, scroll immediately
       scrollToSection(item.sectionId);
     } else {
       // Navigate to /home and pass sectionId
-      navigate('/home', { state: { scrollTo: item.sectionId } });
+      navigate('/', { state: { scrollTo: item.sectionId } });
     }
   };
 

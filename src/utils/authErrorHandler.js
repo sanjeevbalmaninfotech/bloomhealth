@@ -5,7 +5,7 @@ export function handleAuthError(err) {
     toast.error("Session expired. Please log in again.", { autoClose: 3000 });
     sessionStorage.clear();
     setTimeout(() => {
-      window.location.href = '/home';
+      window.location.href = '/';
     }, 3000);
     return true;
   }

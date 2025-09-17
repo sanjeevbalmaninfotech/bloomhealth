@@ -50,7 +50,7 @@ export default function ProfilePage() {
 
   const handleLogout = () => {
     sessionStorage.removeItem('token');
-    navigate('/home');
+    navigate('/');
     toast.success('Logged out successfully!');
   };
 
