@@ -28,9 +28,8 @@ const footerColumns = [
   {
     title: 'ABOUT US',
     links: [
-      { name: 'Our Mission', href: '#about-us' },
-      { name: 'Our Vision', href: '#about-us' },
-      { name: 'Quality & Safety', href: '#about-us' },
+      { name: 'About Us', href: '/aboutUs' },
+   
     ],
   },
   {

@@ -42,8 +42,11 @@ export const medicalServicesMenu = [
       'Rheumatology',
       // 'Endocrinology',
       'Gastroenterology',
+      'Paediatrics',
       'Respiratory Medicine',
       // 'Infectious Diseases',
+   
+      
     ],
   },
   {

@@ -23,13 +23,13 @@ const UrgentCare = () => {
       ]}
       diseases={[
         <>
-          <strong>Immediate assessment and treatment&nbsp;</strong>for common illnesses and minor conditions
+          <strong>Immediate assessment and treatment</strong>{' '}  for common illnesses and minor conditions
         </>,
         <>
-          <strong>Point-of-care testing&nbsp;</strong> for rapid results, so you can get answers quickly
+          <strong>Point-of-care testing&nbsp;</strong>{' '} for rapid results, so you can get answers quickly
         </>,
         <>
-          <strong>On-site imaging and investigations</strong>, including X-ray and ultrasound (where clinically appropriate)
+          <strong>On-site imaging and investigations</strong>{' '} including X-ray and ultrasound (where clinically appropriate)
         </>,
         <>
           <span>

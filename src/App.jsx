@@ -2,7 +2,7 @@ import { Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route, Navigate  } from 'react-router-dom';
 import Providers from '@/components/providers';
 import LoadingSpinner from './components/loader/Loader';
-import EmergencyPage from './pages/EmergencyPage';
+
 
 // Lazy-loaded pages and layout
 const MainLayout = lazy(() => import('@/components/layouts/MainLayout'));
@@ -30,6 +30,10 @@ const Profile = lazy(() => import('@/pages/Profile'));
 const ForgotPassword = lazy(() => import('@/pages/ForgotPassword'));
 const ResetPassword = lazy(() => import('@/pages/ResetPassword'));
 const TermsAndConditions = lazy(() => import('@/pages/TermsAndConditions'));
+const EmergencyPage = lazy(() => import('@/pages/EmergencyPage'));
+const AboutUs = lazy(() => import('@/pages/AboutUs'));
+const Paediatrics = lazy(() => import('@/pages/Paediatrics'));
+
 
 export default function App() {
   return (
@@ -57,6 +61,7 @@ export default function App() {
               <Route path="/gynaecology" element={<Gynecology/>}/>
               <Route path="/generalPediatrics" element={<GeneralPediatrics/>}/>
               <Route path="/respiratoryMedicine" element={<RespiratoryMedicine/>}/>
+           
               <Route path="/dermatology" element={<Dermatology/>}/>
               <Route path="/urgentCare" element={<UrgentCare/>}/>
               <Route path="/generalMedicine" element={<GeneralMedicine/>}/>
@@ -64,6 +69,8 @@ export default function App() {
               <Route path="/services/:slug/:subServiceSlug" element={<SubServicePage />} />
              <Route path="/consentDetails/:userId?" element={<TermsAndConditions />} />
               <Route path="/emergencyServices" element={<EmergencyPage/>} />
+                <Route path="/aboutUs" element={<AboutUs/>} />
+              <Route path="/paediatrics" element={<Paediatrics/>} />
 
             </Route>
             <Route path="*" element={<NotFound />} />

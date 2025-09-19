@@ -20,7 +20,7 @@ const RespiratoryMedicine = () => {
         'Specialist respiratory consultations',
         'Lung function testing, chest imaging, and sleep assessmentsDiagnostic testing, including autoimmune blood panels, inflammatory markers, and imaging',
         'Personalised treatment plans including inhaler therapies, medication management, and lifestyle strategies',
-        'Access to in-house investigations, sleep studies, and referrals to pulmonary rehabilitation or thoracic surgery when requiredAccess to in-house investigations and coordinated care with orthopaedics, physiotherapy, or pain services if needed',
+        'Access to in-house investigations, sleep studies, and referrals to pulmonary rehabilitation or thoracic surgery when require.',
       ]}
       moreDetails={
         <span>

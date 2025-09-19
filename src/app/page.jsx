@@ -17,6 +17,9 @@ import {
   Check,
   Plus,
   Home,
+  UserCheck,
+  Heart,
+  Eye,
 } from 'lucide-react';
 import { services } from '@/lib/services';
 import { useEffect } from 'react';
@@ -26,6 +29,11 @@ const heroData = {
   subheading: `A new standard in private healthcare located in central Milton Keynes. Experience fast, round the clock expert medical treatments with a personal touch, From urgent walk-in care to specialist clinics, Bloom Health Hospital is here to put YOUR health first.`,
 };
 const featuresData = [
+  {
+    title: 'Expert Consultants & Advanced Care',
+    desc: 'Our team includes leading consultants across Cardiology, Gastroenterology, Pediatrics, Ear Nose and Throat and more, offering specialist care backed by the top-tier technology and proven techniques.',
+    icon: UserCheck,
+  },
   {
     title: 'Urgent healthcare when you need it most',
     desc: 'Our Urgent Care Centre offers fast, walk-in treatment for a wide range of unexpected health concerns – no appointment needed.',
@@ -65,6 +73,7 @@ const formFields = [
   { label: 'Email', type: 'email', placeholder: 'your@email.com', name: 'email' },
   { label: 'Phone Number', type: 'tel', placeholder: '+44 1234 567890', name: 'phone' },
 ];
+
 export default function HomePage() {
   const location = useLocation();
 
@@ -161,7 +170,7 @@ export default function HomePage() {
               and surrounding areas with accessible, compassionate healthcare for all ages.
             </p>
           </div>
-          <div className='grid gap-8 sm:grid-cols-2 lg:grid-cols-5'>
+          <div className='grid gap-8 sm:grid-cols-3 lg:grid-cols-3'>
             {featuresData.map(({ title, desc, icon: Icon }) => (
               <div
                 className='flex flex-col items-start p-6 bg-white rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition'
@@ -270,6 +279,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+   
       <section id='contact' className='pt-32 py-20 bg-background'>
         <div className='container mx-auto px-4'>
           <div className='text-center mb-12'>
@@ -381,8 +392,8 @@ export default function HomePage() {
                 <Globe className='h-8 w-8 text-primary' />
                 <div>
                   <h4 className='font-semibold text-foreground'>Book Online</h4>
-                  <a href='#' className='text-foreground hover:text-primary'>
-                    Home
+                  <a href='/bookAppointment' className='text-foreground hover:text-primary'>
+                    Make an Appointment
                   </a>
                 </div>
               </div>
@@ -390,7 +401,14 @@ export default function HomePage() {
                 <MapPin className='h-8 w-8 text-primary mt-1' />
                 <div>
                   <h4 className='font-semibold text-foreground'>Visit Us</h4>
-                  <p className='text-foreground'>163-175 Grafton Gate, Milton Keynes, UK, MK9 1AE</p>
+                  <a
+                    href='https://www.google.com/maps/search/?api=1&query=163-175+Grafton+Gate,+Milton+Keynes,+UK,+MK9+1AE'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='text-foreground hover:underline'
+                  >
+                    163-175 Grafton Gate, Milton Keynes, UK, MK9 1AE
+                  </a>
                 </div>
               </div>
               <img
@@ -401,6 +419,95 @@ export default function HomePage() {
                 className='rounded-xl shadow-md w-full mt-4 object-cover'
               />
             </aside>
+          </div>
+        </div>
+      </section>
+
+         <section id='about' className='pt-32 py-20 bg-gradient-to-b from-white to-gray-50'>
+        <div className='container mx-auto px-4'>
+          <div className='text-center mb-12'>
+            <span className='inline-block bg-primary/10 text-primary px-4 py-1 rounded-full uppercase text-xs tracking-wider font-semibold mb-3'>
+              About Us
+            </span>
+            <h2 className='text-3xl sm:text-4xl font-headline font-extrabold text-foreground mb-4'>
+              About Bloom Health
+            </h2>
+            <p className='max-w-3xl mx-auto text-base sm:text-lg text-muted-foreground leading-relaxed'>
+              At Bloom Health, we believe every patient deserves prompt, high-quality medical care
+              delivered with compassion and expertise. Our team combines the best of urgent care and
+              specialist outpatient services, ensuring your health is in safe, capable hands.
+            </p>
+          </div>
+          <div className='grid gap-12 lg:grid-cols-2'>
+            <div className='space-y-6'>
+              <div className='bg-white p-6 rounded-xl shadow-lg border border-gray-100'>
+                <h3 className='text-xl font-semibold text-gray-900 mb-3 flex items-center'>
+                  <Heart className='h-6 w-6 text-blue-600 mr-3' />
+                  Our Mission
+                </h3>
+                <p className='text-gray-600'>
+                  To provide accessible, innovative healthcare solutions that prioritize patient
+                  wellbeing and deliver exceptional medical outcomes through personalized care.
+                </p>
+              </div>
+
+              <div className='bg-white p-6 rounded-xl shadow-lg border border-gray-100'>
+                <h3 className='text-xl font-semibold text-gray-900 mb-3 flex items-center'>
+                  <Eye className='h-6 w-6 text-blue-600 mr-3' />
+                  Our Vision
+                </h3>
+                <p className='text-gray-600'>
+                  To be the leading healthcare provider in Milton Keynes and surrounding areas,
+                  known for excellence, innovation, and compassionate patient-centered care.
+                </p>
+              </div>
+
+              <div className='bg-white p-6 rounded-xl shadow-lg border border-gray-100'>
+                <h3 className='text-xl font-semibold text-gray-900 mb-3 flex items-center'>
+                  <Shield className='h-6 w-6 text-blue-600 mr-3' />
+                  Our Values
+                </h3>
+                <p className='text-gray-600'>
+                  Integrity, compassion, excellence, and innovation guide everything we do. We are
+                  committed to treating every patient with dignity and respect.
+                </p>
+              </div>
+            </div>
+
+            <div className='space-y-6'>
+              <div className='w-full overflow-hidden rounded-xl shadow-xl'>
+                <img
+                  src='/docImg.jpg'
+                  alt='Bloom Health medical team and facility'
+                  width={600}
+                  height={450}
+                  className='object-cover w-full h-[300px] sm:h-[400px]'
+                  loading='lazy'
+                />
+              </div>
+
+              <div className='bg-blue-50 rounded-xl p-6 border border-blue-100'>
+                <h3 className='text-lg font-semibold text-gray-900 mb-3'>What Sets Us Apart</h3>
+                <ul className='space-y-2'>
+                  <li className='flex items-center text-gray-600'>
+                    <Check className='h-4 w-4 text-blue-600 mr-3' />
+                    State-of-the-art medical technology
+                  </li>
+                  <li className='flex items-center text-gray-600'>
+                    <Check className='h-4 w-4 text-blue-600 mr-3' />
+                    Experienced, certified healthcare professionals
+                  </li>
+                  <li className='flex items-center text-gray-600'>
+                    <Check className='h-4 w-4 text-blue-600 mr-3' />
+                    Same-day and walk-in appointments available
+                  </li>
+                  <li className='flex items-center text-gray-600'>
+                    <Check className='h-4 w-4 text-blue-600 mr-3' />
+                    Comprehensive multispecialty services
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </section>

@@ -25,7 +25,7 @@ const Cardiology = () => {
         }
       ]}
       diseases={[
-        'Specialist consultations to assess symptoms, medical history, and cardiovascular',
+        'Specialist consultations to assess symptoms, medical history, and cardiovascular risk',
         'Comprehensive diagnostic testing, including ECGs and Echocardiogram',
         'Personalised treatment plans, including medication management, lifestyle advice, and referrals if further care is needed',
         'Community-based tests and assessments, allowing for some investigations to be completed at home for convenience',

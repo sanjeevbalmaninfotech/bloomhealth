@@ -180,7 +180,7 @@ export function Header() {
                         <div className='absolute mt-3 -translate-x-1/2 bg-gradient-to-br from-white to-gray-100 shadow-lg rounded-lg w-[90vw] max-w-[1200px] h-auto min-h-[300px] p-6 z-50'>
 
                           <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-2'>
-                            {medicalServicesMenu.map((section) => (
+                            {medicalServicesMenu?.map((section) => (
                               <div key={section.title}>
                                 <h3 className='font-semibold text-primary mb-2'>{section.title}</h3>
                                 <ul className='space-y-1'>
@@ -425,7 +425,7 @@ export function Header() {
                           href='tel:07949 301632'
                           className='text-sm hover:underline text-foreground'
                         >
-                         07949 301632
+                          07949 301632
                         </a>
                       </div>
                       <div className='flex items-center space-x-2'>

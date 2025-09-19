@@ -1,7 +1,14 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { Phone, Mail, MapPin, Clock, AlertTriangle, Heart, Ambulance, Shield, Users, Stethoscope, Activity } from 'lucide-react';
 
 const EmergencyPage = () => {
+
+
+
+      useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const emergencyContacts = [
     {
       type: "Emergency Hotline",
@@ -71,12 +78,14 @@ const EmergencyPage = () => {
   ];
 
   return (
+    
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 py-12">
+ <section className="relative min-h-screen flex justify-center px-2 py-4">
+
         <div className="absolute inset-0 bg-gradient-to-br from-blue-50/20 via-white/30 to-slate-50/20" />
         
-        <div className="container mx-auto h-full flex items-center px-4 relative z-10">
+        <div className="container mx-auto h-full flex  justify-center px-4 relative z-10">
           <div className="max-w-4xl w-full mx-auto">
             {/* Main Emergency Card */}
             <div className="p-6 bg-white/90 backdrop-blur-lg rounded-3xl shadow-2xl border border-gray-200 text-center mb-6">
@@ -101,14 +110,14 @@ const EmergencyPage = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <a 
                   href="tel:911" 
-                  className="bg-gradient-to-r from-rose-400 to-rose-300 hover:from-rose-500 hover:to-rose-400 text-white rounded-full px-12 py-4 shadow-xl transition-all duration-200 text-xl font-bold flex items-center space-x-3"
+                  className="bg-gradient-to-r from-rose-400 to-rose-300 hover:from-rose-500 hover:to-rose-400 text-white rounded-full px-12 py-4 shadow-xl transition-all duration-200 text-xl font-bold flex  justify-center space-x-3"
                 >
                   <Phone className="h-6 w-6" />
                   <span>CALL 911 NOW</span>
                 </a>
                 <a 
                   href="tel:07949301632" 
-                  className="bg-gradient-to-r from-sky-400 to-cyan-400 hover:from-sky-500 hover:to-cyan-500 text-white rounded-full px-8 py-3 shadow-xl transition-all duration-200 flex items-center space-x-2"
+                  className="bg-gradient-to-r from-sky-400 to-cyan-400 hover:from-sky-500 hover:to-cyan-500 text-white rounded-full px-8 py-3 shadow-xl transition-all duration-200 flex  justify-center space-x-2"
                   style={{background: 'linear-gradient(to right, hsl(203, 80%, 52%), hsl(203, 80%, 62%))'}}
                 >
                   <Phone className="h-5 w-5" />
@@ -121,7 +130,7 @@ const EmergencyPage = () => {
             <div className="hide-above-1280 grid gap-6 md:hidden">
               {emergencyContacts.map((contact, index) => (
                 <div key={index} className="p-6 bg-white/90 backdrop-blur-lg rounded-3xl shadow-2xl border border-gray-200">
-                  <div className="flex items-center space-x-4 mb-4">
+                  <div className="flex  justify-center space-x-4 mb-4">
                     {contact.icon}
                     <div>
                       <h3 className="font-bold text-gray-900 text-lg">{contact.type}</h3>

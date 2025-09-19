@@ -23,7 +23,7 @@ export const services = [
       'At Bloom Health, we are committed to providing seamless, efficient, and high-quality care, all under one roof. Simply walk in, and we will ensure you are seen promptly and treated with care, expertise, and professionalism.',
     diseases: [
       <>
-        <strong>Immediate assessment and treatment&nbsp;</strong>for common illnesses and minor
+        <strong>Immediate assessment and treatment</strong>for common illnesses and minor
         conditions
       </>,
       <>
