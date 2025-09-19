@@ -12,7 +12,7 @@ const EmergencyPage = () => {
   const emergencyContacts = [
     {
       type: "Emergency Hotline",
-      number: "911",
+      number: "999",
       description: "Immediate medical emergency response",
       icon: <AlertTriangle className="h-8 w-8 text-rose-400" />,
       available: "24/7"
@@ -109,11 +109,11 @@ const EmergencyPage = () => {
               {/* Emergency Call Button */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <a 
-                  href="tel:911" 
+                  href="tel:999" 
                   className="bg-gradient-to-r from-rose-400 to-rose-300 hover:from-rose-500 hover:to-rose-400 text-white rounded-full px-12 py-4 shadow-xl transition-all duration-200 text-xl font-bold flex  justify-center space-x-3"
                 >
                   <Phone className="h-6 w-6" />
-                  <span>CALL 911 NOW</span>
+                  <span>CALL 999 NOW</span>
                 </a>
                 <a 
                   href="tel:07949301632" 
@@ -260,8 +260,8 @@ const EmergencyPage = () => {
                     </div>
                     <div>
                       <h4 className="font-semibold text-gray-900">Life-Threatening Emergency</h4>
-                      <a href="tel:911" className="text-rose-500 hover:text-rose-600 font-bold text-xl">
-                        Call 911
+                      <a href="tel:999" className="text-rose-500 hover:text-rose-600 font-bold text-xl">
+                        Call 999
                       </a>
                     </div>
                   </div>
@@ -312,11 +312,11 @@ const EmergencyPage = () => {
 
   <div className="space-y-4">
     <a 
-      href="tel:911" 
+      href="tel:999" 
       className="w-full bg-gradient-to-r from-rose-300 to-rose-200 hover:from-rose-400 hover:to-rose-300 text-gray-800 rounded-full px-6 py-4 shadow-xl transition-all duration-200 font-bold flex items-center justify-center space-x-3"
     >
       <AlertTriangle className="h-6 w-6" />
-      <span>CALL 911 - EMERGENCY</span>
+      <span>CALL 999 - EMERGENCY</span>
     </a>
 
     <a 
