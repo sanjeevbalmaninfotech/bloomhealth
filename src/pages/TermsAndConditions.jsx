@@ -18,6 +18,7 @@ const TermsAndConditions = () => {
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const redirectTimeoutRef = useRef(null);
   const [termsAccepted, setTermsAccepted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const validToken = async () => {
     try {
@@ -81,16 +82,18 @@ console.log('Terms accepted state changed:', token);
   const handleSubmit = async () => {
     if (!allCheckboxesChecked) return;
 
+    setLoading(true);
     try {
-     const response = await axios.get(
-  `${env.VITE_BLOOM_API_BASE_URL}${endpoints.updateConsent}`,
-  {
-    headers: { 
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`, 
-    },
-  }
-);
+      const response = await axios.post(
+    `${env.VITE_BLOOM_API_BASE_URL}${endpoints.updateConsent}`,
+   { consentDetails: checkboxes },
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
       console.log('Response:', response.data);
       setTermsAccepted(true);
       setShowSuccessPopup(true);
@@ -100,6 +103,8 @@ console.log('Terms accepted state changed:', token);
     } catch (error) {
       console.error('Error:', error);
       throw error;
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -251,16 +256,26 @@ console.log('Terms accepted state changed:', token);
               <div className='flex justify-end'>
                 <button
                   onClick={handleSubmit}
-                  disabled={!allCheckboxesChecked}
+                  disabled={!allCheckboxesChecked || loading}
                   className={`px-6 py-3 rounded-lg font-semibold text-sm transition duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2
                     ${
-                      allCheckboxesChecked
+                      allCheckboxesChecked && !loading
                         ? 'bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500 shadow-lg'
                         : 'bg-gray-200 text-gray-400 cursor-not-allowed'
                     }
                   `}
                 >
-                  {allCheckboxesChecked ? '✅ Accept All & Continue' : 'Please accept all policies'}
+                  {loading ? (
+                    <span className='flex items-center space-x-2'>
+                      <svg className='animate-spin -ml-1 mr-2 h-4 w-4 text-white' xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24'>
+                        <circle className='opacity-25' cx='12' cy='12' r='10' stroke='currentColor' strokeWidth='4'></circle>
+                        <path className='opacity-75' fill='currentColor' d='M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z'></path>
+                      </svg>
+                      <span>Processing...</span>
+                    </span>
+                  ) : (
+                    allCheckboxesChecked ? '✅ Accept All & Continue' : 'Please accept all policies'
+                  )}
                 </button>
               </div>
             </div>

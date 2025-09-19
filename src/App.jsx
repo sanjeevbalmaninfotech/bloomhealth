@@ -2,7 +2,7 @@ import { Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route, Navigate  } from 'react-router-dom';
 import Providers from '@/components/providers';
 import LoadingSpinner from './components/loader/Loader';
-
+import EmergencyPage from './pages/EmergencyPage';
 
 // Lazy-loaded pages and layout
 const MainLayout = lazy(() => import('@/components/layouts/MainLayout'));
@@ -30,6 +30,7 @@ const Profile = lazy(() => import('@/pages/Profile'));
 const ForgotPassword = lazy(() => import('@/pages/ForgotPassword'));
 const ResetPassword = lazy(() => import('@/pages/ResetPassword'));
 const TermsAndConditions = lazy(() => import('@/pages/TermsAndConditions'));
+
 export default function App() {
   return (
     <Providers>
@@ -62,7 +63,7 @@ export default function App() {
               <Route path="/travelMedicine&Vaccinations" element={<TravelMedicineAndVaccinations/>}/>
               <Route path="/services/:slug/:subServiceSlug" element={<SubServicePage />} />
              <Route path="/consentDetails/:userId?" element={<TermsAndConditions />} />
-
+              <Route path="/emergencyServices" element={<EmergencyPage/>} />
 
             </Route>
             <Route path="*" element={<NotFound />} />

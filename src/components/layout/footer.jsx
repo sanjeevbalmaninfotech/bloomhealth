@@ -36,8 +36,8 @@ const footerColumns = [
   {
     title: 'CONTACT',
     links: [
-      { name: 'Get in Touch', href: '/contact' },
-      { name: 'Emergency Care', href: '/contact' },
+      // { name: 'Get in Touch', href: '/contact' },
+      { name: 'Emergency Care', href: '/emergencyServices' },
       { name: 'Book Appointment', href: '/bookAppointment' },
     ],
   },
