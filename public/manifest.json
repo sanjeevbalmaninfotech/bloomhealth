@@ -1,0 +1,21 @@
+{
+  "short_name": "Bloom Health",
+  "name": "Bloom Health Hospitals",
+  "icons": [
+    {
+      "src": "/public/BloomFavicon192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/BloomFavicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": ".",
+  "background_color": "#ffffff",
+  "theme_color": "#317EFB",
+  "display": "standalone",
+  "orientation": "portrait"
+}

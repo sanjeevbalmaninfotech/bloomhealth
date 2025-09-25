@@ -5,7 +5,10 @@ import App from '@/App';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Provider } from 'react-redux';
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import { store } from '../store';
+
+serviceWorkerRegistration.register();
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
