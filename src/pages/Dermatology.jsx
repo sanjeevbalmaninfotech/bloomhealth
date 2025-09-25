@@ -23,7 +23,7 @@ const Dermatology = () => {
         'Access to in-house investigations, minor skin procedures, prescriptions, and fast-track referrals to surgical or oncology services if required',
       ]}
       moreDetails={
-        <span>For more detailed information about our dermatology services, please visit our <strong>Dermatology Information Page</strong>.</span>
+        <span>For more detailed information about our dermatology services. Please contact us.</span>
       }
       specialtyUnits={[
         'Epilepsy Monitoring Unit',

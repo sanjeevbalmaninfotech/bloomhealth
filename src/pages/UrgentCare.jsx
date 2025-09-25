@@ -47,8 +47,7 @@ const UrgentCare = () => {
           with care, expertise, and professionalism.
           <br />
           <br />
-          For more detailed information about our Urgent Care Centre services and tests, please
-          visit our <strong>Urgent Care Information Page</strong>.
+          For more detailed information about our Urgent Care Centre services and tests. Please contact us.
         </div>
       }
       specialtyUnits={[

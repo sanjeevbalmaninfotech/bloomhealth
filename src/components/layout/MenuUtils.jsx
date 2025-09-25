@@ -1,6 +1,6 @@
 export const featureOptions = [
   // { name: 'Find a Doctor', submenu: [{ name: 'Bloom Hospital Doctors', href: '/hospitalsDoctors' }], enabled: true },
-  { name: 'Medical Services', href: '#', enabled: true },
+  { name: "Our services", href: '#', enabled: true },
   // { name: 'Centers of Excellence', submenu: [
   //   { name: 'Women Wellbeing', href: '/womenWellBeing' },
   //   { name: 'Cardiometabolic and Weight Management', href: '#' },

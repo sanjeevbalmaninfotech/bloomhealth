@@ -2,6 +2,8 @@ import { Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route, Navigate  } from 'react-router-dom';
 import Providers from '@/components/providers';
 import LoadingSpinner from './components/loader/Loader';
+import PrivateRoute from './components/routes/PrivateRoute';
+import PublicRoute from './components/routes/PublicRoute';
 
 
 // Lazy-loaded pages and layout
@@ -43,11 +45,11 @@ export default function App() {
         <Suspense fallback={<LoadingSpinner />}>
           <Routes>
             {/* <Route path="/" element={<Navigate to="/home" />} /> */}
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Registration />} />
+            <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
+            <Route path="/register" element={<PublicRoute><Registration /></PublicRoute>} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/reset-password" element={<ResetPassword />} />
-            <Route element={<MainLayout />}>
+            <Route element={<PublicRoute><MainLayout /></PublicRoute>}>
               <Route path="/profile" element={<Profile />} />
               <Route path="/" element={<HomePage />} />
               <Route path="/services/:slug" element={<ServicePage />} />

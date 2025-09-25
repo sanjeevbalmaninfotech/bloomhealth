@@ -24,8 +24,7 @@ const RespiratoryMedicine = () => {
       ]}
       moreDetails={
         <span>
-          For more detailed information about our respiratory medicine services, please visit our{' '}
-          <strong>Respiratory Medicine Information Page</strong>.
+          For more detailed information about our respiratory medicine services. Please contact us.
         </span>
       }
       specialtyUnits={[

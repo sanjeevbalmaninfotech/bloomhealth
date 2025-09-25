@@ -21,8 +21,7 @@ const WomensHealth = () => {
   ]}
   moreDetails={
     <span>
-      For more detailed information about our women’s health and gynaecology services, please visit our{" "}
-      <strong>Women’s Health Information Page</strong>.
+      For more detailed information about our women’s health and gynaecology services. Please contact us.
     </span>
   }
 />

@@ -23,7 +23,7 @@ const Rheumatology = () => {
         'Access to in-house investigations and coordinated care with orthopaedics, physiotherapy, or pain services if needed'
       ]}
       moreDetails={
-        <span>For more detailed information about our rheumatology services, please visit our <strong>Rheumatology Information Page</strong>.</span>
+        <span>For more detailed information about our rheumatology services. Please contact us.</span>
       }
       specialtyUnits={[
         'Epilepsy Monitoring Unit',

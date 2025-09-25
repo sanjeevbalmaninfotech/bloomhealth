@@ -176,7 +176,7 @@ export function Header() {
                       )}
 
                       {/* Mega Menu for Medical Services */}
-                      {openMenu === item.name && item.name === 'Medical Services' && (
+                      {openMenu === item.name && item.name === 'Our services' && (
                         <div className='absolute mt-3 -translate-x-1/2 bg-gradient-to-br from-white to-gray-100 shadow-lg rounded-lg w-[90vw] max-w-[1200px] h-auto min-h-[300px] p-6 z-50'>
 
                           <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-2'>
@@ -297,7 +297,7 @@ export function Header() {
                             </details>
                           )}
                           {/* Item with submenu */}
-                          {item.submenu?.length > 0 && item.name !== 'Medical Services' && (
+                          {item.submenu?.length > 0 && item.name !== 'Our services' && (
                             <details>
                               <summary className='cursor-pointer text-base font-medium text-foreground'>
                                 {item.name}
@@ -329,7 +329,7 @@ export function Header() {
                           )}
 
                           {/* Medical Services Mega Menu */}
-                          {item.name === 'Medical Services' && (
+                          {item.name === 'Our services' && (
                             <details>
                               <summary className='cursor-pointer text-base font-medium text-foreground'>
                                 {item.name}
@@ -371,7 +371,7 @@ export function Header() {
                           )}
 
                           {/* Items without submenu */}
-                          {!item.submenu?.length && item.name !== 'Medical Services' && (
+                          {!item.submenu?.length && item.name !== 'Our services' && (
                             <Link
                               to={item.href}
                               className='text-base font-medium text-foreground hover:text-primary'

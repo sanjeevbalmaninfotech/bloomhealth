@@ -26,6 +26,41 @@ export const auth = createApi({
       },
     }),
 
+    // Request SMS OTP to be sent to phone number
+    requestOtp: builder.mutation({
+      query: (payload) => ({
+        url: '/auth/request-otp',
+        method: 'POST',
+        body: payload, // { countryCode, phoneNumber }
+      }),
+      async onQueryStarted(arg, { queryFulfilled }) {
+        try {
+          await queryFulfilled;
+          showToast.success('OTP sent to your mobile number');
+        } catch (err) {
+          showToast.error(err?.error?.data?.message || 'Failed to send OTP');
+        }
+      },
+    }),
+
+    // Verify OTP and login
+    verifyOtp: builder.mutation({
+      query: (payload) => ({
+        url: '/auth/verify-otp',
+        method: 'POST',
+        body: payload, // { countryCode, phoneNumber, otp }
+      }),
+      async onQueryStarted(arg, { queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          showToast.success('Login successful!');
+          sessionStorage.setItem('token', data?.token);
+        } catch (err) {
+          showToast.error(err?.error?.data?.message || 'OTP verification failed!');
+        }
+      },
+    }),
+
     register: builder.mutation({
       query: (user) => ({
         url: '/register',
@@ -80,6 +115,8 @@ export const auth = createApi({
 export const {
   useRegisterMutation,
   useLoginMutation,
+  useRequestOtpMutation,
+  useVerifyOtpMutation,
   useForgotPasswordMutation,
-  useResetPasswordMutation
+  useResetPasswordMutation,
 } = auth;

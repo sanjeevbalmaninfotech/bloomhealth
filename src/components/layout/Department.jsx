@@ -219,8 +219,7 @@ const Department = ({
               Our call center team is always here for you and happy to help!
             </p>
             <p className='text-gray-800 mt-2'>
-              please contact our call center every day between 7:00 am
-              and 10:00 pm:<br/><br/> <strong>07949 301632</strong>
+              We are available 24/7, Please contact our call center every day.<br/><br/> <strong>07949 301632</strong>
             </p>
           </section>
         </div>

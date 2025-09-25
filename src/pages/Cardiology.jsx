@@ -33,7 +33,7 @@ const Cardiology = () => {
         'Follow-up appointments to monitor progress, adjust treatments, and support long-term heart health'
       ]}
       moreDetails={
-        <span>For more detailed information about our cardiology services and tests, please visit our <strong>Cardiology Information Page.</strong>.</span>
+        <span>For more detailed information about our cardiology services and tests. Please contact us.</span>
       }
       specialtyUnits={[
         'Hypertension Unit',

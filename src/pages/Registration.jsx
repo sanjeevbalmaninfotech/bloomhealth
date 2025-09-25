@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { EyeOff, Eye, CheckCircle, XCircle } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useRegisterMutation } from '../services/authAPI';
+import { post, handle } from '../services/apiClient';
 import { validateField, validateForm } from '../utils/validation';
 import { toast } from 'react-toastify';
 import { Logo } from '../components/logo';
@@ -16,6 +16,7 @@ const Registration = () => {
     lastName: '',
     gender: '',
     phoneNumber: '',
+  countryCode: '+91',
     address: {
       street: '',
       city: '',
@@ -31,13 +32,6 @@ const Registration = () => {
   const [passwordStrength, setPasswordStrength] = useState(0);
 
   const navigate = useNavigate();
-  const [Register, { isSuccess }] = useRegisterMutation();
-
-  useEffect(() => {
-    if (isSuccess) {
-      navigate("/login");
-    }
-  }, [isSuccess, navigate]);
 
   useEffect(() => {
     validatePassword(formData.password);
@@ -94,9 +88,19 @@ const Registration = () => {
     const payload = {
       ...formData,
       address: { ...formData.address },
+      // send combined phone as well for backends expecting full international format
+      phone: `${formData.countryCode}${formData.phoneNumber}`,
     };
 
-    Register(payload);
+    // Use axios helper to post to the provided backend URL
+    const registerUrl = 'http://localhost:8088/Patient/post_patients_register';
+    const resp = await handle(post(registerUrl, payload));
+    if (!resp.error) {
+      toast.success('Registered successfully');
+      navigate('/login');
+    } else {
+      toast.error(resp.message || 'Registration failed');
+    }
   };
 
   const getPasswordStrengthColor = () => {
@@ -301,18 +305,34 @@ const Registration = () => {
           </div>
 
           {/* Phone */}
-          <div className='relative'>
-            <input
-              type='tel'
-              name='phoneNumber'
-              placeholder='Phone Number'
-              value={formData.phoneNumber}
-              onChange={handleChange}
-              className={`w-full pl-2 pr-4 py-2.5 border rounded-lg focus:ring-2 focus:outline-none transition ${
-                errors.phoneNumber ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'
-              }`}
-            />
-            {errors.phoneNumber && <p className='text-red-500 text-xs mt-4'>{errors.phoneNumber}</p>}
+          <div className='flex items-center gap-2'>
+            <div className='w-28'>
+              <select
+                name='countryCode'
+                value={formData.countryCode}
+                onChange={handleChange}
+                className='w-full pl-2 pr-2 py-2.5 border rounded-lg focus:ring-2 focus:outline-none transition'
+              >
+                <option value='+91'>+91 (IN)</option>
+                <option value='+1'>+1 (US)</option>
+                <option value='+44'>+44 (UK)</option>
+                <option value='+61'>+61 (AU)</option>
+                <option value='+971'>+971 (AE)</option>
+              </select>
+            </div>
+            <div className='flex-1 relative'>
+              <input
+                type='tel'
+                name='phoneNumber'
+                placeholder='Phone Number'
+                value={formData.phoneNumber}
+                onChange={handleChange}
+                className={`w-full pl-2 pr-4 py-2.5 border rounded-lg focus:ring-2 focus:outline-none transition ${
+                  errors.phoneNumber ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'
+                }`}
+              />
+              {errors.phoneNumber && <p className='text-red-500 text-xs mt-4'>{errors.phoneNumber}</p>}
+            </div>
           </div>
 
           {/* Address */}

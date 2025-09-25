@@ -26,7 +26,7 @@ const Gastroenterology = () => {
         'Clear, compassionate guidance to help you understand your condition and manage your digestive health with confidence',
       ]}
       moreDetails={
-        <span>For more detailed information about our gastroenterology services and tests, please visit our <strong>Gastroenterology Information Page</strong>.</span>
+        <span>For more detailed information about our gastroenterology services and tests. Please contact us.</span>
       }
       specialtyUnits={[
         'Epilepsy Monitoring Unit',

@@ -40,8 +40,7 @@ const GeneralMedicine = () => {
       ]}
       moreDetails={
         <span>
-          For more detailed information about our general medicine and GP services, please visit our{' '}
-          <strong>General Medicine Information Page</strong>.
+          For more detailed information about our general medicine and GP services. Please contact us.
         </span>
       }
       specialtyUnits={[

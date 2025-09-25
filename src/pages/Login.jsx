@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react";
-
-import { Eye, EyeOff } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useLoginMutation } from "../services/authAPI";
+import { useRequestOtpMutation, useVerifyOtpMutation } from "../services/authAPI";
 import { showToast } from "@/utils/toast"; // your react-toastify wrapper
-import { validateField, validateForm } from "../utils/validation";
 import { Logo } from "../components/logo";
 
 const Login = () => {
@@ -13,44 +10,42 @@ const Login = () => {
 
   const from = location?.state?.from || '/';
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
+  const [countryCode, setCountryCode] = useState('+91');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [otp, setOtp] = useState('');
+  const [step, setStep] = useState(1); // 1 = request OTP, 2 = verify OTP
+  const [loading, setLoading] = useState(false);
 
-  const [errors, setErrors] = useState({ email: "", password: "" });
+  const [requestOtp] = useRequestOtpMutation();
+  const [verifyOtp] = useVerifyOtpMutation();
 
-  const [login, { isSuccess }] = useLoginMutation();
-
-  useEffect(() => {
-    if (isSuccess) {
-      navigate(from, { replace: true });
+  const handleRequestOtp = async (e) => {
+    e.preventDefault();
+    if (!phoneNumber) return showToast.error('Please enter phone number');
+    setLoading(true);
+    try {
+      await requestOtp({ countryCode, phoneNumber }).unwrap();
+      setStep(2);
+    } catch (err) {
+      // errors handled in mutation
+    } finally {
+      setLoading(false);
     }
-  }, [isSuccess]);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-  
-    if (name === "email") setEmail(value);
-    if (name === "password") setPassword(value);
-  
-    const error = validateField(name, value);
-    setErrors((prev) => ({ ...prev, [name]: error }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleVerifyOtp = async (e) => {
     e.preventDefault();
-  
-    const fieldValues = { email, password };
-    const formErrors = validateForm(fieldValues);
-  
-    setErrors(formErrors);
-  
-    if (Object.keys(formErrors).length > 0) {
-      showToast.error("Please fix the errors in the form");
-      return;
+    if (!otp) return showToast.error('Please enter OTP');
+    setLoading(true);
+    try {
+      const res = await verifyOtp({ countryCode, phoneNumber, otp }).unwrap();
+      // sessionStorage token is set in authAPI on success, navigate
+      navigate(from, { replace: true });
+    } catch (err) {
+      // handled in mutation
+    } finally {
+      setLoading(false);
     }
-  
-    login(fieldValues);
   };
 
   return (
@@ -64,80 +59,66 @@ const Login = () => {
           Welcome Back
         </h2>
         <p className="text-center text-gray-500 text-sm mb-6">
-          Please login to your account
+          Login with your mobile number
         </p>
 
-        <form onSubmit={handleSubmit} className="space-y-5">
-          {/* Email */}
-          <div className="relative">
-            <input
-              type="email"
-              name="email"
-              placeholder="Enter your email"
-              value={email}
-              onChange={handleChange}
-              className={`w-full pl-10 pr-4 py-2.5 border rounded-lg focus:ring-2 focus:outline-none transition ${
-                errors.email
-                  ? "border-red-500 focus:ring-red-400"
-                  : "border-gray-300 focus:ring-blue-500 focus:border-blue-500"
-              }`}
-              required
-            />
-            {errors.email && (
-              <p className="text-red-500 text-sm mt-4">{errors.email}</p>
-            )}
-          </div>
+        {step === 1 && (
+          <form onSubmit={handleRequestOtp} className="space-y-5">
+            <div className='flex items-center gap-2'>
+              <div className='w-28'>
+                <select
+                  value={countryCode}
+                  onChange={(e) => setCountryCode(e.target.value)}
+                  className='w-full pl-2 pr-2 py-2.5 border rounded-lg focus:ring-2 focus:outline-none transition'
+                >
+                  <option value='+91'>+91 (IN)</option>
+                  <option value='+1'>+1 (US)</option>
+                  <option value='+44'>+44 (UK)</option>
+                </select>
+              </div>
+              <div className='flex-1 relative'>
+                <input
+                  type='tel'
+                  placeholder='Phone Number'
+                  value={phoneNumber}
+                  onChange={(e) => setPhoneNumber(e.target.value)}
+                  className='w-full pl-2 pr-4 py-2.5 border rounded-lg focus:ring-2 focus:outline-none transition'
+                  required
+                />
+              </div>
+            </div>
 
-          {/* Password with Eye toggle */}
-          <div className="relative">
-            <input
-              type={showPassword ? "text" : "password"}
-              name="password"
-              placeholder="Enter your password"
-              value={password}
-              onChange={handleChange}
-              className={`w-full pl-2 pr-10 py-2.5 border rounded-lg focus:ring-2 focus:outline-none transition ${
-                errors.password
-                  ? "border-red-500 focus:ring-red-400"
-                  : "border-gray-300 focus:ring-blue-500 focus:border-blue-500"
-              }`}
-              required
-            />
             <button
-              type="button"
-              onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+              type='submit'
+              disabled={loading}
+              className='w-full py-2.5 bg-[#157fc1] text-white font-semibold rounded-lg hover:bg-blue-700 shadow-md transition transform hover:scale-[1.02]'
             >
-              {showPassword ? (
-                <EyeOff className="h-5 w-5" />
-              ) : (
-                <Eye className="h-5 w-5" />
-              )}
+              {loading ? 'Sending OTP...' : 'Send OTP'}
             </button>
-          </div>
-          {errors.password && (<p className="text-red-500 text-sm">{errors.password}</p>)}
-          {/* Remember me + Forgot Password */}
-          <div className="flex items-center justify-between text-sm text-gray-600">
-            <label className="flex items-center gap-2 cursor-pointer">
-              <input type="checkbox" className="rounded bg-[#157fc1]" />
-              Remember me
-            </label>
-            <Link
-              to="/forgot-password"
-              className="text-blue-600 hover:underline"
-            >
-              Forgot password?
-            </Link>
-          </div>
+          </form>
+        )}
 
-          {/* Submit Button */}
-          <button
-            type="submit"
-            className="w-full py-2.5 bg-[#157fc1] text-white font-semibold rounded-lg hover:bg-blue-700 shadow-md transition transform hover:scale-[1.02]"
-          >
-            Login
-          </button>
-        </form>
+        {step === 2 && (
+          <form onSubmit={handleVerifyOtp} className='space-y-5'>
+            <div className='relative'>
+              <input
+                type='text'
+                placeholder='Enter OTP'
+                value={otp}
+                onChange={(e) => setOtp(e.target.value)}
+                className='w-full pl-2 pr-4 py-2.5 border rounded-lg focus:ring-2 focus:outline-none transition'
+                required
+              />
+            </div>
+            <button
+              type='submit'
+              disabled={loading}
+              className='w-full py-2.5 bg-[#157fc1] text-white font-semibold rounded-lg hover:bg-blue-700 shadow-md transition transform hover:scale-[1.02]'
+            >
+              {loading ? 'Verifying...' : 'Verify OTP & Login'}
+            </button>
+          </form>
+        )}
         {/* Extra links */}
         <p className="text-center text-sm text-gray-500 mt-6">
           Don’t have an account?{" "}

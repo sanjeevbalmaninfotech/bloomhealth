@@ -26,7 +26,7 @@ const TravelMedicineAndVaccinations = () => {
       ]}
       moreDetails={
         <span>
-          For more detailed information about our travel medicine services, please visit our <strong>Travel Medicine Information Page</strong>.
+          For more detailed information about our travel medicine services. Please contact us.
         </span>
       }
       specialtyUnits={[

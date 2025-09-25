@@ -23,7 +23,7 @@ const Neurology = () => {
         'Access to in-house investigations, outpatient monitoring, and coordination with neurosurgery, neuropsychology, or allied health services as needed'
       ]}
       moreDetails={
-        <span>For more detailed information about our neurology and epilepsy services, please visit our <strong>Neurology & Epilepsy Information Page</strong>.</span>
+        <span>For more detailed information about our neurology and epilepsy services. Please contact us.</span>
       }
       specialtyUnits={[
         'Epilepsy Monitoring Unit',

@@ -17,7 +17,7 @@ const Gynecology = () => {
         'Access to in-house investigations, outpatient treatments, prescriptions, and coordination with fertility, urology, or surgical services as needed',
       ]}
       moreDetails={
-        <span>For more detailed information about our women’s health and gynaecology services, please visit our <strong>Women’s Health Information Page</strong>.</span>
+        <span>For more detailed information about our women’s health and gynaecology services. Please contact us.</span>
       }
       diseases={[
         'Specialist gynaecology consultations',
