@@ -28,7 +28,8 @@ const footerColumns = [
   {
     title: 'ABOUT US',
     links: [
-      { name: 'About Us', href: '/aboutUs' },
+        { name: 'About Us', href: '/' },
+      // { name: 'About Us', href: '/aboutUs' },
    
     ],
   },
@@ -36,7 +37,8 @@ const footerColumns = [
     title: 'CONTACT',
     links: [
       // { name: 'Get in Touch', href: '/contact' },
-      { name: 'Emergency Care', href: '/emergencyServices' },
+      // { name: 'Emergency Care', href: '/emergencyServices' },
+        { name: 'Emergency Care', href: '/' },
       { name: 'Book Appointment', href: '/bookAppointment' },
     ],
   },
