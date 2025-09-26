@@ -84,9 +84,9 @@ const TermsAndConditions = () => {
 
    
     try {
-       
+        setLoading(true);
     const response = await axios.post(
-  `https://bloom-health-qa-api-audtb4cebyd4axhm.uksouth-01.azurewebsites.net/${endpoints.updateConsent}`,
+  `https://bloom-health-qa-api-audtb4cebyd4axhm.uksouth-01.azurewebsites.net${endpoints.updateConsent}`,
   { consentDetails: checkboxes },
     {
       headers: {

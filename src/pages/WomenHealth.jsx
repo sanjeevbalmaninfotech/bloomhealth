@@ -2,8 +2,6 @@ import { useEffect } from "react";
 import Department from "../components/layout/Department";
 
 const WomensHealth = () => {
-
-    console.log(" dev ==== > WomenHealth.jsx file");
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
