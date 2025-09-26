@@ -59,7 +59,7 @@ const TermsAndConditions = () => {
   };
 
   useEffect(() => {
-console.log('Terms accepted state changed:', token);
+
     if(!token) return;  
     const handleBeforeUnload = (e) => {
       // Only block if terms not formally accepted via button
@@ -82,10 +82,11 @@ console.log('Terms accepted state changed:', token);
   const handleSubmit = async () => {
     if (!allCheckboxesChecked) return;
 
-    setLoading(true);
+   
     try {
-      const response = await axios.post(
-    `${env.VITE_BLOOM_API_BASE_URL}${endpoints.updateConsent}`,
+       console.log(" dev one  ");
+      const response = await axios.post( // to do update this in .env
+    "https://bloom-health-qa-api-audtb4cebyd4axhm.uksouth-01.azurewebsites.net/"`${endpoints.updateConsent}`,
    { consentDetails: checkboxes },
     {
       headers: {
@@ -97,9 +98,9 @@ console.log('Terms accepted state changed:', token);
       console.log('Response:', response.data);
       setTermsAccepted(true);
       setShowSuccessPopup(true);
-      redirectTimeoutRef.current = setTimeout(() => {
+    
         window.location.href = '/';
-      }, 3000);
+     
     } catch (error) {
       console.error('Error:', error);
       throw error;
