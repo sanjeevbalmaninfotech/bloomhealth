@@ -84,10 +84,10 @@ const TermsAndConditions = () => {
 
    
     try {
-       console.log(" dev one  ");
-      const response = await axios.post( // to do update this in .env
-    "https://bloom-health-qa-api-audtb4cebyd4axhm.uksouth-01.azurewebsites.net/"`${endpoints.updateConsent}`,
-   { consentDetails: checkboxes },
+       
+    const response = await axios.post(
+  `https://bloom-health-qa-api-audtb4cebyd4axhm.uksouth-01.azurewebsites.net/${endpoints.updateConsent}`,
+  { consentDetails: checkboxes },
     {
       headers: {
         'Content-Type': 'application/json',
