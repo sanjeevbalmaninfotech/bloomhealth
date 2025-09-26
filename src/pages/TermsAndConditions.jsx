@@ -98,8 +98,10 @@ const TermsAndConditions = () => {
       console.log('Response:', response.data);
       setTermsAccepted(true);
       setShowSuccessPopup(true);
-    
-        window.location.href = '/';
+    setTimeout(()=>{
+       window.location.href = '/';
+    },2000)
+       
      
     } catch (error) {
       console.error('Error:', error);
