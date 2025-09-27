@@ -79,12 +79,16 @@ const TermsAndConditions = () => {
   const allCheckboxesChecked =
     checkboxes.termsOfUse && checkboxes.privacyPolicy && checkboxes.shareWithGP;
 
+
   const handleSubmit = async () => {
     if (!allCheckboxesChecked) return;
 
-   
+    setLoading(true);
+     setTermsAccepted(true);
+      setShowSuccessPopup(true);
+    
     try {
-        setLoading(true);
+       
     const response = await axios.post(
   `https://bloom-health-qa-api-audtb4cebyd4axhm.uksouth-01.azurewebsites.net${endpoints.updateConsent}`,
   { consentDetails: checkboxes },
@@ -95,11 +99,14 @@ const TermsAndConditions = () => {
       },
     }
   );
-      console.log('Response:', response.data);
-      setTermsAccepted(true);
-      setShowSuccessPopup(true);
+      
+     
     setTimeout(()=>{
        window.location.href = '/';
+      setLoading(false);
+     setTermsAccepted(false);
+      setShowSuccessPopup(false);
+
     },2000)
        
      
@@ -107,6 +114,7 @@ const TermsAndConditions = () => {
       console.error('Error:', error);
       throw error;
     } finally {
+      
       setLoading(false);
     }
   };

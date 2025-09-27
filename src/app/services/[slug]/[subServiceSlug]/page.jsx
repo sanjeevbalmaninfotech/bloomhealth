@@ -59,7 +59,7 @@ export default function SubServicePage() {
                 <p className='mt-4 text-lg text-muted-foreground'>
                   Further details about the {subService.title} service will be provided here. This
                   section can include information about the procedures, what to expect, the
-                  technology used, and the specialists involved.
+                  technology used and the specialists involved.
                 </p>
                 <Button asChild size='lg' className='mt-8'>
                   <a href='/#contact'>Contact us for more information</a>

@@ -61,7 +61,7 @@ export default function App() {
               <Route path="/rheumatology" element={<Rheumatology/>}/>
               <Route path="/gastroenterology" element={<Gastroenterology/>}/>
               <Route path="/gynaecology" element={<Gynecology/>}/>
-              <Route path="/generalPediatrics" element={<GeneralPediatrics/>}/>
+              <Route path="/generalPaediatrics" element={<GeneralPediatrics/>}/>
               <Route path="/respiratoryMedicine" element={<RespiratoryMedicine/>}/>
            
               <Route path="/dermatology" element={<Dermatology/>}/>

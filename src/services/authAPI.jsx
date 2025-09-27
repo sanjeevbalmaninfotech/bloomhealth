@@ -43,6 +43,23 @@ export const auth = createApi({
       },
     }),
 
+    // Lookup user by user id / username to get masked phone
+    lookupUser: builder.mutation({
+      query: (payload) => ({
+        url: '/auth/lookup-user',
+        method: 'POST',
+        body: payload, // { userId }
+      }),
+      async onQueryStarted(arg, { queryFulfilled }) {
+        try {
+          await queryFulfilled;
+          // no toast here; handled by caller
+        } catch (err) {
+          showToast.error(err?.error?.data?.message || 'User lookup failed');
+        }
+      },
+    }),
+
     // Verify OTP and login
     verifyOtp: builder.mutation({
       query: (payload) => ({
@@ -117,6 +134,7 @@ export const {
   useLoginMutation,
   useRequestOtpMutation,
   useVerifyOtpMutation,
+  useLookupUserMutation,
   useForgotPasswordMutation,
   useResetPasswordMutation,
 } = auth;

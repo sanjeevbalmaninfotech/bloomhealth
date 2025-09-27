@@ -9,7 +9,7 @@ const Dermatology = () => {
     <Department
       departmentName='Dermatology at Bloom Health'
       overviewText='Specialist skin care for all ages'
-      overviewDescription='Our dermatology team offers expert, confidential care for a wide range of skin, hair, and nail concerns — including acne, eczema, psoriasis, skin infections, moles, and skin cancer assessments. We understand that skin conditions can affect not just your health but also your confidence and wellbeing, which is why we provide sensitive, personalised consultations and treatments in a private, supportive setting.'
+      overviewDescription='Our dermatology team offers expert, confidential care for a wide range of skin, hair and nail concerns — including acne, eczema, psoriasis, skin infections, moles and skin cancer assessments. We understand that skin conditions can affect not just your health but also your confidence and wellbeing, which is why we provide sensitive, personalised consultations and treatments in a private, supportive setting.'
       services={[
         'Rheumatology Consultation',
         'EEG Testing',
@@ -17,10 +17,10 @@ const Dermatology = () => {
         'Botulinum Toxin Therapy',
       ]}
       diseases={[
-        'Specialist dermatology consultations in a discreet, patient-centred environment',
-        'Diagnostic assessments, including dermoscopy, and skin biopsies',
-        'Personalised treatment plans, including topical or systemic therapies, procedural treatments, and skincare advice tailored to your needs',
-        'Access to in-house investigations, minor skin procedures, prescriptions, and fast-track referrals to surgical or oncology services if required',
+        'Specialist dermatology consultations in a discreet, patient-centred environment.',
+        'Diagnostic assessments, including dermoscopy and skin biopsies.',
+        'Personalised treatment plans, including topical or systemic therapies, procedural treatments and skincare advice tailored to your needs.',
+        'Access to in-house investigations, minor skin procedures, prescriptions and fast-track referrals to surgical or oncology services if required.',
       ]}
       moreDetails={
         <span>For more detailed information about our dermatology services. Please contact us.</span>
@@ -56,9 +56,9 @@ const Dermatology = () => {
         {
           question: 'What neurological conditions do you treat?',
           answer:
-            "We treat a wide range of neurological conditions including stroke, epilepsy, multiple sclerosis, Parkinson's disease, migraine, neuropathy, and other disorders of the nervous system.",
+            "We treat a wide range of neurological conditions including stroke, epilepsy, multiple sclerosis, Parkinson's disease, migraine, neuropathy and other disorders of the nervous system.",
         },
-        // Add other FAQs specific to neurology
+       
       ]}
     />
   );

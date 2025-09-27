@@ -8,10 +8,10 @@ const GeneralPediatrics = () => {
   return (
     <Department
       departmentName='Paediatrics Services at Bloom Health'
-      overviewText='Specialist medical care for infants, children, and teens in a friendly, family-centred environment'
-      overviewDescription="At Bloom Health, our dedicated Paediatrics Service ensures young patients receive expert treatment delivered with gentle, reassuring care. We understand that children’s health concerns can be stressful for families, and our experienced paediatric team is here to provide attentive, personalised support through every stage of childhood and adolescence.
+      overviewText='Specialist medical care for infants, children and teens in a friendly, family-centred environment'
+      overviewDescription="At Bloom Health, our dedicated Paediatrics Service ensures young patients receive expert treatment delivered with gentle, reassuring care. We understand that children’s health concerns can be stressful for families and our experienced paediatric team is here to provide attentive, personalised support through every stage of childhood and adolescence.
 
-      Whether your child needs urgent care for a sudden illness, ongoing management for a chronic condition, or routine health checks, we offer comprehensive, family-focused services designed to keep your child healthy and thriving. Our team works closely with parents and caregivers, ensuring you feel informed, supported, and confident in every aspect of your child’s care."
+      Whether your child needs urgent care for a sudden illness, ongoing management for a chronic condition  or routine health checks, we offer comprehensive, family-focused services designed to keep your child healthy and thriving. Our team works closely with parents and caregivers, ensuring you feel informed, supported and confident in every aspect of your child’s care."
       services={[
         'GeneralPediatrics Consultation',
         'EEG Testing',
@@ -19,9 +19,9 @@ const GeneralPediatrics = () => {
         'Botulinum Toxin Therapy',
       ]}
       diseases={[
-        'Paediatric consultations for infants, children, and adolescents',
-        'Same-day and scheduled appointments for urgent and routine concerns',
-        'Access to in-house investigations, prescriptions, and specialist referrals',
+        'Paediatric consultations for infants, children and adolescents.',
+        'Same-day and scheduled appointments for urgent and routine concerns.',
+        'Access to in-house investigations, prescriptions and specialist referrals.',
       ]}
       moreDetails={
         <span>
@@ -59,7 +59,7 @@ const GeneralPediatrics = () => {
         {
           question: 'What neurological conditions do you treat?',
           answer:
-            "We treat a wide range of neurological conditions including stroke, epilepsy, multiple sclerosis, Parkinson's disease, migraine, neuropathy, and other disorders of the nervous system.",
+            "We treat a wide range of neurological conditions including stroke, epilepsy, multiple sclerosis, Parkinson's disease, migraine, neuropathy and other disorders of the nervous system.",
         },
         // Add other FAQs specific to neurology
       ]}

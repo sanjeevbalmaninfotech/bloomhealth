@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-// Using native img in Vite app
+
 import { Button } from '@/components/ui/button';
 import { Link, useLocation } from 'react-router-dom';
 import { Input } from '@/components/ui/input';
@@ -31,7 +31,7 @@ const heroData = {
 const featuresData = [
   {
     title: 'Expert Consultants & Advanced Care',
-    desc: 'Our team includes leading consultants across Cardiology, Gastroenterology, Pediatrics, Ear Nose and Throat and more, offering specialist care backed by the top-tier technology and proven techniques.',
+    desc: 'Our team includes leading consultants across Cardiology, Gastroenterology, Paediatrics, Ear Nose and Throat and more, offering specialist care backed by the top-tier technology and proven techniques.',
     icon: UserCheck,
   },
   {
@@ -46,23 +46,23 @@ const featuresData = [
   },
   {
     title: 'Leading Clinicians & Advanced Care',
-    desc: 'Our team includes leading consultants and specialist nurses  across Cardiology, Gastroenterology, Pediatrics, Ear Nose and Throat and more, offering specialist care in an innovative environment.',
+    desc: 'Our team includes leading consultants and specialist nurses  across Cardiology, Gastroenterology, Paediatrics, Ear Nose and Throat and more, offering specialist care in an innovative environment.',
     icon: Stethoscope,
   },
   {
     title: 'Hospital at Home',
-    desc: 'Receive hospital-level care in the comfort of your own home, with our expert team providing personalized treatment plans and support.',
+    desc: 'Receive hospital-level care in the comfort of your own home, with our expert team providing personalised treatment plans and support.',
     icon: Home,
   },
   {
     title: 'Self-funded & Insured Patients Welcome',
-    desc: 'Both self-funded and patients using private insurance are catered for at Bloom Health Hospital. Our dedicated patient advisors make access to excellent care simple. We also offer GP consultations by appointment, virtual or Face to Face, making referrals seamless and accessible.',
+    desc: 'Both self-funded and patients using private insurance are catered for at Bloom Health Hospital. Our dedicated patient advisors make access to excellent care simple. We also offer GP consultations by appointment, virtual or face-to-face, making referrals seamless and accessible.',
     icon: Shield,
   },
 ];
 const whyChooseUsItems = [
   'Minimal Wait Times — See a doctor when you need one.',
-  'Expert Clinicians — Care provided by senior doctors, specialist consultants, and experienced specialist nurses',
+  'Expert Clinicians — Care provided by senior doctors, specialist consultants and experienced specialist nurses.',
   'Modern Facilities — State-of-the-art equipment in a welcoming, comfortable environment.',
   'Accessible Location — Conveniently located with easy parking and transport access.',
   'Personalised Care — We focus on your needs, offering tailored health solutions.',
@@ -157,16 +157,16 @@ export default function HomePage() {
               Why Choose Us
             </span>
             <h2 className='text-3xl sm:text-4xl font-headline font-extrabold text-foreground mb-2'>
-              Our Priority is YOUR health
+              Our Priority Is YOUR HEALTH
             </h2>
             <p className='max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground'>
               At Bloom Health, we are dedicated to delivering fast, expert medical care when you
               need it most. We offer multispecialty services covering diagnostics, chronic disease
-              management, mental health, paediatrics, and allied health. Our highly trained
+              management, mental health, paediatrics and allied health. Our highly trained
               clinicians deliver patient-centred care across diverse specialties. With
-              state-of-the-art imaging, diagnostics, and private consultation suites designed for
+              state-of-the-art imaging, diagnostics and private consultation suites designed for
               comfort and efficiency. Our innovative approach uses technology and evidence-based
-              medicine to deliver faster, safer, and more personalised care. Serving Milton Keynes
+              medicine to deliver faster, safer and more personalised care. Serving Milton Keynes
               and surrounding areas with accessible, compassionate healthcare for all ages.
             </p>
           </div>
@@ -447,7 +447,7 @@ export default function HomePage() {
                 </h3>
                 <p className='text-gray-600'>
                   To provide accessible, innovative healthcare solutions that prioritize patient
-                  wellbeing and deliver exceptional medical outcomes through personalized care.
+                  wellbeing and deliver exceptional medical outcomes through personalised care.
                 </p>
               </div>
 
@@ -458,7 +458,7 @@ export default function HomePage() {
                 </h3>
                 <p className='text-gray-600'>
                   To be the leading healthcare provider in Milton Keynes and surrounding areas,
-                  known for excellence, innovation, and compassionate patient-centered care.
+                  known for excellence, innovation and compassionate patient-centered care.
                 </p>
               </div>
 
@@ -468,7 +468,7 @@ export default function HomePage() {
                   Our Values
                 </h3>
                 <p className='text-gray-600'>
-                  Integrity, compassion, excellence, and innovation guide everything we do. We are
+                  Integrity, compassion, excellence and innovation guide everything we do. We are
                   committed to treating every patient with dignity and respect.
                 </p>
               </div>

@@ -54,7 +54,7 @@ const AboutUs = () => {
     },
     {
       name: 'Dr. Emma Williams',
-      role: 'Pediatrics Specialist',
+      role: 'Paediatrics Specialist',
       specialty: 'Child Healthcare',
       experience: '12+ years',
       image: '👩‍⚕️',
@@ -135,8 +135,8 @@ const AboutUs = () => {
                 <h3 className="text-2xl font-bold text-blue-800">Our Mission</h3>
               </div>
               <p className="text-gray-700 leading-relaxed">
-                To provide accessible, compassionate, and high-quality healthcare services to our community, 
-                ensuring every patient receives personalized care that promotes healing, wellness, and optimal 
+                To provide accessible, compassionate and high-quality healthcare services to our community, 
+                ensuring every patient receives personalised care that promotes healing, wellness and optimal 
                 health outcomes through innovative medical practices and dedicated professional service.
               </p>
             </div>
@@ -156,7 +156,7 @@ const AboutUs = () => {
               </div>
               <p className="text-gray-700 leading-relaxed">
                 To be the leading healthcare provider in Milton Keynes and surrounding areas, recognized 
-                for excellence in patient care, medical innovation, and community health improvement. 
+                for excellence in patient care, medical innovation and community health improvement. 
                 We envision a healthier future where advanced medical care is accessible to all.
               </p>
             </div>
@@ -223,7 +223,7 @@ const AboutUs = () => {
               <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-500">
                 <p className="text-blue-800 font-semibold italic">
                   "We believe in treating not just the condition, but the whole person, 
-                  with dignity, respect, and the highest standard of medical care."
+                  with dignity, respect and the highest standard of medical care."
                 </p>
               </div>
             </div>
@@ -290,7 +290,7 @@ const AboutUs = () => {
               {
                 icon: '👨‍⚕️',
                 title: 'Expert Clinicians',
-                description: 'Care provided by senior doctors, specialist consultants, and experienced specialist nurses with years of expertise.'
+                description: 'Care provided by senior doctors, specialist consultants and experienced specialist nurses with years of expertise.'
               },
               {
                 icon: '🏥',
@@ -426,7 +426,7 @@ const AboutUs = () => {
     <div className="bg-white/10 backdrop-blur-md rounded-xl p-5 shadow-md">
       <p className="text-base italic leading-relaxed text-blue-50">
         "The care I received was exceptional. The staff was professional,
-        caring, and made me feel at ease throughout my treatment."
+        caring and made me feel at ease throughout my treatment."
       </p>
       <p className="text-xs mt-3 text-blue-200 font-medium">— Patient Review</p>
     </div>

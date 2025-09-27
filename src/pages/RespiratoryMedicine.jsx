@@ -9,7 +9,7 @@ const RespiratoryMedicine = () => {
     <Department
       departmentName='Respiratory Medicine at Bloom Health'
       overviewText='Expert care for lung and breathing health'
-      overviewDescription='Our respiratory specialists provide comprehensive assessment, diagnosis, and management for conditions such as asthma, chronic cough, COPD, interstitial lung disease, and sleep-related breathing disorders. We deliver personalised care plans focused on improving breathing, reducing symptoms, and enhancing quality of life.'
+      overviewDescription='Our respiratory specialists provide comprehensive assessment, diagnosis and management for conditions such as asthma, chronic cough, COPD, interstitial lung disease and sleep-related breathing disorders. We deliver personalised care plans focused on improving breathing, reducing symptoms and enhancing quality of life.'
       services={[
         'Rheumatology Consultation',
         'EEG Testing',
@@ -17,10 +17,10 @@ const RespiratoryMedicine = () => {
         'Botulinum Toxin Therapy',
       ]}
       diseases={[
-        'Specialist respiratory consultations',
-        'Lung function testing, chest imaging, and sleep assessmentsDiagnostic testing, including autoimmune blood panels, inflammatory markers, and imaging',
-        'Personalised treatment plans including inhaler therapies, medication management, and lifestyle strategies',
-        'Access to in-house investigations, sleep studies, and referrals to pulmonary rehabilitation or thoracic surgery when require.',
+        'Specialist respiratory consultations.',
+        'Lung function testing, chest imaging and sleep assessments, Diagnostic testing, including autoimmune blood panels, inflammatory markers and imaging.',
+        'Personalised treatment plans including inhaler therapies, medication management and lifestyle strategies.',
+        'Access to in-house investigations, sleep studies and referrals to pulmonary rehabilitation or thoracic surgery when require.',
       ]}
       moreDetails={
         <span>
@@ -58,7 +58,7 @@ const RespiratoryMedicine = () => {
         {
           question: 'What neurological conditions do you treat?',
           answer:
-            "We treat a wide range of neurological conditions including stroke, epilepsy, multiple sclerosis, Parkinson's disease, migraine, neuropathy, and other disorders of the nervous system.",
+            "We treat a wide range of neurological conditions including stroke, epilepsy, multiple sclerosis, Parkinson's disease, migraine, neuropathy and other disorders of the nervous system.",
         },
         // Add other FAQs specific to neurology
       ]}

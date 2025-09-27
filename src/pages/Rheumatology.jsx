@@ -8,8 +8,8 @@ const Rheumatology = () => {
   return (
     <Department
       departmentName="Rheumatology at Bloom Health"
-      overviewText="Expert care for joint, bone, and autoimmune conditions"
-      overviewDescription="Our rheumatology specialists provide expert compassionate care for individuals living with joint, muscle, bone, and autoimmune conditions — including arthritis, connective tissue diseases, and inflammatory disorders. We understand that these conditions can affect both your physical comfort and daily life, and we are committed to offering sensitive, personalised care in a private and supportive setting."
+      overviewText="Expert care for joint, bone and autoimmune conditions"
+      overviewDescription="Our rheumatology specialists provide expert compassionate care for individuals living with joint, muscle, bone and autoimmune conditions — including arthritis, connective tissue diseases and inflammatory disorders. We understand that these conditions can affect both your physical comfort and daily life and we are committed to offering sensitive, personalised care in a private and supportive setting."
       services={[
         'Rheumatology Consultation',
         'EEG Testing',
@@ -17,10 +17,10 @@ const Rheumatology = () => {
         'Botulinum Toxin Therapy'
       ]}
       diseases={[
-        'Specialist rheumatology consultations delivered with care and discretion',
-        'Diagnostic testing, including autoimmune blood panels, inflammatory markers, and imaging',
-        'Personalised treatment plans, including medication management, physical therapy recommendations, lifestyle adjustments, and referrals when appropriate',
-        'Access to in-house investigations and coordinated care with orthopaedics, physiotherapy, or pain services if needed'
+        'Specialist rheumatology consultations delivered with care and discretion.',
+        'Diagnostic testing, including autoimmune blood panels, inflammatory markers and imaging.',
+        'Personalised treatment plans, including medication management, physical therapy recommendations, lifestyle adjustments and referrals when appropriate.',
+        'Access to in-house investigations and coordinated care with orthopaedics, physiotherapy  or pain services if needed.'
       ]}
       moreDetails={
         <span>For more detailed information about our rheumatology services. Please contact us.</span>
@@ -40,7 +40,7 @@ const Rheumatology = () => {
       faqs={[
         {
           question: 'What neurological conditions do you treat?',
-          answer: 'We treat a wide range of neurological conditions including stroke, epilepsy, multiple sclerosis, Parkinson\'s disease, migraine, neuropathy, and other disorders of the nervous system.'
+          answer: 'We treat a wide range of neurological conditions including stroke, epilepsy, multiple sclerosis, Parkinson\'s disease, migraine, neuropathy and other disorders of the nervous system.'
         },
         // Add other FAQs specific to neurology
       ]}

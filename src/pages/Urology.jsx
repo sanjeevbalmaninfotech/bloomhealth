@@ -5,7 +5,7 @@ const Urology = () => {
   return (
     <Department
       departmentName='Urology'
-      overviewText='Our Urology department provides comprehensive care for disorders of the nervous system. Our team of neurologists and neurosurgeons are experts in diagnosing and treating conditions affecting the brain, spinal cord, and peripheral nerves. We utilize advanced diagnostic tools and treatment modalities to provide personalized care for each patient.'
+      overviewText='Our Urology department provides comprehensive care for disorders of the nervous system. Our team of neurologists and neurosurgeons are experts in diagnosing and treating conditions affecting the brain, spinal cord and peripheral nerves. We utilize advanced diagnostic tools and treatment modalities to provide personalised care for each patient.'
       services={[
         'Urology Consultation',
         'EEG Testing',
@@ -51,7 +51,7 @@ const Urology = () => {
         {
           question: 'What neurological conditions do you treat?',
           answer:
-            "We treat a wide range of neurological conditions including stroke, epilepsy, multiple sclerosis, Parkinson's disease, migraine, neuropathy, and other disorders of the nervous system.",
+            "We treat a wide range of neurological conditions including stroke, epilepsy, multiple sclerosis, Parkinson's disease, migraine, neuropathy and other disorders of the nervous system.",
         },
         // Add other FAQs specific to neurology
       ]}

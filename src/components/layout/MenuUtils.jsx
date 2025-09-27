@@ -68,7 +68,7 @@ export const medicalServicesMenu = [
   },
   {
     title: 'Paediatrics',
-    items: ['General Pediatrics'],
+    items: ['General Paediatrics'],
   },
   // {
   //   title: 'Surgery',

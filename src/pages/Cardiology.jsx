@@ -9,7 +9,7 @@ const Cardiology = () => {
     <Department
       departmentName="Cardiology Services"
       overviewText=""
-      overviewDescription="At Bloom Health Hospitals, we provide comprehensive cardiology services designed to diagnose, manage, and treat a wide range of heart conditions. Our team of expert cardiology specialists is dedicated to offering personalized care tailored to your individual case and needs, ensuring you receive the highest quality of treatment and support."
+      overviewDescription="At Bloom Health Hospitals, we provide comprehensive cardiology services designed to diagnose, manage and treat a wide range of heart conditions. Our team of expert cardiology specialists is dedicated to offering personalised care tailored to your individual case and needs, ensuring you receive the highest quality of treatment and support."
       services={[
         {
           title: "Web Development",
@@ -25,12 +25,12 @@ const Cardiology = () => {
         }
       ]}
       diseases={[
-        'Specialist consultations to assess symptoms, medical history, and cardiovascular risk',
-        'Comprehensive diagnostic testing, including ECGs and Echocardiogram',
-        'Personalised treatment plans, including medication management, lifestyle advice, and referrals if further care is needed',
-        'Community-based tests and assessments, allowing for some investigations to be completed at home for convenience',
-        'Coordination with your GP or other specialists to ensure smooth, collaborative care',
-        'Follow-up appointments to monitor progress, adjust treatments, and support long-term heart health'
+        'Specialist consultations to assess symptoms, medical history and cardiovascular risk.',
+        'Comprehensive diagnostic testing, including ECGs and Echocardiogram.',
+        'Personalised treatment plans, including medication management, lifestyle advice and referrals if further care is needed.',
+        'Community-based tests and assessments, allowing for some investigations to be completed at home for convenience.',
+        'Coordination with your GP or other specialists to ensure smooth, collaborative care.',
+        'Follow-up appointments to monitor progress, adjust treatments and support long-term heart health.'
       ]}
       moreDetails={
         <span>For more detailed information about our cardiology services and tests. Please contact us.</span>

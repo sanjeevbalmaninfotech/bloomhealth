@@ -9,9 +9,9 @@ const Gastroenterology = () => {
     <Department
       departmentName='Gastroenterology at Bloom Health'
       overviewText='Expert care for digestive health issues.'
-      overviewDescription='At Bloom Health, our Gastroenterology service provides expert assessment, diagnosis, and treatment for conditions affecting the stomach, intestines, liver, pancreas, and digestive system. We offer advanced endoscopic procedures alongside personalised, compassionate care, helping you find answers and regain comfort.
+      overviewDescription='At Bloom Health, our Gastroenterology service provides expert assessment, diagnosis and treatment for conditions affecting the stomach, intestines, liver, pancreas and digestive system. We offer advanced endoscopic procedures alongside personalised, compassionate care, helping you find answers and regain comfort.
 
-      Whether you are experiencing persistent heartburn, abdominal pain, bloating, altered bowel habits, or liver concerns, our experienced specialists are here to support you every step of the way.'
+      Whether you are experiencing persistent heartburn, abdominal pain, bloating, altered bowel habits  or liver concerns, our experienced specialists are here to support you every step of the way.'
       services={[
         'Gastroenterology Consultation',
         'EEG Testing',
@@ -19,11 +19,11 @@ const Gastroenterology = () => {
         'Botulinum Toxin Therapy',
       ]}
       diseases={[
-        'Comprehensive consultations with expert gastroenterologists',
-        'Advanced diagnostic testing, including blood tests, imaging, and specialist scans',
-        'Endoscopic procedures, such as gastroscopy and colonoscopy, performed with skill and care',
-        'Personalised treatment plans tailored to your specific needs and health goals',
-        'Clear, compassionate guidance to help you understand your condition and manage your digestive health with confidence',
+        'Comprehensive consultations with expert gastroenterologists.',
+        'Advanced diagnostic testing, including blood tests, imaging and specialist scans.',
+        'Endoscopic procedures, such as gastroscopy and colonoscopy, performed with skill and care.',
+        'Personalised treatment plans tailored to your specific needs and health goals.',
+        'Clear, compassionate guidance to help you understand your condition and manage your digestive health with confidence.',
       ]}
       moreDetails={
         <span>For more detailed information about our gastroenterology services and tests. Please contact us.</span>
@@ -59,7 +59,7 @@ const Gastroenterology = () => {
         {
           question: 'What neurological conditions do you treat?',
           answer:
-            "We treat a wide range of neurological conditions including stroke, epilepsy, multiple sclerosis, Parkinson's disease, migraine, neuropathy, and other disorders of the nervous system.",
+            "We treat a wide range of neurological conditions including stroke, epilepsy, multiple sclerosis, Parkinson's disease, migraine, neuropathy and other disorders of the nervous system.",
         },
         // Add other FAQs specific to neurology
       ]}

@@ -46,21 +46,21 @@ const EmergencyPage = () => {
     {
       title: 'Rapid Response Team',
       description:
-        'Our specialized emergency team responds within minutes to provide immediate life-saving interventions including CPR, advanced cardiac support, and trauma stabilization.',
+        'Our specialized emergency team responds within minutes to provide immediate life-saving interventions including CPR, advanced cardiac support and trauma stabilization.',
       icon: <Heart className='h-12 w-12 text-rose-300' />,
       details: 'Average response time: 4-6 minutes',
     },
     {
       title: 'Critical Care Unit',
       description:
-        'State-of-the-art intensive care facilities with 24/7 monitoring, ventilator support, and specialized equipment for critical patients requiring immediate medical attention.',
+        'State-of-the-art intensive care facilities with 24/7 monitoring, ventilator support and specialized equipment for critical patients requiring immediate medical attention.',
       icon: <Activity className='h-12 w-12' style={{ color: 'hsl(203, 80%, 52%)' }} />,
       details: 'Advanced life support available',
     },
     {
       title: 'Emergency Transportation',
       description:
-        'Fully equipped ambulances with paramedic staff, cardiac monitors, oxygen support, and direct communication with our emergency department for seamless patient transfer.',
+        'Fully equipped ambulances with paramedic staff, cardiac monitors, oxygen support and direct communication with our emergency department for seamless patient transfer.',
       icon: <Ambulance className='h-12 w-12 text-sky-300' />,
       details: 'GPS-tracked fleet of 12 ambulances',
     },
@@ -76,13 +76,13 @@ const EmergencyPage = () => {
     {
       title: 'Rapid Diagnosis',
       description:
-        'Our emergency physicians use advanced diagnostic tools including CT scans, X-rays, and laboratory tests for quick diagnosis.',
+        'Our emergency physicians use advanced diagnostic tools including CT scans, X-rays and laboratory tests for quick diagnosis.',
       icon: <Activity className='h-8 w-8' style={{ color: 'hsl(203, 80%, 52%)' }} />,
     },
     {
       title: 'Immediate Treatment',
       description:
-        'Treatment begins immediately with pain management, stabilization, and necessary medical interventions to ensure patient safety.',
+        'Treatment begins immediately with pain management, stabilization and necessary medical interventions to ensure patient safety.',
       icon: <Shield className='h-8 w-8 text-cyan-300' />,
     },
     {
@@ -121,7 +121,7 @@ const EmergencyPage = () => {
               <p className='text-lg text-gray-700 leading-relaxed mb-6 max-w-2xl mx-auto'>
                 Our dedicated emergency medical team is available 24/7 to provide immediate, expert
                 care during critical situations. We understand that medical emergencies are
-                frightening, and we're here to help with professional, compassionate treatment.
+                frightening and we're here to help with professional, compassionate treatment.
               </p>
 
               {/* Emergency Call Button */}
@@ -252,7 +252,7 @@ const EmergencyPage = () => {
             <h2 className='text-4xl font-bold text-gray-900 mb-4'>Our Emergency Services</h2>
             <p className='text-lg text-gray-600 leading-relaxed'>
               We provide comprehensive emergency medical services with advanced equipment,
-              experienced staff, and a commitment to saving lives through immediate, professional
+              experienced staff and a commitment to saving lives through immediate, professional
               care.
             </p>
           </div>

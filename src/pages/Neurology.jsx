@@ -9,7 +9,7 @@ const Neurology = () => {
     <Department
       departmentName="Neurology at Bloom Health"
       overviewText=""
-      overviewDescription="Our neurology team provides compassionate, expert care for people experiencing a wide range of neurological concerns, including epilepsy, headaches, migraines, movement disorders, nerve pain, and memory difficulties. We understand that neurological symptoms can feel overwhelming or uncertain, and we are here to guide you with clear explanations, thoughtful support, and highly personalised treatment plans."
+      overviewDescription="Our neurology team provides compassionate, expert care for people experiencing a wide range of neurological concerns, including epilepsy, headaches, migraines, movement disorders, nerve pain and memory difficulties. We understand that neurological symptoms can feel overwhelming or uncertain and we are here to guide you with clear explanations, thoughtful support and highly personalised treatment plans."
       services={[
         'Neurological Consultation',
         'EEG Testing',
@@ -17,10 +17,10 @@ const Neurology = () => {
         'Botulinum Toxin Therapy'
       ]}
       diseases={[
-        'Specialist neurology consultations tailored to your needs',
-        'Diagnostic testing, including EEG (in-clinic or at home if required), MRI, CT scans, and nerve conduction studies',
-        'Personalised treatment plans, including medication management, symptom control strategies, and referrals to the pain clinic when appropriate',
-        'Access to in-house investigations, outpatient monitoring, and coordination with neurosurgery, neuropsychology, or allied health services as needed'
+        'Specialist neurology consultations tailored to your needs.',
+        'Diagnostic testing, including EEG (in-clinic or at home if required), MRI, CT scans and nerve conduction studies.',
+        'Personalised treatment plans, including medication management, symptom control strategies and referrals to the pain clinic when appropriate.',
+        'Access to in-house investigations, outpatient monitoring and coordination with neurosurgery, neuropsychology  or allied health services as needed.'
       ]}
       moreDetails={
         <span>For more detailed information about our neurology and epilepsy services. Please contact us.</span>
@@ -40,7 +40,7 @@ const Neurology = () => {
       faqs={[
         {
           question: 'What neurological conditions do you treat?',
-          answer: 'We treat a wide range of neurological conditions including stroke, epilepsy, multiple sclerosis, Parkinson\'s disease, migraine, neuropathy, and other disorders of the nervous system.'
+          answer: 'We treat a wide range of neurological conditions including stroke, epilepsy, multiple sclerosis, Parkinson\'s disease, migraine, neuropathy and other disorders of the nervous system.'
         },
         // Add other FAQs specific to neurology
       ]}

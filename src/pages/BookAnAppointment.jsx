@@ -22,7 +22,7 @@ const BookAnAppointment = () => {
     {
       icon: <AccessTime className="info-icon" />,
       title: "Opening Hours",
-      desc: "Saturday to Thursday\n8:00 AM to 8:00 PM\nEmergency open 24/7",
+      desc: "Open 24/7",
     },
     {
       icon: <Email className="info-icon" />,

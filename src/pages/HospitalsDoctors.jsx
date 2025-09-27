@@ -9,7 +9,7 @@ export default function HospitalsDoctors() {
     { value: 'cardiology', label: 'Cardiology' },
     { value: 'neurology', label: 'Neurology' },
     { value: 'orthopedics', label: 'Orthopedics' },
-    { value: 'pediatrics', label: 'Pediatrics' },
+    { value: 'pediatrics', label: 'Paediatrics' },
     { value: 'dermatology', label: 'Dermatology' },
   ];
 
@@ -17,7 +17,7 @@ export default function HospitalsDoctors() {
     { id: 1, name: "Dr. John Doe", specialty: "Cardiology", image: "https://randomuser.me/api/portraits/men/32.jpg" },
     { id: 2, name: "Dr. Jane Smith", specialty: "Neurology", image: "https://randomuser.me/api/portraits/women/44.jpg" },
     { id: 3, name: "Dr. Michael Brown", specialty: "Orthopedics", image: "https://randomuser.me/api/portraits/men/55.jpg" },
-    { id: 4, name: "Dr. Emily Davis", specialty: "Pediatrics", image: "https://randomuser.me/api/portraits/women/65.jpg" },
+    { id: 4, name: "Dr. Emily Davis", specialty: "Paediatrics", image: "https://randomuser.me/api/portraits/women/65.jpg" },
     { id: 5, name: "Dr. Robert Wilson", specialty: "Dermatology", image: "https://randomuser.me/api/portraits/men/75.jpg" },
     { id: 6, name: "Dr. Sarah Johnson", specialty: "Cardiology", image: "https://randomuser.me/api/portraits/women/25.jpg" },
     { id: 7, name: "Dr. David Miller", specialty: "Neurology", image: "https://randomuser.me/api/portraits/men/85.jpg" },

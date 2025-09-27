@@ -10,7 +10,7 @@ export const pdfSections = [
     {
       id: 2,
       title: 'Accept Privacy Policy',
-      description: 'By accepting the privacy policy, you agree to how we collect, store, and use your personal data — such as your name, email, or preferences — in accordance with data protection laws.',
+      description: 'By accepting the privacy policy, you agree to how we collect, store and use your personal data — such as your name, email  or preferences — in accordance with data protection laws.',
       pdfUrl: '/documents/1.pdf',
       icon: '🔒',
       color: 'bg-green-50 border-green-200',
@@ -18,7 +18,7 @@ export const pdfSections = [
     {
       id: 3,
       title: 'Accept Marketing Communications',
-      description: 'You agree to receive updates, news, or promotional messages from us via email, SMS, or other channels. You can opt out at any time.',
+      description: 'You agree to receive updates, news  or promotional messages from us via email, SMS  or other channels. You can opt out at any time.',
       pdfUrl: '/documents/1.pdf',
       icon: '📢',
       color: 'bg-purple-50 border-purple-200',

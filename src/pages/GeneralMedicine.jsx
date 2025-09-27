@@ -12,31 +12,31 @@ const GeneralMedicine = () => {
       overviewDescription={
         <span>
           Our General Practice (GP) services, is the first point of contact for patients seeking
-          medical advice, diagnosis, and treatment for a wide range of health concerns{' '}
+          medical advice, diagnosis and treatment for a wide range of health concerns{' '}
           <strong>Comprehensive, compassionate primary care for you and your family</strong>
           <br />
           <br />
-          At Bloom Health, our experienced GPs provide expert medical assessment, diagnosis, and
+          At Bloom Health, our experienced GPs provide expert medical assessment, diagnosis and
           treatment for a wide range of general health concerns. We offer same-day appointments,
-          routine check-ups, and chronic condition management for both adults and children, with the
+          routine check-ups and chronic condition management for both adults and children, with the
           added convenience of video and telephone consultations.
           <br />
           <br />
-          If needed, we provide referrals for in-house investigations, specialist consultations, and
+          If needed, we provide referrals for in-house investigations, specialist consultations and
           prescription services, all coordinated to ensure seamless, continuous care.
         </span>
       }
       services={[
-        'Rheumatology Consultation',
-        'EEG Testing',
-        'EMG/Nerve Conduction Studies',
-        'Botulinum Toxin Therapy',
+        'Rheumatology Consultation.',
+        'EEG Testing.',
+        'EMG/Nerve Conduction Studies.',
+        'Botulinum Toxin Therapy.',
       ]}
       diseases={[
-        'GP consultations for adults and children',
-        'Same-day, video, and telephone appointments',
-        'Preventive health checks and chronic condition management',
-        'Referrals for investigations, prescriptions, and specialist care',
+        'GP consultations for adults and children.',
+        'Same-day, video and telephone appointments.',
+        'Preventive health checks and chronic condition management.',
+        'Referrals for investigations, prescriptions and specialist care.',
       ]}
       moreDetails={
         <span>
@@ -74,7 +74,7 @@ const GeneralMedicine = () => {
         {
           question: 'What neurological conditions do you treat?',
           answer:
-            "We treat a wide range of neurological conditions including stroke, epilepsy, multiple sclerosis, Parkinson's disease, migraine, neuropathy, and other disorders of the nervous system.",
+            "We treat a wide range of neurological conditions including stroke, epilepsy, multiple sclerosis, Parkinson's disease, migraine, neuropathy and other disorders of the nervous system.",
         },
         // Add other FAQs specific to neurology
       ]}
