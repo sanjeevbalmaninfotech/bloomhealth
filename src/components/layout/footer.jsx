@@ -43,7 +43,7 @@ const footerColumns = [
     ],
   },
   {
-    title: 'LOCATION & HOURS',
+    title: 'LOCATION & CONTACT',
     customContent: (
       <div className='space-y-4'>
         <div className='flex items-start space-x-3'>

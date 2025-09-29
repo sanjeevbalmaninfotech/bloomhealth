@@ -88,7 +88,7 @@ const AboutUs = () => {
     Our commitment to excellence drives everything we do.
   </p>
   <div className="inline-block bg-blue-600 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-    Our Priority is YOUR Health
+    Your Health Is Our Priority
   </div>
 </div>
 
