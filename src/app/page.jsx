@@ -29,7 +29,7 @@ const WhyChooseUsSection = () => {
 
   // Flattened list: one point = one slide
   const slides = [
-        'Appointments at your convenience',
+        'Appointments at your convenience.',
     'Rapid diagnostics.',
     'Fast access to consultants.',
     'Walk in appointments for GP and Urgent care.',
