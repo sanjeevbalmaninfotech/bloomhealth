@@ -22,28 +22,121 @@ import {
   Eye,
 } from 'lucide-react';
 import { services } from '@/lib/services';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+
+const WhyChooseUsSection = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  // Flattened list: one point = one slide
+  const slides = [
+        'Appointments at your convenience',
+    'Rapid diagnostics.',
+    'Fast access to consultants.',
+    'Walk in appointments for GP and Urgent care.',
+    'Central Milton Keynes location.',
+  
+  ];
+
+  // Auto-scroll effect
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 4500);
+    return () => clearInterval(timer);
+  }, [slides.length]);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+
+  return (
+    <section
+      id="about-us"
+      className="pt-16 py-12 bg-gradient-to-b from-gray-50 to-white overflow-hidden"
+    >
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-5">
+          <h2 className="text-3xl sm:text-4xl font-headline font-extrabold text-foreground mb-2">
+            Why Choose Us
+          </h2>
+          <span className="inline-block bg-primary/10 text-primary px-4 py-1 rounded-full uppercase text-sm sm:text-base tracking-wider font-semibold mb-3">
+            Your Health Is Our Priority
+          </span>
+        </div>
+
+        <div className="relative max-w-3xl mx-auto">
+          <div className="px-4 sm:px-6 py-8 sm:py-12 bg-white rounded-2xl shadow-lg border border-gray-100 text-center">
+            <p className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-800">
+              {slides[currentSlide]}
+            </p>
+          </div>
+
+          {/* Controls */}
+          <div className="flex items-center justify-center gap-6 mt-8">
+            <button
+              onClick={prevSlide}
+              className="bg-primary text-white rounded-full p-3 hover:bg-primary/90 transition shadow-lg"
+              aria-label="Previous slide"
+            >
+              <ArrowRight className="h-5 w-5 rotate-180" />
+            </button>
+
+            {/* Indicators */}
+            <div className="flex gap-2">
+              {slides.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentSlide(index)}
+                  className={`h-3 rounded-full transition ${
+                    currentSlide === index ? 'bg-primary w-8' : 'bg-gray-300 w-3'
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
+
+            <button
+              onClick={nextSlide}
+              className="bg-primary text-white rounded-full p-3 hover:bg-primary/90 transition shadow-lg"
+              aria-label="Next slide"
+            >
+              <ArrowRight className="h-5 w-5" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+
+
 const heroData = {
   headingLine1: '  Care You Can Count On',
   headingLine2: 'Open 24/7',
-  subheading: `A new standard in private healthcare, located in central Milton Keynes. At Bloom Health Hospital, we provide fast, round-the-clock expert medical treatments with a personal touch. From urgent walk-in care to specialist clinics, we are here to put your health first.`,
+  subheading: `A new standard in private healthcare, located in central Milton Keynes. At Bloom Health Hospital, we provide fast, round-the-clock expert medical care with a personal touch. From urgent walk-in care to specialist clinics, we are here to put your health first.`,
 };
+
 const featuresData = [
   {
     title: 'Leading Consultants, Advanced Care',
     desc: 'Our team includes leading consultants across Cardiology, Gastroenterology, Paediatrics, Ear Nose and Throat and more, offering specialist care backed by the top-tier technology and proven techniques.',
     icon: UserCheck,
   },
-{
-  title: '24/7 Urgent Care - No Appointment Needed',
-  desc: (
-    <>
-      Our Urgent Care Centre offers fast, walk-in treatment for a wide range of unexpected health concerns – 
-      <strong> No appointment needed.</strong>
-    </>
-  ),
-  icon: Clock,
-},
+  {
+    title: '24/7 Urgent Care - No Appointment Needed',
+    desc: (
+      <>
+        Our Urgent Care Centre offers fast, walk-in treatment for a wide range of unexpected health
+        concerns –<strong> No appointment needed.</strong>
+      </>
+    ),
+    icon: Clock,
+  },
   {
     title: 'Comprehensive Diagnostics under one roof',
     desc: 'State-of-the-art CT, X-ray, and ultrasound imaging with fast, accurate turnaround of results. On-site point-of-care laboratory services are available for blood tests.',
@@ -65,6 +158,7 @@ const featuresData = [
     icon: Shield,
   },
 ];
+
 const whyChooseUsItems = [
   'Minimal Wait Times - Consult a doctor without unnecessary delays.',
   'Timely Appointments - Get the medical attention you need, when you need it.',
@@ -73,6 +167,7 @@ const whyChooseUsItems = [
   'Personalised Care - We focus on your needs, offering tailored health solutions.',
   'Discreet & Confidential - High standards of privacy and patient confidentiality.',
 ];
+
 const formFields = [
   { label: 'Name', type: 'text', placeholder: 'Your Name', name: 'name' },
   { label: 'Email', type: 'email', placeholder: 'your@email.com', name: 'email' },
@@ -126,6 +221,7 @@ export default function HomePage() {
           </div>
         </motion.div>
       </motion.section>
+
       <div>
         <div className='hide-above-1280 mt-5'>
           <img
@@ -155,65 +251,9 @@ export default function HomePage() {
           </Button>
         </div>
       </div>
-      <section id='about-us' className='pt-32 py-16 bg-gradient-to-b from-gray-50 to-white'>
-        <div className='container mx-auto px-4'>
-          <div className='text-center mb-10'>
-            <h2 className='text-3xl sm:text-4xl font-headline font-extrabold text-foreground mb-2'>
-              Why Choose Us
-            </h2>
-            <span className='inline-block bg-primary/10 text-primary px-4 py-1 rounded-full uppercase text-sm sm:text-base tracking-wider font-semibold mb-3'>
-              Your Health Is Our Priority
-            </span>
 
-            <p className='max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground'>
-              At Bloom Health, we are dedicated to delivering fast, expert medical care when you
-              need it most. We offer multispecialty services covering diagnostics, chronic disease
-              management, mental health, paediatrics and allied health. Our highly trained
-              clinicians deliver patient-centred care across diverse specialties. With
-              state-of-the-art imaging, diagnostics and private consultation suites designed for
-              comfort and efficiency. Our innovative approach uses technology and evidence-based
-              medicine to deliver faster, safer and more personalised care. Serving Milton Keynes
-              and surrounding areas with accessible, compassionate healthcare for all ages.
-            </p>
-          </div>
-          <div className='grid gap-8 sm:grid-cols-3 lg:grid-cols-3'>
-            {featuresData.map(({ title, desc, icon: Icon }) => (
-              <div
-                className='flex flex-col items-start p-6 bg-white rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition'
-                key={title}
-              >
-                <div className='flex items-center justify-center h-12 w-12 rounded-full bg-primary/10 mb-4'>
-                  <Icon className='h-7 w-7 text-primary' />
-                </div>
-                <h3 className='text-lg font-semibold text-gray-900 mb-2'>{title}</h3>
-                <p className='text-sm text-gray-600'>{desc}</p>
-              </div>
-            ))}
-          </div>
-          <div className='mt-12 flex flex-col items-center'>
-            <>
-              <div className='bg-primary/10 rounded-2xl px-6 py-6 max-w-xl w-full flex flex-col sm:flex-row items-center justify-between gap-4 shadow'>
-                <span className='text-lg font-semibold text-primary text-center sm:text-left'>
-                  Bloom Health Hospital can help you start your journey to better health.{' '}
-                  <a
-                    href='mailto:info@bloom-health.co.uk'
-                    className='underline underline-offset-2 decoration-primary font-bold hover:text-primary/80 transition'
-                  >
-                    Enquire Here
-                  </a>{' '}
-                  Or Call{' '}
-                  <a
-                    href='tel:07949 301632'
-                    className='underline underline-offset-2 decoration-primary font-bold hover:text-primary/80 transition'
-                  >
-                    07949 301632
-                  </a>
-                </span>
-              </div>
-            </>
-          </div>
-        </div>
-      </section>
+      <WhyChooseUsSection />
+
       <section id='services' className='pt-32 py-8 bg-background'>
         <div className='container mx-auto px-4'>
           <div className='text-center mb-10'>
@@ -250,6 +290,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
       <section className='pt-32 py-20 bg-gray-50'>
         <div className='container mx-auto px-4 grid gap-12 md:grid-cols-2 items-center'>
           <div>
@@ -455,7 +496,8 @@ export default function HomePage() {
                   Our Mission
                 </h3>
                 <p className='text-gray-600'>
-                  To provide accessible, innovative healthcare solutions that prioritise patient well-being and deliver exceptional medical outcomes through personalised care.
+                  To provide accessible, innovative healthcare solutions that prioritise patient
+                  well-being and deliver exceptional medical outcomes through personalised care.
                 </p>
               </div>
 
@@ -494,15 +536,14 @@ export default function HomePage() {
                 />
               </div>
 
-              <div className="bg-white rounded-xl p-6 border border-blue-100">
+              <div className='bg-white rounded-xl p-6 border border-blue-100'>
                 <h3 className='text-lg font-semibold text-gray-900 mb-3'>What Sets Us Apart</h3>
-               <ul className="space-y-2 list-disc list-inside text-gray-600">
-  <li>State-of-the-art medical technology</li>
-  <li>Experienced, certified healthcare professionals</li>
-  <li>Same-day and walk-in appointments available</li>
-  <li>Comprehensive multispecialty services</li>
-</ul>
-
+                <ul className='space-y-2 list-disc list-inside text-gray-600'>
+                  <li>State-of-the-art medical technology</li>
+                  <li>Experienced, certified healthcare professionals</li>
+                  <li>Same-day and walk-in appointments available</li>
+                  <li>Comprehensive multispecialty services</li>
+                </ul>
               </div>
             </div>
           </div>
