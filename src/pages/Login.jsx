@@ -17,7 +17,7 @@ const Login = () => {
 
   const [countryCode, setCountryCode] = useState('+91');
   const [phoneNumber, setPhoneNumber] = useState('');
-  const [originalPhone, setOriginalPhone] = useState('988888888');
+  const [originalPhone, setOriginalPhone] = useState('');
   const [userId, setUserId] = useState('');
   const [userLookupError, setUserLookupError] = useState('');
   const [otp, setOtp] = useState('');
@@ -138,14 +138,20 @@ const Login = () => {
     }
     try {
       setLoading(true);
-      // send the phone number that the patient has entered/confirmed
-     // await requestOtp({ countryCode, phoneNumber }).unwrap();
+      
+      // Call sendOtp API with patientId, mobileNumber, and countryCode
+      await requestOtp({ 
+        patientId: userId,
+        mobileNumber: phoneNumber,
+        countryCode: countryCode
+      }).unwrap();
+      
+      showToast.success('OTP sent successfully');
       // on success, move to OTP entry
       setStep(2);
       setResendCooldown(30);
     } catch (err) {
       console.error('Request OTP error:', err);
-      // error toast will be shown by mutation, but ensure message if needed
       showToast.error(err?.data?.message || 'Failed to send OTP');
     } finally {
       setLoading(false);
@@ -164,19 +170,19 @@ const Login = () => {
 
     setLoading(true);
     try {
-      // Call backend to lookup patient and get masked phone or full phone
-      // const res = await lookupUser({ userId }).unwrap();
+      // Call /loginId API to lookup patient
+      const res = await lookupUser({ patientId: userId }).unwrap();
 
-      // // Expecting response like { phoneNumber: '9876543210', countryCode: '+91', masked: '*** *** 3210' }
-      // const returnedPhone = res?.phoneNumber || '';
-      // const returnedCountry = res?.countryCode || '+91';
+      // Expecting response with phone number details
+      const returnedPhone = res?.responseObject?.masked || res?.mobileNumber || '';
+      const returnedCountry = res?.responseObject?.patientCountryCode || res?.phoneCountryCode || '+91';
 
-      if (true) {
-        // setCountryCode(returnedCountry);
-        // // store original phone received from backend separately
-        // setOriginalPhone(returnedPhone);
-        // // populate the editable input with the returned full phone
-        // setPhoneNumber(returnedPhone);
+      if (returnedPhone) {
+        setCountryCode(returnedCountry);
+        // store original phone received from backend
+        setOriginalPhone(returnedPhone);
+        // populate the editable input with the returned full phone
+        setPhoneNumber(returnedPhone);
         setStep(1);
         setResendCooldown(0);
       } else {
@@ -206,12 +212,19 @@ const Login = () => {
 
     setLoading(true);
     try {
-     // const res = await verifyOtp({ countryCode, phoneNumber, otp }).unwrap();
+      // Call verifyOtp API with patientId, otp, phoneCountryCode, and phoneNumber
+      const res = await verifyOtp({ 
+        patientId: userId,
+        otp: otp,
+        phoneCountryCode: countryCode,
+        phoneNumber: phoneNumber
+      }).unwrap();
+      
       showToast.success('Login successful!');
       navigate(from, { replace: true });
     } catch (err) {
-      // Error handling is done in the mutation
       console.error('Verify OTP error:', err);
+      showToast.error(err?.data?.message || 'Invalid OTP. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -223,17 +236,22 @@ const Login = () => {
 
     setLoading(true);
     try {
-      await requestOtp({ countryCode, phoneNumber }).unwrap();
+      // Call sendOtp API again to resend
+      await requestOtp({ 
+        patientId: userId,
+        mobileNumber: phoneNumber,
+        countryCode: countryCode
+      }).unwrap();
+      
       setResendCooldown(30);
       showToast.success('OTP resent successfully');
     } catch (err) {
       console.error('Resend OTP error:', err);
+      showToast.error(err?.data?.message || 'Failed to resend OTP');
     } finally {
       setLoading(false);
     }
   };
-
-
 
   // Go back to enter patient id
   const handleChangeUserId = () => {

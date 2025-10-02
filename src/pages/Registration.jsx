@@ -1,88 +1,44 @@
 import { useEffect, useState } from 'react';
-import { EyeOff, Eye, CheckCircle, XCircle, Loader } from 'lucide-react';
+import { EyeOff, Eye, CheckCircle, XCircle, Loader, Plus, Trash2 } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { post, handle } from '../services/apiClient';
-import { validateField, validateForm } from '../utils/validation';
 import { toast } from 'react-toastify';
 import { Logo } from '../components/logo';
 
 const Registration = () => {
   const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-    firstName: '',
-    lastName: '',
-    gender: '',
-    phoneNumber: '',
-    countryCode: '+91',
-    address: {
-      street: '',
-      city: '',
-      state: '',
-      zip: '',
-      country: '',
-    },
+    Salutation: 'Mr',
+    FirstName: '',
+    MiddleName: '',
+    LastName: '',
+    DateOfBirth: '',
+    Gender: 'Male',
+    PhoneNumber: '',
+    PhoneCode: '+91',
+    Email: '',
+    CountryId: '78',
+    DistrictName: '',
+    EthnicGroupMain: 'Other Ethnic Group',
+    KinEmergencyContacts: [
+      {
+        KinFirstName: '',
+        KinLastName: '',
+        RelationShip: '',
+      }
+    ],
   });
 
   const [errors, setErrors] = useState({});
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [passwordStrength, setPasswordStrength] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [touched, setTouched] = useState({});
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    validatePassword(formData.password);
-  }, [formData.password]);
-
-  // Enhanced validation functions
-  const validatePassword = (value) => {
-    let strength = 0;
-    if (value.length >= 8) strength += 1;
-    if (/[A-Z]/.test(value)) strength += 1;
-    if (/[a-z]/.test(value)) strength += 1;
-    if (/\d/.test(value)) strength += 1;
-    if (/[!@#$%^&*(),.?":{}|<>]/.test(value)) strength += 1;
-    setPasswordStrength((strength / 5) * 100);
-  };
-
+  // Validation functions
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!email) return 'Email is required';
     if (!emailRegex.test(email)) return 'Please enter a valid email address';
-    return '';
-  };
-
-  const validateUsername = (username) => {
-    if (!username) return 'Username is required';
-    if (username.length < 3) return 'Username must be at least 3 characters';
-    if (!/^[a-zA-Z0-9_]+$/.test(username)) return 'Username can only contain letters, numbers and underscores';
-    return '';
-  };
-
-  const validatePasswordField = (password) => {
-    if (!password) return 'Password is required';
-    if (password.length < 8) return 'Password must be at least 8 characters';
-    if (!/[A-Z]/.test(password)) return 'Password must contain at least one uppercase letter';
-    if (!/[a-z]/.test(password)) return 'Password must contain at least one lowercase letter';
-    if (!/\d/.test(password)) return 'Password must contain at least one number';
-    if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) return 'Password must contain at least one special character';
-    return '';
-  };
-
-  const validateConfirmPassword = (confirmPassword, password) => {
-    if (!confirmPassword) return 'Please confirm your password';
-    if (confirmPassword !== password) return 'Passwords do not match';
-    return '';
-  };
-
-  const validatePhoneNumber = (phoneNumber) => {
-    if (!phoneNumber) return 'Phone number is required';
-    if (!/^\d{10}$/.test(phoneNumber)) return 'Please enter a valid 10-digit phone number';
     return '';
   };
 
@@ -93,57 +49,97 @@ const Registration = () => {
     return '';
   };
 
+  const validatePhoneNumber = (phoneNumber) => {
+    if (!phoneNumber) return 'Phone number is required';
+    if (!/^\d{10}$/.test(phoneNumber)) return 'Please enter a valid 10-digit phone number';
+    return '';
+  };
+
+  const validateDateOfBirth = (dob) => {
+    if (!dob) return 'Date of birth is required';
+    const birthDate = new Date(dob);
+    const today = new Date();
+    const age = today.getFullYear() - birthDate.getFullYear();
+    if (age < 0 || age > 150) return 'Please enter a valid date of birth';
+    return '';
+  };
+
   const validateRequired = (value, fieldName) => {
     if (!value || value.toString().trim() === '') return `${fieldName} is required`;
     return '';
   };
 
+  // Calculate age from date of birth
+  const calculateAge = (dob) => {
+    if (!dob) return { age: '', ageUnit: 'Y' };
+    const birthDate = new Date(dob);
+    const today = new Date();
+    let years = today.getFullYear() - birthDate.getFullYear();
+    let months = today.getMonth() - birthDate.getMonth();
+    
+    if (months < 0 || (months === 0 && today.getDate() < birthDate.getDate())) {
+      years--;
+      months += 12;
+    }
+
+    if (years > 0) {
+      return { age: `${years}Y`, ageUnit: 'Y' };
+    } else if (months > 0) {
+      return { age: `${months}M`, ageUnit: 'M' };
+    } else {
+      const days = Math.floor((today - birthDate) / (1000 * 60 * 60 * 24));
+      return { age: `${days}D`, ageUnit: 'D' };
+    }
+  };
+
   // Real-time validation
-  const validateFieldRealTime = (name, value) => {
+  const validateFieldRealTime = (name, value, index = null) => {
     let error = '';
     
-    switch (name) {
-      case 'firstName':
-        error = validateName(value, 'First name');
-        break;
-      case 'lastName':
-        error = validateName(value, 'Last name');
-        break;
-      case 'username':
-        error = validateUsername(value);
-        break;
-      case 'email':
-        error = validateEmail(value);
-        break;
-      case 'password':
-        error = validatePasswordField(value);
-        break;
-      case 'confirmPassword':
-        error = validateConfirmPassword(value, formData.password);
-        break;
-      case 'gender':
-        error = validateRequired(value, 'Gender');
-        break;
-      case 'phoneNumber':
-        error = validatePhoneNumber(value);
-        break;
-      case 'address.street':
-        error = validateRequired(value, 'Street address');
-        break;
-      case 'address.city':
-        error = validateRequired(value, 'City');
-        break;
-      case 'address.state':
-        error = validateRequired(value, 'State');
-        break;
-      case 'address.zip':
-        error = validateRequired(value, 'ZIP code');
-        break;
-      case 'address.country':
-        error = validateRequired(value, 'Country');
-        break;
-      default:
-        break;
+    if (name.startsWith('KinEmergencyContacts')) {
+      const field = name.split('.')[1];
+      switch (field) {
+        case 'KinFirstName':
+          error = validateName(value, 'First name');
+          break;
+        case 'KinLastName':
+          error = validateName(value, 'Last name');
+          break;
+        case 'RelationShip':
+          error = validateRequired(value, 'Relationship');
+          break;
+        default:
+          break;
+      }
+    } else {
+      switch (name) {
+        case 'FirstName':
+          error = validateName(value, 'First name');
+          break;
+        case 'LastName':
+          error = validateName(value, 'Last name');
+          break;
+        case 'Email':
+          error = validateEmail(value);
+          break;
+        case 'PhoneNumber':
+          error = validatePhoneNumber(value);
+          break;
+        case 'DateOfBirth':
+          error = validateDateOfBirth(value);
+          break;
+        case 'Gender':
+          error = validateRequired(value, 'Gender');
+          break;
+        case 'Salutation':
+          error = validateRequired(value, 'Salutation');
+          break;
+        case 'DistrictName':
+          error = validateRequired(value, 'District');
+          break;
+        default:
+          break;
+      }
     }
     
     return error;
@@ -151,16 +147,7 @@ const Registration = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
-    if (name.includes('address.')) {
-      const key = name.split('.')[1];
-      setFormData((prev) => ({
-        ...prev,
-        address: { ...prev.address, [key]: value },
-      }));
-    } else {
-      setFormData((prev) => ({ ...prev, [name]: value }));
-    }
+    setFormData((prev) => ({ ...prev, [name]: value }));
 
     // Real-time validation
     if (touched[name]) {
@@ -170,14 +157,57 @@ const Registration = () => {
         [name]: error,
       }));
     }
+  };
 
-    // Special case for confirm password when password changes
-    if (name === 'password' && touched.confirmPassword && formData.confirmPassword) {
-      const confirmError = validateConfirmPassword(formData.confirmPassword, value);
+  const handleKinChange = (index, field, value) => {
+    const newContacts = [...formData.KinEmergencyContacts];
+    newContacts[index][field] = value;
+    setFormData((prev) => ({
+      ...prev,
+      KinEmergencyContacts: newContacts,
+    }));
+
+    // Real-time validation for kin contacts
+    const fieldKey = `KinEmergencyContacts.${index}.${field}`;
+    if (touched[fieldKey]) {
+      const error = validateFieldRealTime(`KinEmergencyContacts.${field}`, value, index);
       setErrors((prev) => ({
         ...prev,
-        confirmPassword: confirmError,
+        [fieldKey]: error,
       }));
+    }
+  };
+
+  const addKinContact = () => {
+    setFormData((prev) => ({
+      ...prev,
+      KinEmergencyContacts: [
+        ...prev.KinEmergencyContacts,
+        {
+          KinFirstName: '',
+          KinLastName: '',
+          RelationShip: '',
+        }
+      ],
+    }));
+  };
+
+  const removeKinContact = (index) => {
+    if (formData.KinEmergencyContacts.length > 1) {
+      const newContacts = formData.KinEmergencyContacts.filter((_, i) => i !== index);
+      setFormData((prev) => ({
+        ...prev,
+        KinEmergencyContacts: newContacts,
+      }));
+      
+      // Clear errors for removed contact
+      const newErrors = { ...errors };
+      Object.keys(newErrors).forEach(key => {
+        if (key.startsWith(`KinEmergencyContacts.${index}`)) {
+          delete newErrors[key];
+        }
+      });
+      setErrors(newErrors);
     }
   };
 
@@ -192,24 +222,42 @@ const Registration = () => {
     }));
   };
 
+  const handleKinBlur = (index, field) => {
+    const fieldKey = `KinEmergencyContacts.${index}.${field}`;
+    setTouched((prev) => ({ ...prev, [fieldKey]: true }));
+    
+    const value = formData.KinEmergencyContacts[index][field];
+    const error = validateFieldRealTime(`KinEmergencyContacts.${field}`, value, index);
+    setErrors((prev) => ({
+      ...prev,
+      [fieldKey]: error,
+    }));
+  };
+
   // Comprehensive form validation
   const validateAllFields = () => {
     const newErrors = {};
 
-    // Validate all fields
-    newErrors.firstName = validateName(formData.firstName, 'First name');
-    newErrors.lastName = validateName(formData.lastName, 'Last name');
-    newErrors.username = validateUsername(formData.username);
-    newErrors.email = validateEmail(formData.email);
-    newErrors.password = validatePasswordField(formData.password);
-    newErrors.confirmPassword = validateConfirmPassword(formData.confirmPassword, formData.password);
-    newErrors.gender = validateRequired(formData.gender, 'Gender');
-    newErrors.phoneNumber = validatePhoneNumber(formData.phoneNumber);
-    newErrors['address.street'] = validateRequired(formData.address.street, 'Street address');
-    newErrors['address.city'] = validateRequired(formData.address.city, 'City');
-    newErrors['address.state'] = validateRequired(formData.address.state, 'State');
-    newErrors['address.zip'] = validateRequired(formData.address.zip, 'ZIP code');
-    newErrors['address.country'] = validateRequired(formData.address.country, 'Country');
+    // Validate main fields
+    newErrors.FirstName = validateName(formData.FirstName, 'First name');
+    newErrors.LastName = validateName(formData.LastName, 'Last name');
+    newErrors.Email = validateEmail(formData.Email);
+    newErrors.PhoneNumber = validatePhoneNumber(formData.PhoneNumber);
+    newErrors.DateOfBirth = validateDateOfBirth(formData.DateOfBirth);
+    newErrors.Gender = validateRequired(formData.Gender, 'Gender');
+    newErrors.Salutation = validateRequired(formData.Salutation, 'Salutation');
+    newErrors.DistrictName = validateRequired(formData.DistrictName, 'District');
+
+    // Validate kin emergency contacts
+    formData.KinEmergencyContacts.forEach((contact, index) => {
+      const kinFirstNameError = validateName(contact.KinFirstName, 'First name');
+      const kinLastNameError = validateName(contact.KinLastName, 'Last name');
+      const relationshipError = validateRequired(contact.RelationShip, 'Relationship');
+
+      if (kinFirstNameError) newErrors[`KinEmergencyContacts.${index}.KinFirstName`] = kinFirstNameError;
+      if (kinLastNameError) newErrors[`KinEmergencyContacts.${index}.KinLastName`] = kinLastNameError;
+      if (relationshipError) newErrors[`KinEmergencyContacts.${index}.RelationShip`] = relationshipError;
+    });
 
     // Filter out empty errors
     const filteredErrors = Object.fromEntries(
@@ -224,15 +272,22 @@ const Registration = () => {
 
     // Mark all fields as touched
     const allFields = [
-      'firstName', 'lastName', 'username', 'email', 'password', 'confirmPassword',
-      'gender', 'phoneNumber', 'address.street', 'address.city', 'address.state',
-      'address.zip', 'address.country'
+      'FirstName', 'LastName', 'Email', 'PhoneNumber', 'DateOfBirth',
+      'Gender', 'Salutation', 'DistrictName'
     ];
     
     const newTouched = {};
     allFields.forEach(field => {
       newTouched[field] = true;
     });
+
+    // Mark kin contacts as touched
+    formData.KinEmergencyContacts.forEach((_, index) => {
+      newTouched[`KinEmergencyContacts.${index}.KinFirstName`] = true;
+      newTouched[`KinEmergencyContacts.${index}.KinLastName`] = true;
+      newTouched[`KinEmergencyContacts.${index}.RelationShip`] = true;
+    });
+
     setTouched(newTouched);
 
     // Validate all fields
@@ -252,13 +307,59 @@ const Registration = () => {
     setIsLoading(true);
 
     try {
+      // Calculate age
+      const { age, ageUnit } = calculateAge(formData.DateOfBirth);
+      const patientAge = parseInt(age);
+
+      // Format the date properly
+      const dob = new Date(formData.DateOfBirth);
+      const formattedDOB = dob.toISOString().split('T')[0];
+      
+      // Create current timestamp
+      const now = new Date();
+      const createdOn = now.toISOString().slice(0, 19).replace('T', ' ');
+
+      // Build short name
+      const shortName = `${formData.FirstName} ${formData.LastName}`.trim();
+
+      // Prepare kin contacts with relationship options
+      const kinContacts = formData.KinEmergencyContacts.map(contact => ({
+        PatientId: 0,
+        KinFirstName: contact.KinFirstName,
+        KinLastName: contact.KinLastName,
+        RelationShip: contact.RelationShip,
+        relationshipOptions: ["Parent", "Sibling", "Spouse", "Friend"]
+      }));
+
       const payload = {
-        ...formData,
-        address: { ...formData.address },
-        phone: `${formData.countryCode}${formData.phoneNumber}`,
+        PatientId: 0,
+        showParentFields: false,
+        patientAge: patientAge,
+        PatientName: "",
+        PatientNo: 0,
+        Salutation: formData.Salutation,
+        FirstName: formData.FirstName,
+        MiddleName: formData.MiddleName || null,
+        LastName: formData.LastName,
+        DateOfBirth: formattedDOB,
+        Gender: formData.Gender,
+        CreatedOn: createdOn,
+        CreatedBy: 1,
+        ShortName: shortName,
+        PhoneNumber: formData.PhoneNumber,
+        PhoneCode: formData.PhoneCode,
+        Email: formData.Email,
+        CountryId: formData.CountryId,
+        Age: age,
+        AgeUnit: ageUnit,
+        IsActive: true,
+        DistrictName: formData.DistrictName,
+        IsPhoneVerified: true,
+        EthnicGroupMain: formData.EthnicGroupMain,
+        KinEmergencyContacts: kinContacts,
       };
 
-      const registerUrl = 'http://localhost:8088/Patient/post_patients_register';
+      const registerUrl = 'http://localhost:8088/patients/register';
       const resp = await handle(post(registerUrl, payload));
       
       if (!resp.error) {
@@ -275,338 +376,316 @@ const Registration = () => {
     }
   };
 
-  const getPasswordStrengthColor = () => {
-    if (passwordStrength < 20) return "bg-red-500";
-    if (passwordStrength < 40) return "bg-orange-500";
-    if (passwordStrength < 60) return "bg-yellow-500";
-    if (passwordStrength < 80) return "bg-blue-500";
-    return "bg-green-500";
-  };
-
-  const getPasswordStrengthText = () => {
-    if (passwordStrength < 20) return "Very Weak";
-    if (passwordStrength < 40) return "Weak";
-    if (passwordStrength < 60) return "Medium";
-    if (passwordStrength < 80) return "Strong";
-    return "Very Strong";
-  };
-
-  const passwordRequirements = [
-    { key: "length", text: "At least 8 characters", met: formData.password.length >= 8 },
-    { key: "uppercase", text: "One uppercase letter", met: /[A-Z]/.test(formData.password) },
-    { key: "lowercase", text: "One lowercase letter", met: /[a-z]/.test(formData.password) },
-    { key: "number", text: "One number", met: /\d/.test(formData.password) },
-    { key: "special", text: "One special character", met: /[!@#$%^&*(),.?\":{}|<>]/.test(formData.password) },
-  ];
+  const relationshipOptions = ["Parent", "Sibling", "Spouse", "Friend"];
 
   return (
-    <div className='flex h-screen items-center justify-center bg-gradient-to-br from-blue-50 to-blue-100'>
-      <div className='w-full max-w-lg bg-white shadow-2xl rounded-2xl p-8 border border-gray-100 overflow-y-auto max-h-screen'>
+    <div className='flex min-h-screen items-center justify-center bg-gradient-to-br from-blue-50 to-blue-100 py-8 px-4'>
+      <div className='w-full max-w-2xl bg-white shadow-2xl rounded-2xl p-8 border border-gray-100 my-8'>
         <div className='flex justify-center mb-6'>
           <Logo className='h-12 w-auto' />
         </div>
 
-        <h2 className='text-2xl font-bold text-center text-gray-800 mb-2'>Create Account</h2>
+        <h2 className='text-2xl font-bold text-center text-gray-800 mb-2'>Patient Registration</h2>
         <p className='text-center text-gray-500 text-sm mb-6'>
           Please fill in your details to register
         </p>
 
         <form onSubmit={handleSubmit} className='space-y-4'>
-          {/* First & Last Name */}
+          {/* Salutation & Gender */}
           <div className='flex gap-4'>
-            <div className='flex-1 relative'>
-              <input
-                type='text'
-                name='firstName'
-                placeholder='First Name'
-                value={formData.firstName}
+            <div className='w-32'>
+              <label className='block text-sm font-medium text-gray-700 mb-1'>Salutation</label>
+              <select
+                name='Salutation'
+                value={formData.Salutation}
                 onChange={handleChange}
                 onBlur={handleBlur}
                 disabled={isLoading}
-                className={`w-full pl-3 pr-4 py-2.5 border rounded-lg focus:ring-2 focus:outline-none transition ${
-                  errors.firstName ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'
+                className={`w-full pl-3 pr-2 py-2.5 border rounded-lg focus:ring-2 focus:outline-none transition ${
+                  errors.Salutation ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'
                 } ${isLoading ? 'bg-gray-50 cursor-not-allowed' : ''}`}
                 required
-              />
-              {errors.firstName && <p className='text-red-500 text-xs mt-1'>{errors.firstName}</p>}
+              >
+                <option value='Mr'>Mr</option>
+                <option value='Mrs'>Mrs</option>
+                <option value='Ms'>Ms</option>
+                <option value='Dr'>Dr</option>
+              </select>
+              {errors.Salutation && <p className='text-red-500 text-xs mt-1'>{errors.Salutation}</p>}
             </div>
-            <div className='flex-1 relative'>
-              <input
-                type='text'
-                name='lastName'
-                placeholder='Last Name'
-                value={formData.lastName}
+            
+            <div className='flex-1'>
+              <label className='block text-sm font-medium text-gray-700 mb-1'>Gender</label>
+              <select
+                name='Gender'
+                value={formData.Gender}
                 onChange={handleChange}
                 onBlur={handleBlur}
                 disabled={isLoading}
                 className={`w-full pl-3 pr-4 py-2.5 border rounded-lg focus:ring-2 focus:outline-none transition ${
-                  errors.lastName ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'
+                  errors.Gender ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'
                 } ${isLoading ? 'bg-gray-50 cursor-not-allowed' : ''}`}
                 required
-              />
-              {errors.lastName && <p className='text-red-500 text-xs mt-1'>{errors.lastName}</p>}
+              >
+                <option value='Male'>Male</option>
+                <option value='Female'>Female</option>
+                <option value='Other'>Other</option>
+              </select>
+              {errors.Gender && <p className='text-red-500 text-xs mt-1'>{errors.Gender}</p>}
             </div>
           </div>
 
-          {/* Username */}
-          <div className='relative'>
+          {/* Name Fields */}
+          <div className='grid grid-cols-3 gap-4'>
+            <div>
+              <label className='block text-sm font-medium text-gray-700 mb-1'>First Name*</label>
+              <input
+                type='text'
+                name='FirstName'
+                placeholder='First Name'
+                value={formData.FirstName}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                disabled={isLoading}
+                className={`w-full pl-3 pr-4 py-2.5 border rounded-lg focus:ring-2 focus:outline-none transition ${
+                  errors.FirstName ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'
+                } ${isLoading ? 'bg-gray-50 cursor-not-allowed' : ''}`}
+                required
+              />
+              {errors.FirstName && <p className='text-red-500 text-xs mt-1'>{errors.FirstName}</p>}
+            </div>
+            
+            <div>
+              <label className='block text-sm font-medium text-gray-700 mb-1'>Middle Name</label>
+              <input
+                type='text'
+                name='MiddleName'
+                placeholder='Middle Name'
+                value={formData.MiddleName}
+                onChange={handleChange}
+                disabled={isLoading}
+                className={`w-full pl-3 pr-4 py-2.5 border rounded-lg focus:ring-2 focus:outline-none transition border-gray-300 focus:ring-blue-500 ${
+                  isLoading ? 'bg-gray-50 cursor-not-allowed' : ''
+                }`}
+              />
+            </div>
+            
+            <div>
+              <label className='block text-sm font-medium text-gray-700 mb-1'>Last Name*</label>
+              <input
+                type='text'
+                name='LastName'
+                placeholder='Last Name'
+                value={formData.LastName}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                disabled={isLoading}
+                className={`w-full pl-3 pr-4 py-2.5 border rounded-lg focus:ring-2 focus:outline-none transition ${
+                  errors.LastName ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'
+                } ${isLoading ? 'bg-gray-50 cursor-not-allowed' : ''}`}
+                required
+              />
+              {errors.LastName && <p className='text-red-500 text-xs mt-1'>{errors.LastName}</p>}
+            </div>
+          </div>
+
+          {/* Date of Birth */}
+          <div>
+            <label className='block text-sm font-medium text-gray-700 mb-1'>Date of Birth*</label>
             <input
-              type='text'
-              name='username'
-              placeholder='Username'
-              value={formData.username}
+              type='date'
+              name='DateOfBirth'
+              value={formData.DateOfBirth}
               onChange={handleChange}
               onBlur={handleBlur}
               disabled={isLoading}
+              max={new Date().toISOString().split('T')[0]}
               className={`w-full pl-3 pr-4 py-2.5 border rounded-lg focus:ring-2 focus:outline-none transition ${
-                errors.username ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'
+                errors.DateOfBirth ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'
               } ${isLoading ? 'bg-gray-50 cursor-not-allowed' : ''}`}
               required
             />
-            {errors.username && <p className='text-red-500 text-xs mt-1'>{errors.username}</p>}
+            {errors.DateOfBirth && <p className='text-red-500 text-xs mt-1'>{errors.DateOfBirth}</p>}
           </div>
 
           {/* Email */}
-          <div className='relative'>
+          <div>
+            <label className='block text-sm font-medium text-gray-700 mb-1'>Email*</label>
             <input
               type='email'
-              name='email'
+              name='Email'
               placeholder='Email'
-              value={formData.email}
+              value={formData.Email}
               onChange={handleChange}
               onBlur={handleBlur}
               disabled={isLoading}
               className={`w-full pl-3 pr-4 py-2.5 border rounded-lg focus:ring-2 focus:outline-none transition ${
-                errors.email ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'
+                errors.Email ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'
               } ${isLoading ? 'bg-gray-50 cursor-not-allowed' : ''}`}
               required
             />
-            {errors.email && <p className='text-red-500 text-xs mt-1'>{errors.email}</p>}
-          </div>
-
-          {/* Password */}
-          <div>
-            <div className='relative'>
-              <input
-                type={showPassword ? 'text' : 'password'}
-                name='password'
-                placeholder='Password'
-                value={formData.password}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                disabled={isLoading}
-                className={`w-full pl-3 pr-10 py-2.5 border rounded-lg focus:ring-2 focus:outline-none transition ${
-                  errors.password ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'
-                } ${isLoading ? 'bg-gray-50 cursor-not-allowed' : ''}`}
-                required
-              />
-              <button
-                type='button'
-                onClick={() => setShowPassword(!showPassword)}
-                disabled={isLoading}
-                className='absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 disabled:cursor-not-allowed'
-              >
-                {showPassword ? <EyeOff className='h-5 w-5' /> : <Eye className='h-5 w-5' />}
-              </button>
-            </div>
-            {errors.password && <p className='text-red-500 text-xs mt-1'>{errors.password}</p>}
-
-            {formData.password && (
-              <div className="mt-2">
-                <div className="w-full bg-gray-200 rounded-full h-2.5">
-                  <div
-                    className={`h-2.5 rounded-full transition-all duration-300 ${getPasswordStrengthColor()}`}
-                    style={{ width: `${passwordStrength}%` }}
-                  ></div>
-                </div>
-                <p className="text-xs mt-1 text-gray-600">
-                  Strength: <span className="font-medium">{getPasswordStrengthText()}</span>
-                </p>
-
-                <div className="mt-2 space-y-1">
-                  {passwordRequirements.map(req => (
-                    <div key={req.key} className="flex items-center">
-                      {req.met ? (
-                        <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                      ) : (
-                        <XCircle className="h-4 w-4 text-gray-400 mr-2" />
-                      )}
-                      <span className={`text-xs ${req.met ? 'text-green-600' : 'text-gray-500'}`}>
-                        {req.text}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* Confirm Password */}
-          <div className='relative'>
-            <input
-              type={showConfirmPassword ? 'text' : 'password'}
-              name='confirmPassword'
-              placeholder='Confirm Password'
-              value={formData.confirmPassword}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              disabled={isLoading}
-              className={`w-full pl-3 pr-10 py-2.5 border rounded-lg focus:ring-2 focus:outline-none transition ${
-                errors.confirmPassword ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'
-              } ${isLoading ? 'bg-gray-50 cursor-not-allowed' : ''}`}
-              required
-            />
-            <button
-              type='button'
-              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-              disabled={isLoading}
-              className='absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 disabled:cursor-not-allowed'
-            >
-              {showConfirmPassword ? <EyeOff className='h-5 w-5' /> : <Eye className='h-5 w-5' />}
-            </button>
-          </div>
-          {errors.confirmPassword && <p className='text-red-500 text-xs mt-1'>{errors.confirmPassword}</p>}
-
-          {/* Gender */}
-          <div className='relative'>
-            <select
-              name='gender'
-              value={formData.gender}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              disabled={isLoading}
-              className={`w-full pl-3 pr-4 py-2.5 border rounded-lg focus:ring-2 focus:outline-none transition ${
-                errors.gender ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'
-              } ${isLoading ? 'bg-gray-50 cursor-not-allowed' : ''}`}
-              required
-            >
-              <option value=''>Select Gender</option>
-              <option value='Male'>Male</option>
-              <option value='Female'>Female</option>
-              <option value='Other'>Other</option>
-            </select>
-            {errors.gender && <p className='text-red-500 text-xs mt-1'>{errors.gender}</p>}
+            {errors.Email && <p className='text-red-500 text-xs mt-1'>{errors.Email}</p>}
           </div>
 
           {/* Phone */}
-          <div className='flex items-center gap-2'>
-            <div className='w-28'>
-              <select
-                name='countryCode'
-                value={formData.countryCode}
-                onChange={handleChange}
-                disabled={isLoading}
-                className={`w-full pl-2 pr-2 py-2.5 border rounded-lg focus:ring-2 focus:outline-none transition ${
-                  isLoading ? 'bg-gray-50 cursor-not-allowed' : 'border-gray-300 focus:ring-blue-500'
-                }`}
-              >
-                <option value='+91'>+91 (IN)</option>
-                <option value='+1'>+1 (US)</option>
-                <option value='+44'>+44 (UK)</option>
-                <option value='+61'>+61 (AU)</option>
-                <option value='+971'>+971 (AE)</option>
-              </select>
+          <div>
+            <label className='block text-sm font-medium text-gray-700 mb-1'>Phone Number*</label>
+            <div className='flex items-center gap-2'>
+              <div className='w-32'>
+                <select
+                  name='PhoneCode'
+                  value={formData.PhoneCode}
+                  onChange={handleChange}
+                  disabled={isLoading}
+                  className={`w-full pl-2 pr-2 py-2.5 border rounded-lg focus:ring-2 focus:outline-none transition ${
+                    isLoading ? 'bg-gray-50 cursor-not-allowed' : 'border-gray-300 focus:ring-blue-500'
+                  }`}
+                >
+                  <option value='+91'>+91 (IN)</option>
+                  <option value='+1'>+1 (US)</option>
+                  <option value='+44'>+44 (UK)</option>
+                  <option value='+61'>+61 (AU)</option>
+                  <option value='+971'>+971 (AE)</option>
+                </select>
+              </div>
+              <div className='flex-1'>
+                <input
+                  type='tel'
+                  name='PhoneNumber'
+                  placeholder='Phone Number'
+                  value={formData.PhoneNumber}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  disabled={isLoading}
+                  className={`w-full pl-3 pr-4 py-2.5 border rounded-lg focus:ring-2 focus:outline-none transition ${
+                    errors.PhoneNumber ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'
+                  } ${isLoading ? 'bg-gray-50 cursor-not-allowed' : ''}`}
+                />
+              </div>
             </div>
-            <div className='flex-1 relative'>
-              <input
-                type='tel'
-                name='phoneNumber'
-                placeholder='Phone Number'
-                value={formData.phoneNumber}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                disabled={isLoading}
-                className={`w-full pl-3 pr-4 py-2.5 border rounded-lg focus:ring-2 focus:outline-none transition ${
-                  errors.phoneNumber ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'
-                } ${isLoading ? 'bg-gray-50 cursor-not-allowed' : ''}`}
-              />
-              {errors.phoneNumber && <p className='text-red-500 text-xs mt-1'>{errors.phoneNumber}</p>}
-            </div>
+            {errors.PhoneNumber && <p className='text-red-500 text-xs mt-1'>{errors.PhoneNumber}</p>}
           </div>
 
-          {/* Address */}
-          <h4 className='text-gray-700 font-medium mt-6 mb-2'>Address</h4>
-          <div className='space-y-3'>
-            <div>
-              <input
-                type='text'
-                name='address.street'
-                placeholder='Street Address'
-                value={formData.address.street}
-                onChange={handleChange}
-                onBlur={handleBlur}
+          {/* District */}
+          <div>
+            <label className='block text-sm font-medium text-gray-700 mb-1'>District*</label>
+            <input
+              type='text'
+              name='DistrictName'
+              placeholder='District'
+              value={formData.DistrictName}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              disabled={isLoading}
+              className={`w-full pl-3 pr-4 py-2.5 border rounded-lg focus:ring-2 focus:outline-none transition ${
+                errors.DistrictName ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'
+              } ${isLoading ? 'bg-gray-50 cursor-not-allowed' : ''}`}
+              required
+            />
+            {errors.DistrictName && <p className='text-red-500 text-xs mt-1'>{errors.DistrictName}</p>}
+          </div>
+
+          {/* Emergency Contacts */}
+          <div className='mt-6'>
+            <div className='flex items-center justify-between mb-3'>
+              <h4 className='text-gray-700 font-medium'>Emergency Contacts</h4>
+              <button
+                type='button'
+                onClick={addKinContact}
                 disabled={isLoading}
-                className={`w-full pl-3 pr-4 py-2.5 border rounded-lg focus:ring-2 focus:outline-none transition ${
-                  errors['address.street'] ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'
-                } ${isLoading ? 'bg-gray-50 cursor-not-allowed' : ''}`}
-              />
-              {errors['address.street'] && <p className='text-red-500 text-xs mt-1'>{errors['address.street']}</p>}
+                className='flex items-center gap-1 text-blue-600 hover:text-blue-700 text-sm font-medium disabled:opacity-50'
+              >
+                <Plus className='h-4 w-4' />
+                Add Contact
+              </button>
             </div>
-            
-            <div className='flex gap-4'>
-              <div className='flex-1'>
-                <input
-                  type='text'
-                  name='address.city'
-                  placeholder='City'
-                  value={formData.address.city}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  disabled={isLoading}
-                  className={`w-full pl-3 pr-4 py-2.5 border rounded-lg focus:ring-2 focus:outline-none transition ${
-                    errors['address.city'] ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'
-                  } ${isLoading ? 'bg-gray-50 cursor-not-allowed' : ''}`}
-                />
-                {errors['address.city'] && <p className='text-red-500 text-xs mt-1'>{errors['address.city']}</p>}
-              </div>
-              <div className='flex-1'>
-                <input
-                  type='text'
-                  name='address.state'
-                  placeholder='State'
-                  value={formData.address.state}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  disabled={isLoading}
-                  className={`w-full pl-3 pr-4 py-2.5 border rounded-lg focus:ring-2 focus:outline-none transition ${
-                    errors['address.state'] ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'
-                  } ${isLoading ? 'bg-gray-50 cursor-not-allowed' : ''}`}
-                />
-                {errors['address.state'] && <p className='text-red-500 text-xs mt-1'>{errors['address.state']}</p>}
-              </div>
-            </div>
-            
-            <div className='flex gap-4'>
-              <div className='flex-1'>
-                <input
-                  type='text'
-                  name='address.zip'
-                  placeholder='ZIP Code'
-                  value={formData.address.zip}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  disabled={isLoading}
-                  className={`w-full pl-3 pr-4 py-2.5 border rounded-lg focus:ring-2 focus:outline-none transition ${
-                    errors['address.zip'] ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'
-                  } ${isLoading ? 'bg-gray-50 cursor-not-allowed' : ''}`}
-                />
-                {errors['address.zip'] && <p className='text-red-500 text-xs mt-1'>{errors['address.zip']}</p>}
-              </div>
-              <div className='flex-1'>
-                <input
-                  type='text'
-                  name='address.country'
-                  placeholder='Country'
-                  value={formData.address.country}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  disabled={isLoading}
-                  className={`w-full pl-3 pr-4 py-2.5 border rounded-lg focus:ring-2 focus:outline-none transition ${
-                    errors['address.country'] ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'
-                  } ${isLoading ? 'bg-gray-50 cursor-not-allowed' : ''}`}
-                />
-                {errors['address.country'] && <p className='text-red-500 text-xs mt-1'>{errors['address.country']}</p>}
-              </div>
+
+            <div className='space-y-4'>
+              {formData.KinEmergencyContacts.map((contact, index) => (
+                <div key={index} className='border border-gray-200 rounded-lg p-4 bg-gray-50'>
+                  <div className='flex items-center justify-between mb-3'>
+                    <p className='text-sm font-medium text-gray-700'>Contact {index + 1}</p>
+                    {formData.KinEmergencyContacts.length > 1 && (
+                      <button
+                        type='button'
+                        onClick={() => removeKinContact(index)}
+                        disabled={isLoading}
+                        className='text-red-500 hover:text-red-700 disabled:opacity-50'
+                      >
+                        <Trash2 className='h-4 w-4' />
+                      </button>
+                    )}
+                  </div>
+
+                  <div className='grid grid-cols-1 md:grid-cols-3 gap-3'>
+                    <div>
+                      <input
+                        type='text'
+                        placeholder='First Name*'
+                        value={contact.KinFirstName}
+                        onChange={(e) => handleKinChange(index, 'KinFirstName', e.target.value)}
+                        onBlur={() => handleKinBlur(index, 'KinFirstName')}
+                        disabled={isLoading}
+                        className={`w-full pl-3 pr-4 py-2.5 border rounded-lg focus:ring-2 focus:outline-none transition ${
+                          errors[`KinEmergencyContacts.${index}.KinFirstName`] 
+                            ? 'border-red-500 focus:ring-red-500' 
+                            : 'border-gray-300 focus:ring-blue-500'
+                        } ${isLoading ? 'bg-gray-50 cursor-not-allowed' : 'bg-white'}`}
+                      />
+                      {errors[`KinEmergencyContacts.${index}.KinFirstName`] && (
+                        <p className='text-red-500 text-xs mt-1'>
+                          {errors[`KinEmergencyContacts.${index}.KinFirstName`]}
+                        </p>
+                      )}
+                    </div>
+
+                    <div>
+                      <input
+                        type='text'
+                        placeholder='Last Name*'
+                        value={contact.KinLastName}
+                        onChange={(e) => handleKinChange(index, 'KinLastName', e.target.value)}
+                        onBlur={() => handleKinBlur(index, 'KinLastName')}
+                        disabled={isLoading}
+                        className={`w-full pl-3 pr-4 py-2.5 border rounded-lg focus:ring-2 focus:outline-none transition ${
+                          errors[`KinEmergencyContacts.${index}.KinLastName`] 
+                            ? 'border-red-500 focus:ring-red-500' 
+                            : 'border-gray-300 focus:ring-blue-500'
+                        } ${isLoading ? 'bg-gray-50 cursor-not-allowed' : 'bg-white'}`}
+                      />
+                      {errors[`KinEmergencyContacts.${index}.KinLastName`] && (
+                        <p className='text-red-500 text-xs mt-1'>
+                          {errors[`KinEmergencyContacts.${index}.KinLastName`]}
+                        </p>
+                      )}
+                    </div>
+
+                    <div>
+                      <select
+                        value={contact.RelationShip}
+                        onChange={(e) => handleKinChange(index, 'RelationShip', e.target.value)}
+                        onBlur={() => handleKinBlur(index, 'RelationShip')}
+                        disabled={isLoading}
+                        className={`w-full pl-3 pr-4 py-2.5 border rounded-lg focus:ring-2 focus:outline-none transition ${
+                          errors[`KinEmergencyContacts.${index}.RelationShip`] 
+                            ? 'border-red-500 focus:ring-red-500' 
+                            : 'border-gray-300 focus:ring-blue-500'
+                        } ${isLoading ? 'bg-gray-50 cursor-not-allowed' : 'bg-white'}`}
+                      >
+                        <option value=''>Relationship*</option>
+                        {relationshipOptions.map(option => (
+                          <option key={option} value={option}>{option}</option>
+                        ))}
+                      </select>
+                      {errors[`KinEmergencyContacts.${index}.RelationShip`] && (
+                        <p className='text-red-500 text-xs mt-1'>
+                          {errors[`KinEmergencyContacts.${index}.RelationShip`]}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
 
@@ -622,10 +701,10 @@ const Registration = () => {
             {isLoading ? (
               <>
                 <Loader className='animate-spin h-5 w-5 mr-2' />
-                Creating Account...
+                Registering...
               </>
             ) : (
-              'Create Account'
+              'Register'
             )}
           </button>
         </form>

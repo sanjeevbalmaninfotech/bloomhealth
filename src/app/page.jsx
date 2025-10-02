@@ -27,7 +27,6 @@ import { useEffect, useState } from 'react';
 const WhyChooseUsSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  // Flattened list: one point = one slide
   const slides = [
         'Appointments at your convenience.',
     'Rapid diagnostics.',
@@ -55,8 +54,8 @@ const WhyChooseUsSection = () => {
 
   return (
     <section
-      id="about-us"
-      className="pt-16 py-12 bg-gradient-to-b from-gray-50 to-white overflow-hidden"
+      id="about-us" //className='bg-red-700'
+       className="pt-32 py-12 bg-gradient-to-b bg-background"
     >
       <div className="container mx-auto px-4">
         <div className="text-center mb-5">

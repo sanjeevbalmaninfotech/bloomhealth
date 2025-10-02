@@ -1,12 +1,12 @@
 export const featureOptions = [
   // { name: 'Find a Doctor', submenu: [{ name: 'Bloom Hospital Doctors', href: '/hospitalsDoctors' }], enabled: true },
-  { name: "Our services", href: '#', enabled: true },
-  // { name: 'Centers of Excellence', submenu: [
-  //   { name: 'Women Wellbeing', href: '/womenWellBeing' },
+  // { name: "Our services", href: '#', enabled: true },
+  //  { name: 'Centers of Excellence', submenu: [
+  //    { name: 'Women Wellbeing', href: '/womenWellBeing' },
   //   { name: 'Cardiometabolic and Weight Management', href: '#' },
   //   { name: 'Pain Relief', href: '#' },
   //   { name: 'Ophthalmology Center', href: '#' }
-  // ], enabled: true },
+  //  ], enabled: true },
   // { name: 'Specialty Units/Clinics', href: '#', enabled: true },
   // { name: 'Executives Checkups', submenu: [
   //   { name: 'Essential Health Checkups', href: '#' },

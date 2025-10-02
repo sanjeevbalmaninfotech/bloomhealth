@@ -109,53 +109,53 @@ export const services = [
       },
     ],
   },
-  {
-    slug: 'minor-procedures',
-    title: 'Minor Procedures',
-    description:
-      'Wound care, minor surgical procedures, joint injections and more.',
-    longDescription:
-      'Our Minor Procedures service provides convenient, same-day access to treatment for a variety of conditions, including wound management, minor surgical interventions and therapeutic joint injections — without the need for hospital admission.',
-    subServices: [
-      {
-        slug: 'wound-care',
-        title: 'Wound Care',
-        description: 'Assessment and treatment for acute and chronic wounds.',
-      },
-      {
-        slug: 'joint-injections',
-        title: 'Joint Injections',
-        description: 'Steroid and hyaluronic acid injections for pain relief.',
-      },
-    ],
-  },
-  {
-    slug: 'occupational-health',
-    title: 'Occupational Health',
-    description:
-      'Pre-employment medicals, workplace injury management and corporate health services.',
-    longDescription:
-      'Our Occupational Health services support businesses and employees with workplace wellness programs, pre-employment assessments and tailored injury management plans to help maintain a safe and productive workforce.',
-    subServices: [
-      {
-        slug: 'pre-employment-medicals',
-        title: 'Pre-employment Medicals',
-        description: 'Comprehensive health checks for new employees.',
-      },
-      {
-        slug: 'workplace-injury-management',
-        title: 'Workplace Injury Management',
-        description:
-          'Specialist support for employees recovering from workplace injuries.',
-      },
-      {
-        slug: 'corporate-wellness-programs',
-        title: 'Corporate Wellness Programs',
-        description:
-          'Tailored health programs to promote workplace wellness and productivity.',
-      },
-    ],
-  },
+  // {
+  //   slug: 'minor-procedures',
+  //   title: 'Minor Procedures',
+  //   description:
+  //     'Wound care, minor surgical procedures, joint injections and more.',
+  //   longDescription:
+  //     'Our Minor Procedures service provides convenient, same-day access to treatment for a variety of conditions, including wound management, minor surgical interventions and therapeutic joint injections — without the need for hospital admission.',
+  //   subServices: [
+  //     {
+  //       slug: 'wound-care',
+  //       title: 'Wound Care',
+  //       description: 'Assessment and treatment for acute and chronic wounds.',
+  //     },
+  //     {
+  //       slug: 'joint-injections',
+  //       title: 'Joint Injections',
+  //       description: 'Steroid and hyaluronic acid injections for pain relief.',
+  //     },
+  //   ],
+  // },
+  // {
+  //   slug: 'occupational-health',
+  //   title: 'Occupational Health',
+  //   description:
+  //     'Pre-employment medicals, workplace injury management and corporate health services.',
+  //   longDescription:
+  //     'Our Occupational Health services support businesses and employees with workplace wellness programs, pre-employment assessments and tailored injury management plans to help maintain a safe and productive workforce.',
+  //   subServices: [
+  //     {
+  //       slug: 'pre-employment-medicals',
+  //       title: 'Pre-employment Medicals',
+  //       description: 'Comprehensive health checks for new employees.',
+  //     },
+  //     {
+  //       slug: 'workplace-injury-management',
+  //       title: 'Workplace Injury Management',
+  //       description:
+  //         'Specialist support for employees recovering from workplace injuries.',
+  //     },
+  //     {
+  //       slug: 'corporate-wellness-programs',
+  //       title: 'Corporate Wellness Programs',
+  //       description:
+  //         'Tailored health programs to promote workplace wellness and productivity.',
+  //     },
+  //   ],
+  // },
 ];
 
 

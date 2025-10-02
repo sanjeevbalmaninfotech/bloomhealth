@@ -4,10 +4,24 @@ import { Link, useParams } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { useEffect } from 'react';
 import { CheckSharp } from '@mui/icons-material';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 export default function ServicePage() {
   const { slug = '' } = useParams();
   const service = getService(slug);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+
+ const handleClick = (sectionId) => {
+    if (location.pathname === '/') {
+      const element = document.querySelector(sectionId);
+      element?.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      navigate('/', { state: { scrollTo: sectionId } });
+    }
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -40,9 +54,7 @@ export default function ServicePage() {
             <div className='grid grid-cols-1 md:grid-cols-3 gap-12'>
               {/* Left Column */}
               <div className='md:col-span-2'>
-                <h2 className='text-3xl font-bold text-[#157fc1]'>
-                  {service?.shortDescription}
-                </h2>
+                <h2 className='text-3xl font-bold text-[#157fc1]'>{service?.shortDescription}</h2>
                 <p className='mt-4 text-lg text-muted-foreground'>
                   {service?.longDescription || service?.description}
                 </p>
@@ -54,9 +66,7 @@ export default function ServicePage() {
                     </li>
                   ))}
                 </ul>
-                <p className='mt-12 text-lg text-muted-foreground'>
-                  {service?.footer}
-                </p>
+                <p className='mt-12 text-lg text-muted-foreground'>{service?.footer}</p>
                 <Button asChild size='lg' className='mt-8'>
                   <a href='/#contact'>Contact us for more information</a>
                 </Button>
@@ -66,16 +76,22 @@ export default function ServicePage() {
               <div className='bg-gray-50 p-6 rounded-lg'>
                 <h3 className='text-xl font-semibold text-foreground mb-4'>Quick Links</h3>
                 <ul className='space-y-2'>
-                  <li>
-                    <a href='/#services' className='text-primary hover:underline'>
-                      All Services
-                    </a>
-                  </li>
-                  <li>
-                    <a href='/#contact' className='text-primary hover:underline'>
-                      Contact Us
-                    </a>
-                  </li>
+                 <li>
+        <button
+          onClick={() => handleClick('#services')}
+          className="text-primary hover:underline"
+        >
+          All Services
+        </button>
+      </li>
+      <li>
+        <button
+          onClick={() => handleClick('#contact')}
+          className="text-primary hover:underline"
+        >
+          Contact Us
+        </button>
+      </li>
                 </ul>
               </div>
             </div>
@@ -112,7 +128,6 @@ export default function ServicePage() {
                     </Link>
                   </div>
                 ))}
-                
               </div>
             </div>
           </section>

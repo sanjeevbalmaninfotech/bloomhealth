@@ -1,27 +1,30 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { showToast } from '../utils/toast';
 
-const baseUrl = import.meta.env.VITE_API_BASE_URL;
+import { env } from '../config/env.config';
+import { Endpoints } from '../utils/constents/endPoints/endPoints';
+
+const baseUrl = env.VITE_BLOOM_API_BASE_URL;
 
 export const auth = createApi({
   reducerPath: 'auth',
   baseQuery: fetchBaseQuery({ baseUrl }),
-  tagTypes: ['User'], // recommended when using tags
+  tagTypes: ['User'],
   endpoints: (builder) => ({
 
-    login: builder.mutation({
-      query: (user) => ({
-        url: '/login',
+  
+    lookupUser: builder.mutation({
+      query: (payload) => ({
+        url: Endpoints.loginUrl, 
         method: 'POST',
-        body: user,
+        body: { patientId: payload.patientId }, 
       }),
       async onQueryStarted(arg, { queryFulfilled }) {
         try {
-          const { data } = await queryFulfilled;
-          showToast.success('Login successful!');
-          sessionStorage.setItem('token', data?.token);
+          await queryFulfilled;
+          // no toast here; handled by caller
         } catch (err) {
-          showToast.error(err?.error?.data?.message || 'Login failed!');
+          showToast.error(err?.error?.data?.message || 'Patient lookup failed');
         }
       },
     }),
@@ -29,9 +32,13 @@ export const auth = createApi({
     // Request SMS OTP to be sent to phone number
     requestOtp: builder.mutation({
       query: (payload) => ({
-        url: '/auth/request-otp',
+        url: Endpoints.sendOtpUrl,  
         method: 'POST',
-        body: payload, // { countryCode, phoneNumber }
+        body: {
+          patientId: payload.patientId,      
+          mobileNumber: payload.mobileNumber, 
+          countryCode: payload.countryCode
+        },
       }),
       async onQueryStarted(arg, { queryFulfilled }) {
         try {
@@ -43,29 +50,17 @@ export const auth = createApi({
       },
     }),
 
-    // Lookup user by user id / username to get masked phone
-    lookupUser: builder.mutation({
-      query: (payload) => ({
-        url: '/auth/lookup-user',
-        method: 'POST',
-        body: payload, // { userId }
-      }),
-      async onQueryStarted(arg, { queryFulfilled }) {
-        try {
-          await queryFulfilled;
-          // no toast here; handled by caller
-        } catch (err) {
-          showToast.error(err?.error?.data?.message || 'User lookup failed');
-        }
-      },
-    }),
-
     // Verify OTP and login
     verifyOtp: builder.mutation({
       query: (payload) => ({
-        url: '/auth/verify-otp',
+        url: '/patient/verifyOtp',  // ✅ Updated endpoint
         method: 'POST',
-        body: payload, // { countryCode, phoneNumber, otp }
+        body: {
+          patientId: payload.patientId,           // ✅ Added patientId
+          otp: payload.otp,
+          phoneCountryCode: payload.phoneCountryCode, // ✅ Changed from countryCode
+          phoneNumber: payload.phoneNumber
+        },
       }),
       async onQueryStarted(arg, { queryFulfilled }) {
         try {
@@ -99,7 +94,7 @@ export const auth = createApi({
       query: (email) => ({
         url: '/forgot-password',
         method: 'POST',
-        body: { email }, // ✅ backend usually expects object
+        body: { email },
       }),
       async onQueryStarted(arg, { queryFulfilled }) {
         try {
