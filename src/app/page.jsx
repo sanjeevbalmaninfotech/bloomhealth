@@ -117,7 +117,7 @@ const WhyChooseUsSection = () => {
 const heroData = {
   headingLine1: '  Care You Can Count On',
   headingLine2: 'Open 24/7',
-  subheading: `A new standard in private healthcare, located in central Milton Keynes. At Bloom Health Hospital, we provide fast, round-the-clock expert medical care with a personal touch. From urgent walk-in care to specialist clinics, we are here to put your health first.`,
+  subheading: `A new standard in private healthcare, located in the heart of Milton Keynes. Experience fast, round-the-clock expert medical treatment delivered with a personal touch. From urgent walk-in care to specialist clinics, Bloom Health Hospital is here to put your health first.`,
 };
 
 const featuresData = [
