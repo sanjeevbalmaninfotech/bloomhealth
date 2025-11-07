@@ -34,12 +34,12 @@ export function Header() {
       navigate('/', { state: { scrollTo: item.sectionId } });
     }
   };
-
+//  Home - Services- Contact Us- About us
   const navItems = [
-    { name: 'Home', sectionId: '#home' },
-    { name: 'Our Story', sectionId: '#about-us' },
-    { name: 'Services', sectionId: '#services' },
-    { name: 'Contact Us', sectionId: '#contact' },
+         { name: 'Home', sectionId: '#home' },
+         { name: 'Services', sectionId: '#services' },
+         { name: 'Contact Us', sectionId: '#contact' },
+         { name: 'About Us', sectionId: '#about' },  // Note -  about-us is second page same as about us
   ];
 
   useEffect(() => {

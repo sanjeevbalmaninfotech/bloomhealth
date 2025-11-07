@@ -1,161 +1,162 @@
 export const services = [
   {
-    slug: 'urgent-care',
-    title: 'Urgent Care',
-    servicesHeader: 'Urgent Care At Bloom Health',
-    shortDescription: 'Rapid, walk-in urgent care for medical needs that can’t wait.',
-    description:
-      'Walk-in and same-day appointments for minor injuries, sudden illnesses and urgent health concerns.',
-    longDescription: (
-      <span>
-        At Bloom Health, we provide fast, expert care for adults and children, 24 hours a day with
-        no appointment needed and minimal waiting time.
-        <br />
-        <br />
-        Our urgent care service is designed to manage a wide range of minor to moderate illnesses
-        and everyday health concerns, offering immediate access to clinical assessment, diagnosis
-        and treatment. Whether you’re feeling unwell, need prompt medical advice  or require
-        treatment for minor conditions, our experienced clinical team is here to help you feel
-        better, faster.
-      </span>
-    ),
-    footer:
-      'At Bloom Health, we are committed to providing seamless, efficient and high-quality care, all under one roof. Simply walk in and we will ensure you are seen promptly and treated with care, expertise and professionalism.',
-    diseases: [
-      <>
-        <strong>Immediate assessment and treatment &nbsp;</strong>for common illnesses and minor
-        conditions.
-      </>,
-      <>
-        <strong>Point-of-care testing&nbsp;</strong> for rapid results, so you can get answers
-        quickly.
-      </>,
-      <>
-        <strong>On-site imaging and investigations</strong> &nbsp;including X-ray and ultrasound (where
-        clinically appropriate).
-      </>,
-      <>
-        <span>
-          <strong>In-house pharmacy</strong> providing standard medications and outpatient
-          prescriptions, with a code system for items not available locally.
-        </span>
-      </>,
-      <>
-        <strong>Access to outpatient referrals and follow-up&nbsp;</strong> if specialist care is
-        required.
-      </>,
-    ],
-    subServices: null,
-  },
-  {
-    slug: 'outpatient-services',
-    title: 'Outpatient Services',
-    servicesHeader: 'Outpatient Specialist Services at Bloom Health',
-    shortDescription: 'Comprehensive consultant-led care for adults and children',
-    description:
-      'Specialist consultations, follow-up care, chronic disease management and health screenings.',
-    longDescription: (
-      <span>
-        At Bloom Health, we offer a wide range of outpatient specialist services for both adults and
-        paediatric patients. Our consultant-led clinics provide personalised care across medical and
-        surgical specialties, all delivered in a welcoming, discreet and well-coordinated
-        environment.
-        <br />
-        <br />
-        We support patients at every stage of their care journey, with access to on-site
-        investigations, imaging and pharmacy services, making it easier to complete assessments and
-        treatment plans, all in one place. Whether you're seeking expert advice for a new health
-        concern or ongoing support for an existing condition, our team is here to ensure a smooth,
-        responsive experience with continuity of care throughout.
-      </span>
-    ),
-    diseases: [
-      <>Consultant-led outpatient clinics across a wide range of specialties.</>,
-      <>Services for adults and children, including complex and long-term conditions.</>,
-      <>Access to on-site diagnostics, investigations, pharmacy and treatment planning.</>,
-      <>Referrals from GPs, other specialists  or direct self-referral where appropriate.</>,
-    ],
-    footer:
-      'For more detailed information about each of our specialty services, please explore the relevant pages below.',
-    subServices: [], // still keep children if you want detailed specialties
-  },
-  {
-    slug: 'diagnostics',
-    title: 'Diagnostics',
-    description:
-      'On-site laboratory tests, ultrasound, X-ray, CT scans and rapid-result services.',
-    longDescription:
-      'Our state-of-the-art diagnostic facilities provide rapid and accurate results. With a comprehensive suite of imaging and laboratory services all under one roof, we can expedite your diagnosis and treatment plan.',
-    subServices: [
-      {
-        slug: 'laboratory-tests',
-        title: 'Laboratory Tests',
-        description: 'A full range of blood tests, urine analysis and other lab services.',
-      },
-      {
-        slug: 'ultrasound',
-        title: 'Ultrasound',
-        description: 'Non-invasive imaging for various medical conditions.',
-      },
-      {
-        slug: 'x-ray',
-        title: 'X-ray',
-        description: 'Digital X-ray services for bone and soft tissue evaluation.',
-      },
-      {
-        slug: 'ct-scans',
-        title: 'CT Scans',
-        description: 'Advanced computerized tomography for detailed internal imaging.',
-      },
-    ],
-  },
-  // {
-  //   slug: 'minor-procedures',
-  //   title: 'Minor Procedures',
-  //   description:
-  //     'Wound care, minor surgical procedures, joint injections and more.',
-  //   longDescription:
-  //     'Our Minor Procedures service provides convenient, same-day access to treatment for a variety of conditions, including wound management, minor surgical interventions and therapeutic joint injections — without the need for hospital admission.',
-  //   subServices: [
-  //     {
-  //       slug: 'wound-care',
-  //       title: 'Wound Care',
-  //       description: 'Assessment and treatment for acute and chronic wounds.',
-  //     },
-  //     {
-  //       slug: 'joint-injections',
-  //       title: 'Joint Injections',
-  //       description: 'Steroid and hyaluronic acid injections for pain relief.',
-  //     },
-  //   ],
-  // },
-  // {
-  //   slug: 'occupational-health',
-  //   title: 'Occupational Health',
-  //   description:
-  //     'Pre-employment medicals, workplace injury management and corporate health services.',
-  //   longDescription:
-  //     'Our Occupational Health services support businesses and employees with workplace wellness programs, pre-employment assessments and tailored injury management plans to help maintain a safe and productive workforce.',
-  //   subServices: [
-  //     {
-  //       slug: 'pre-employment-medicals',
-  //       title: 'Pre-employment Medicals',
-  //       description: 'Comprehensive health checks for new employees.',
-  //     },
-  //     {
-  //       slug: 'workplace-injury-management',
-  //       title: 'Workplace Injury Management',
-  //       description:
-  //         'Specialist support for employees recovering from workplace injuries.',
-  //     },
-  //     {
-  //       slug: 'corporate-wellness-programs',
-  //       title: 'Corporate Wellness Programs',
-  //       description:
-  //         'Tailored health programs to promote workplace wellness and productivity.',
-  //     },
-  //   ],
-  // },
+  slug: 'diagnostics',
+  title: 'Diagnostics, imaging and pharmacy, all in one place',
+  servicesHeader: 'Diagnostics, Imaging and Pharmacy Services',
+  shortDescription: 'Comprehensive on-site support for fast, seamless care',
+  description:
+    'Bloom Health offers rapid access to CT, X-ray, ultrasound, and point-of-care testing, alongside a fully equipped in-house pharmacy. Fast results and seamless coordination ensure efficient, high-quality care every step of the way.',
+  longDescription: (
+    <span>
+      At Bloom Health, our diagnostics are designed to provide timely, accurate results and convenient access to treatment, all within the same facility. We aim to make every stage of your care pathway efficient and personalised, from initial consultation to diagnosis, prescription and follow-up.
+      <br />
+      <br />
+      Our pharmacy team is dedicated to delivering high-quality service by dispensing medications and providing expert clinical guidance, as well as practical information on a wide range of health issues.
+      <br />
+      <br />
+      Our clinical and technical teams collaborate with consultants to ensure investigations and results are timely, with clear communication and continuity of care throughout.
+    </span>
+  ),
+ diseases: [
+  <div className="flex flex-col gap-4">
+    <h3 className="text-2xl font-semibold text-foreground">What We Offer</h3>
+  </div>,
+  <div className="flex flex-col gap-2">
+    <strong>Advanced imaging and diagnostics</strong>
+    <ul style={{ paddingLeft: '20px', listStyleType: 'disc' }}>
+      <li>Access to CT scanning, X-ray, ultrasound, ECG, and point-of-care laboratory testing for rapid, precise results.</li>
+    </ul>
+  </div>,
+  <div className="flex flex-col gap-2">
+    <strong>Comprehensive diagnostic reporting</strong>
+    <ul style={{ paddingLeft: '20px', listStyleType: 'disc' }}>
+      <li>Clear, comprehensive reports provided directly to your clinician, ensuring continuity of care.</li>
+    </ul>
+  </div>,
+  <div className="flex flex-col gap-2">
+    <strong>On-site pharmacy</strong>
+    <ul style={{ paddingLeft: '20px', listStyleType: 'disc' }}>
+      <li>Dispensing of prescribed medications, and comprehensive support for outpatient prescriptions, making it easy for you to collect your medication and receive any necessary advice or guidance from our team.</li>
+    </ul>
+  </div>,
+],
+  footer:
+    '',
+  subServices: null,
+},
+ {
+  slug: 'urgent-care',
+  title: '24-hour walk-in centre in Milton Keynes Immediate, Expert Care- No appointment Needed',
+  servicesHeader: '24-Hour walk-in centre',
+  shortDescription: 'Rapid access to expert medical care, 24 hours a day, 7 days a week.',
+  description:
+    'Experience fast, expert care for adults and children, no appointment needed. Our dedicated team delivers immediate assessments, on-site diagnostics including CT, X-ray, ultrasound, and point-of-care tests, with access to an in-house pharmacy. For serious or life-threatening emergencies, please call 999 or proceed to your nearest emergency department.',
+  longDescription: (
+    <span>
+      At Bloom Health, we provide fast, high-quality medical care for adults and children, with no appointment needed and minimal waiting times. Our service is ideal for medical needs that can't wait for a GP appointment but do not require attendance at a hospital emergency department.
+      <br />
+      <br />
+      Our urgent care centre is designed to manage a wide range of minor to moderate illnesses and injuries, offering immediate access to assessment, diagnosis, and treatment, all under one roof.
+    </span>
+  ),
+  diseases: [
+    <div className="flex flex-col gap-4">
+      <h3 className="text-2xl font-semibold text-foreground">What We Offer</h3>
+    </div>,
+    <div className="flex flex-col gap-2">
+      <strong>Comprehensive on-site diagnostics</strong>
+      <ul style={{ paddingLeft: '20px', listStyleType: 'disc' }}>
+        <li>Access to CT scans, X-rays, ultrasound, ECG, and point-of-care testing for rapid results and accurate diagnoses.</li>
+      </ul>
+    </div>,
+    <div className="flex flex-col gap-2">
+      <strong>Expert clinical team</strong>
+      <ul style={{ paddingLeft: '20px', listStyleType: 'disc' }}>
+        <li>Our experienced clinicians deliver safe, efficient, and compassionate care around the clock.</li>
+      </ul>
+    </div>,
+    <div className="flex flex-col gap-2">
+      <strong>On-site pharmacy</strong>
+      <ul style={{ paddingLeft: '20px', listStyleType: 'disc' }}>
+        <li>Immediate access to medications and outpatient prescriptions.</li>
+      </ul>
+    </div>,
+    <div className="flex flex-col gap-2">
+      <strong>Outpatient referrals and follow-up</strong>
+      <ul style={{ paddingLeft: '20px', listStyleType: 'disc' }}>
+        <li>Seamless access to specialist consultations and follow-up care where needed.</li>
+      </ul>
+    </div>,
+    <div className="flex flex-col gap-4 mt-4">
+      <h3 className="text-2xl font-semibold text-foreground">Conditions We Commonly Treat</h3>
+      <ul style={{ paddingLeft: '20px', listStyleType: 'disc' }}>
+        <li>Minor injuries (sprains, small cuts, minor burns)</li>
+        <li>Fever, infections, or unexplained illness</li>
+        <li>Respiratory or urinary tract infections</li>
+        <li>Abdominal pain or digestive issues (non-severe)</li>
+        <li>Allergic reactions (non-life-threatening)</li>
+        <li>Minor skin conditions and rashes</li>
+        <li>Headaches, migraines, and minor eye or ear complaints</li>
+      </ul>
+      <p style={{ marginTop: '8px', fontStyle: 'italic' }}>(Please note: this list is not exhaustive. If you're unsure whether your condition is suitable for urgent care, our team is here to advise you.)</p>
+    </div>,
+    <div className="flex flex-col gap-4 mt-4">
+      <h3 className="text-2xl font-semibold text-foreground">Important Notice</h3>
+      <p>Our urgent care centre is not an alternative to an emergency department nor does it cover these services. If you are experiencing a life-threatening illness or injury, such as severe chest pain, breathing difficulty, heavy bleeding, loss of consciousness, or symptoms of stroke, please call 999 or go directly to your nearest NHS Emergency Department immediately. For urgent advice, you can also contact NHS 111.</p>
+    </div>,
+  ],
+  footer:
+    `At Bloom Health, we are committed to delivering seamless, efficient, and compassionate care, 24 hours a day. Simply walk in, and our dedicated clinical team will ensure you're seen promptly and treated with professionalism and respect.`,
+  subServices: null,
+},
+ {
+  slug: 'outpatient-services',
+  title: 'Outpatient and planned care in Milton Keynes',
+  servicesHeader: 'Outpatient and Planned Care at Bloom Health, Milton Keynes',
+  shortDescription: 'Comprehensive consultant-led care for adults and children',
+  description:
+    'Bloom Health offers consultant-led and multidisciplinary clinics for adults and children, supported by a diverse range of healthcare services. Our skilled and dedicated team, including consultants, nurses, pharmacists, physiotherapists, and allied health professionals, provides safe, high-quality, and personalised care tailored to each patient\'s needs. With on-site diagnostics, imaging, pharmacy, and therapy services, we ensure a coordinated and continuous care experience from consultation through to treatment and follow-up, all within a professional and welcoming environment.',
+  longDescription: (
+    <span>
+      At Bloom Health, we provide a wide range of outpatient and planned care services for both adults and paediatric patients. Our consultant-led, specialist, and multidisciplinary clinics deliver personalised, high-quality care across medical and surgical specialties, all within a welcoming, discreet, and well-coordinated environment.
+      <br />
+      <br />
+      We support patients at every stage of their care journey, with access to on-site diagnostics, imaging, and pharmacy services, making it easy to complete assessments, investigations, and treatment plans, all in one place. Whether you are seeking expert advice for a new health concern, or ongoing management for a long-term condition, our team is dedicated to ensuring a smooth, responsive experience with continuity of care throughout.
+    </span>
+  ),
+  diseases: [
+    <div className="flex flex-col gap-4">
+      <h3 className="text-2xl font-semibold text-foreground">What We Offer</h3>
+    </div>,
+    <div className="flex flex-col gap-2">
+      <strong>Consultant-led outpatient clinics</strong>
+      <ul style={{ paddingLeft: '20px', listStyleType: 'disc' }}>
+        <li>A wide range of medical and surgical specialties, delivered by experienced consultants.</li>
+      </ul>
+    </div>,
+    <div className="flex flex-col gap-2">
+      <strong>Services for adults and children</strong>
+      <ul style={{ paddingLeft: '20px', listStyleType: 'disc' }}>
+        <li>Comprehensive care, including assessment and management of complex and long-term conditions.</li>
+      </ul>
+    </div>,
+    <div className="flex flex-col gap-2">
+      <strong>On-site diagnostics and pharmacy</strong>
+      <ul style={{ paddingLeft: '20px', listStyleType: 'disc' }}>
+        <li>Convenient access to imaging, laboratory testing, and pharmacy services to support your treatment plan.</li>
+      </ul>
+    </div>,
+    <div className="flex flex-col gap-2">
+      <strong>Flexible referral options</strong>
+      <ul style={{ paddingLeft: '20px', listStyleType: 'disc' }}>
+        <li>We welcome referrals from GPs, other specialists, and self-referrals where appropriate.</li>
+      </ul>
+    </div>,
+  ],
+  footer:
+    'For more information about each of our specialty services, please explore the relevant pages below.',
+  subServices: [],
+}
 ];
 
 

@@ -13,8 +13,7 @@ export default function ServicePage() {
   const navigate = useNavigate();
   const location = useLocation();
 
-
- const handleClick = (sectionId) => {
+  const handleClick = (sectionId) => {
     if (location.pathname === '/') {
       const element = document.querySelector(sectionId);
       element?.scrollIntoView({ behavior: 'smooth' });
@@ -58,11 +57,10 @@ export default function ServicePage() {
                 <p className='mt-4 text-lg text-muted-foreground'>
                   {service?.longDescription || service?.description}
                 </p>
-                <ul className='text-gray-700 space-y-1 mt-10'>
+                <ul className='text-gray-700 space-y-6 mt-10 list-disc pl-6'>
                   {service?.diseases?.map((disease, index) => (
-                    <li key={index} className='flex items-center'>
-                      <CheckSharp fontSize='small' className='text-black mr-2' />
-                      {disease}
+                    <li key={index} className='flex items-start gap-2 before:hidden'>
+                      <div className="flex-1">{disease}</div>
                     </li>
                   ))}
                 </ul>
@@ -76,22 +74,22 @@ export default function ServicePage() {
               <div className='bg-gray-50 p-6 rounded-lg'>
                 <h3 className='text-xl font-semibold text-foreground mb-4'>Quick Links</h3>
                 <ul className='space-y-2'>
-                 <li>
-        <button
-          onClick={() => handleClick('#services')}
-          className="text-primary hover:underline"
-        >
-          All Services
-        </button>
-      </li>
-      <li>
-        <button
-          onClick={() => handleClick('#contact')}
-          className="text-primary hover:underline"
-        >
-          Contact Us
-        </button>
-      </li>
+                  <li>
+                    <button
+                      onClick={() => handleClick('#services')}
+                      className='text-primary hover:underline'
+                    >
+                      All Services
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      onClick={() => handleClick('#contact')}
+                      className='text-primary hover:underline'
+                    >
+                      Contact Us
+                    </button>
+                  </li>
                 </ul>
               </div>
             </div>
