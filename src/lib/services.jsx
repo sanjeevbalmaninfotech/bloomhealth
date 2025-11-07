@@ -1,9 +1,9 @@
 export const services = [
   {
   slug: 'diagnostics',
-  title: 'Diagnostics, imaging and pharmacy, all in one place',
-  servicesHeader: 'Diagnostics, Imaging and Pharmacy Services',
-  shortDescription: 'Comprehensive on-site support for fast, seamless care',
+  title: 'Diagnostics, Imaging and Pharmacy Services',
+  servicesHeader: 'Comprehensive on-site support for fast, seamless care', // Comprehensive on-site support for fast, seamless care
+  shortDescription: '',
   description:
     'Bloom Health offers rapid access to CT, X-ray, ultrasound, and point-of-care testing, alongside a fully equipped in-house pharmacy. Fast results and seamless coordination ensure efficient, high-quality care every step of the way.',
   longDescription: (
@@ -46,9 +46,9 @@ export const services = [
 },
  {
   slug: 'urgent-care',
-  title: '24-hour walk-in centre in Milton Keynes Immediate, Expert Care- No appointment Needed',
-  servicesHeader: '24-Hour walk-in centre',
-  shortDescription: 'Rapid access to expert medical care, 24 hours a day, 7 days a week.',
+  title: '24-Hour walk-in centre',
+  servicesHeader: 'Rapid access to expert medical care, 24 hours a day, 7 days a week.',
+  shortDescription: '',
   description:
     'Experience fast, expert care for adults and children, no appointment needed. Our dedicated team delivers immediate assessments, on-site diagnostics including CT, X-ray, ultrasound, and point-of-care tests, with access to an in-house pharmacy. For serious or life-threatening emergencies, please call 999 or proceed to your nearest emergency department.',
   longDescription: (
@@ -102,18 +102,39 @@ export const services = [
     </div>,
     <div className="flex flex-col gap-4 mt-4">
       <h3 className="text-2xl font-semibold text-foreground">Important Notice</h3>
-      <p>Our urgent care centre is not an alternative to an emergency department nor does it cover these services. If you are experiencing a life-threatening illness or injury, such as severe chest pain, breathing difficulty, heavy bleeding, loss of consciousness, or symptoms of stroke, please call 999 or go directly to your nearest NHS Emergency Department immediately. For urgent advice, you can also contact NHS 111.</p>
-    </div>,
+      <div className="p-6 bg-blue rounded-lg">
+        <div className="flex flex-col gap-4">
+          <p>
+            Our urgent care centre is <strong>not an alternative to an emergency department nor does it cover these services.</strong>
+          </p>
+          
+          <p>
+            If you are experiencing a <strong>life-threatening illness or injury</strong>, such as severe chest pain, breathing difficulty, heavy bleeding, loss of consciousness, or symptoms of stroke, please call 999 or go directly to your nearest <strong>NHS Emergency Department immediately</strong>.
+          </p>
+          
+          <p>
+            For urgent advice, you can also contact <strong>NHS 111</strong>.
+          </p>
+        </div>
+      </div>
+    </div>
   ],
-  footer:
-    `At Bloom Health, we are committed to delivering seamless, efficient, and compassionate care, 24 hours a day. Simply walk in, and our dedicated clinical team will ensure you're seen promptly and treated with professionalism and respect.`,
-  subServices: null,
+  footer: (
+  <div className="flex flex-col gap-3">
+    <h3 className="text-2xl font-semibold text-foreground">
+      Your Health, Handled with Care
+    </h3>
+    <p>
+      At Bloom Health, we are committed to delivering seamless, efficient, and compassionate care, 24 hours a day. Simply walk in, and our dedicated clinical team will ensure you're seen promptly and treated with professionalism and respect.
+    </p>
+  </div>
+),
 },
  {
   slug: 'outpatient-services',
-  title: 'Outpatient and planned care in Milton Keynes',
-  servicesHeader: 'Outpatient and Planned Care at Bloom Health, Milton Keynes',
-  shortDescription: 'Comprehensive consultant-led care for adults and children',
+  title: 'Outpatient and Planned Care at Bloom Health, Milton Keynes',
+
+  servicesHeader: 'Comprehensive consultant-led care for adults and children',
   description:
     'Bloom Health offers consultant-led and multidisciplinary clinics for adults and children, supported by a diverse range of healthcare services. Our skilled and dedicated team, including consultants, nurses, pharmacists, physiotherapists, and allied health professionals, provides safe, high-quality, and personalised care tailored to each patient\'s needs. With on-site diagnostics, imaging, pharmacy, and therapy services, we ensure a coordinated and continuous care experience from consultation through to treatment and follow-up, all within a professional and welcoming environment.',
   longDescription: (

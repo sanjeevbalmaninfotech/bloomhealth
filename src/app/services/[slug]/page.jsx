@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Link, useParams } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { useEffect } from 'react';
-import { CheckSharp } from '@mui/icons-material';
+
 import { useNavigate, useLocation } from 'react-router-dom';
 
 export default function ServicePage() {
@@ -41,14 +41,12 @@ export default function ServicePage() {
         <section className='bg-primary/5 py-10'>
           <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
             <h1 className='font-headline text-4xl font-bold text-primary'>{service.title}</h1>
-            <p className='mt-2 text-lg text-muted-foreground'>
-              Comprehensive care and specialized treatments
-            </p>
+            <p className='mt-2 text-lg text-muted-foreground'>{service.servicesHeader}</p>
           </div>
         </section>
 
         {/* Main Service Content */}
-        <section className='py-20'>
+        <section className='py-4'>
           <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
             <div className='grid grid-cols-1 md:grid-cols-3 gap-12'>
               {/* Left Column */}
@@ -60,7 +58,7 @@ export default function ServicePage() {
                 <ul className='text-gray-700 space-y-6 mt-10 list-disc pl-6'>
                   {service?.diseases?.map((disease, index) => (
                     <li key={index} className='flex items-start gap-2 before:hidden'>
-                      <div className="flex-1">{disease}</div>
+                      <div className='flex-1'>{disease}</div>
                     </li>
                   ))}
                 </ul>
@@ -71,7 +69,7 @@ export default function ServicePage() {
               </div>
 
               {/* Right Column - Quick Links */}
-              <div className='bg-gray-50 p-6 rounded-lg'>
+              <div className='bg-gray-50 p-6 rounded-lg flex flex-col'>
                 <h3 className='text-xl font-semibold text-foreground mb-4'>Quick Links</h3>
                 <ul className='space-y-2'>
                   <li>
@@ -98,7 +96,7 @@ export default function ServicePage() {
 
         {/* Sub Services */}
         {service?.subServices && service?.subServices.length > 0 && (
-          <section id='sub-services' className='py-20 bg-gray-50'>
+          <section id='sub-services' className='py-4 bg-gray-50'>
             <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
               <div className='text-center mb-12'>
                 <h2 className='font-headline text-3xl font-bold text-foreground'>

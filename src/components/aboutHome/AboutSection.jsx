@@ -50,34 +50,27 @@ const AboutHomeSection = () => {
           </div>
 
           {/* Right: Paragraph + Bullet Points */}
-          <div className="flex flex-col justify-center space-y-8">
-            {/* Paragraph Block */}
-            <div className="bg-white border border-gray-200 p-8 rounded-xl shadow-lg text-black">
-              <h3 className="text-2xl font-semibold mb-4">
-                Integrated Care, Seamlessly Connected
-              </h3>
-              <p className="text-base sm:text-lg leading-relaxed">
-                At Bloom Health, we have designed our services to offer integrated care in a single,
-                convenient location. By bringing together clinicians, diagnostic services, and
-                pharmacy support, we streamline your treatment journey — ensuring seamless
-                coordination, clear communication, and continuity of care throughout every stage of
-                your experience with us.
-              </p>
-            </div>
-
-            {/* Bullet Points Block */}
-            <div className="bg-white border border-gray-200 p-8 rounded-xl shadow-lg text-black">
-              <h3 className="text-lg font-semibold mb-3">
-                What Sets Us Apart
-              </h3>
-              <ul className="space-y-2 list-disc list-inside text-gray-700">
-                <li>State-of-the-art medical technology</li>
-                <li>Experienced, certified healthcare professionals</li>
-                <li>Same-day and walk-in appointments available</li>
-                <li>Comprehensive multispecialty services</li>
-              </ul>
-            </div>
-          </div>
+          <div className="bg-white border border-gray-200 p-8 rounded-xl shadow-lg text-black">
+  <h3 className="text-2xl font-semibold mb-4">
+    Integrated Care Under One Roof
+  </h3>
+  <p className="text-base sm:text-lg leading-relaxed mb-4">
+    At Bloom Health, we have designed our services to offer integrated care in a single,
+    convenient location. By bringing together clinicians, diagnostic services, and
+    pharmacy support, we streamline your treatment journey — ensuring seamless
+    coordination, clear communication, and continuity of care throughout every stage of
+    your experience with us.
+  </p>
+  <h4 className="text-lg font-semibold mb-3">
+    What Sets Us Apart
+  </h4>
+  <ul className="space-y-2 list-disc list-inside text-gray-700">
+    <li>State-of-the-art medical technology</li>
+    <li>Experienced, certified healthcare professionals</li>
+    <li>Same-day and walk-in appointments available</li>
+    <li>Comprehensive multispecialty services</li>
+  </ul>
+</div>
         </div>
       </div>
     </section>
