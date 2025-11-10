@@ -88,7 +88,7 @@ const WomenWellBeing = () => {
 
           {/* Book Appointment Form */}
           <section className='bg-white p-4 rounded-md shadow space-y-3'>
-            <h3 className='text-xl font-semibold text-blue-500'>Book Appointment</h3>
+            <h3 className='text-xl font-semibold text-blue-500'>Register an Interest</h3>
             <form className='space-y-2'>
               <input
                 type='text'

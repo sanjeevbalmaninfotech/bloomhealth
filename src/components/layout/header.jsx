@@ -101,7 +101,7 @@ export function Header() {
             {/* <div className='flex gap-1'>
               <div>
                 <div onClick={handleBookAppointment} className='book-btn cursor-pointer'>
-                  <span className='full-tex'>Book an Appointment</span>
+                  <span className='full-tex'>Register an Interest</span>
                   <span className='short-text'>Book</span>
                 </div>
               </div>

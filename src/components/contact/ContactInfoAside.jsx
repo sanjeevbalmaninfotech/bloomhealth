@@ -31,7 +31,7 @@ const ContactInfoAside = ({
       {/* <div className='flex items-center space-x-4'>
         <Globe className='h-8 w-8 text-primary' />
         <div>
-          <h4 className='font-semibold text-foreground'>Book Online</h4>
+          <h4 className='font-semibold text-foreground'>Register an Interest</h4>
           <a
             href={onlineBookingLink}
             className='text-foreground hover:text-primary'
