@@ -1,5 +1,3 @@
-// Links to hash anchors use <a>; React Router <Link> is used where appropriate
-// Replace Next Link usages below with anchor tags for hash links and simple navigation
 import React from 'react';
 import {
   Facebook,
@@ -12,34 +10,28 @@ import {
   Mail,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Logo } from '../logo';
+
 const footerColumns = [
   {
     title: 'OUR SERVICES',
     links: [
-      { name: 'Cardiac Care', href: '/cardiology' },
-      { name: 'Gynaecology ', href: '/gynaecology ' },
-      { name: 'Neurology', href: '/neurology' },
-      { name: 'Respiratory Care', href: '/respiratoryMedicine' },
+      { name: 'Diagnostics', href: '/services/diagnostics' },
+      { name: 'Urgent Care', href: '/services/urgent-care' },
+      { name: 'Outpatient', href: '/services/outpatient-services' }
     ],
   },
   {
     title: 'ABOUT US',
     links: [
-        { name: 'About Us', href: '/' },
-      // { name: 'About Us', href: '/aboutUs' },
-   
+      { name: 'About Us', href: '/' },
     ],
   },
   {
     title: 'CONTACT',
     links: [
-      // { name: 'Get in Touch', href: '/contact' },
-      // { name: 'Emergency Care', href: '/emergencyServices' },
-        { name: 'Emergency Care', href: '/' },
-      // { name: 'Register an Interest', href: '/bookAppointment' },
+      { name: '24-hour walk-in centre', href: '/' },
     ],
   },
   {
@@ -60,16 +52,13 @@ const footerColumns = [
           <div>
             <p className='text-sm font-medium text-foreground'>Phone</p>
             <a
-              href='tel:07949 301632'
+              href='tel:07949301632'
               className='text-sm text-muted-foreground hover:text-primary transition-colors'
             >
               07949 301632
             </a>
           </div>
         </div>
-
-
-        
         <div className='flex items-start space-x-3'>
           <Mail className='h-6 w-6 text-primary mt-1 flex-shrink-0' />
           <div>
@@ -86,6 +75,7 @@ const footerColumns = [
     ),
   },
 ];
+
 const socialLinks = [
   { name: 'Facebook', icon: Facebook, href: '#' },
   { name: 'Instagram', icon: Instagram, href: '#' },
@@ -93,8 +83,17 @@ const socialLinks = [
   { name: 'Twitter', icon: Twitter, href: '#' },
   { name: 'YouTube', icon: Youtube, href: '#' },
 ];
+
 export function Footer() {
-  // Memoize the social links to prevent unnecessary re-renders
+  const navigate = useNavigate();
+
+  // Handle link click with scroll to top
+  const handleLinkClick = (e, href) => {
+    e.preventDefault();
+    navigate(href);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const socialLinksContent = React.useMemo(
     () => (
       <div className='flex space-x-3'>
@@ -118,7 +117,7 @@ export function Footer() {
     ),
     [],
   );
-  // Memoize the footer columns to prevent unnecessary re-renders
+
   const footerColumnsContent = React.useMemo(
     () => (
       <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12'>
@@ -129,12 +128,13 @@ export function Footer() {
               <ul className='space-y-2'>
                 {column.links.map((link) => (
                   <li key={link.name}>
-                    <Link
-                      to={link.href}
-                      className='text-sm text-muted-foreground hover:text-accent transition-colors'
+                    <a
+                      href={link.href}
+                      onClick={(e) => handleLinkClick(e, link.href)}
+                      className='text-sm text-muted-foreground hover:text-accent transition-colors cursor-pointer'
                     >
                       {link.name}
-                    </Link>
+                    </a>
                   </li>
                 ))}
               </ul>
@@ -146,6 +146,7 @@ export function Footer() {
     ),
     [],
   );
+
   return (
     <footer className='bg-card py-8 md:py-12 text-foreground border-t'>
       <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
@@ -157,7 +158,7 @@ export function Footer() {
             {socialLinksContent}
           </div>
         </div>
-        {location.pathname == '/' ? 
+        {location.pathname === '/' ? 
         <div className='mt-5 mb-12'>
           <div className='h-[280px] sm:h-[340px] md:h-[400px] w-full rounded-lg overflow-hidden shadow-lg'>
             <iframe

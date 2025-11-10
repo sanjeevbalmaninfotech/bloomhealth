@@ -47,7 +47,7 @@ const AboutUs = () => {
     {
       name: 'Dr. Michael Chen',
       role: 'Head of Emergency Medicine',
-      specialty: 'Emergency Care',
+      specialty: '24-hour walk-in centre',
       experience: '15+ years',
       image: '👨‍⚕️',
       description: 'Specialized in emergency medicine with extensive experience in critical care situations.'

@@ -15,7 +15,7 @@ const AboutHomeSection = () => {
         </span>
 
         <p className="max-w-3xl mx-auto text-base sm:text-lg leading-relaxed">
-          At Bloom Health, we believe every patient deserves prompt, high-quality medical care
+         At Bloom Health, we believe every patient deserves prompt, high-quality medical care
           delivered with compassion and expertise. Our team combines the best of urgent care and
           specialist outpatient services, ensuring your health is in safe, capable hands.
         </p>

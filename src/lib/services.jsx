@@ -98,7 +98,7 @@ export const services = [
         <li>Minor skin conditions and rashes</li>
         <li>Headaches, migraines, and minor eye or ear complaints</li>
       </ul>
-      <p style={{ marginTop: '8px', fontStyle: 'italic' }}>(Please note: this list is not exhaustive. If you're unsure whether your condition is suitable for urgent care, our team is here to advise you.)</p>
+      <p style={{ marginTop: '8px', fontStyle: 'italic' }}>(Please note: this list is not exhaustive. If you are unsure whether your condition is suitable for urgent care, our team is here to advise you.)</p>
     </div>,
     <div className="flex flex-col gap-4 mt-4">
       <h3 className="text-2xl font-semibold text-foreground">Important Notice</h3>
@@ -125,7 +125,7 @@ export const services = [
       Your Health, Handled with Care
     </h3>
     <p>
-      At Bloom Health, we are committed to delivering seamless, efficient, and compassionate care, 24 hours a day. Simply walk in, and our dedicated clinical team will ensure you're seen promptly and treated with professionalism and respect.
+      At Bloom Health, we are committed to delivering seamless, efficient, and compassionate care, 24 hours a day. Simply walk in, and our dedicated clinical team will ensure you are seen promptly and treated with professionalism and respect.
     </p>
   </div>
 ),

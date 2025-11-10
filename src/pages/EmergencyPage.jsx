@@ -213,7 +213,7 @@ const EmergencyPage = () => {
       <section className='hidden md:block py-12 px-4 bg-gradient-to-r from-slate-50/50 to-blue-50/20'>
         <div className='container mx-auto'>
           <h2 className='text-4xl font-bold text-center text-gray-900 mb-10'>
-            Emergency Contact Information
+            24-hour walk-in centre
           </h2>
           <div className='grid md:grid-cols-3 gap-6'>
             {emergencyContacts.map((contact, index) => (
