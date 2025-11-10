@@ -325,7 +325,7 @@ export default function HomePage() {
               Why Choose Bloom Health?
             </span>
             <h2 className='mt-4 text-3xl sm:text-4xl font-headline font-bold text-foreground'>
-              Care You Can Count On !
+              Care You Can Count On
             </h2>
             <p className='mt-4 text-lg text-muted-foreground'>
               At Bloom Health, we believe every patient deserves prompt, high-quality medical care
