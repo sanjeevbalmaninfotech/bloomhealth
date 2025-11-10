@@ -45,34 +45,34 @@ export default function App() {
         <Suspense fallback={<LoadingSpinner />}>
           <Routes>
             {/* <Route path="/" element={<Navigate to="/home" />} /> */}
-            <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
-            <Route path="/register" element={<PublicRoute><Registration /></PublicRoute>} />
-            <Route path="/forgot-password" element={<ForgotPassword />} />
-            <Route path="/reset-password" element={<ResetPassword />} />
+            <Route path="/login !" element={<PublicRoute><Login /></PublicRoute>} />
+            <Route path="/register !" element={<PublicRoute><Registration /></PublicRoute>} />
+            <Route path="/forgot-password !" element={<ForgotPassword />} />
+            <Route path="/reset-password !" element={<ResetPassword />} />
             <Route element={<PublicRoute><MainLayout /></PublicRoute>}>
-              <Route path="/profile" element={<Profile />} />
+              <Route path="/profile !" element={<Profile />} />
               <Route path="/" element={<HomePage />} />
               <Route path="/services/:slug" element={<ServicePage />} />
-              <Route path="/hospitalsDoctors" element={<HospitalsDoctors/>} />
-              <Route path="/bookAppointment" element={<BookAnAppointment/>} />
-              <Route path="/womenWellBeing" element={<WomenWellBeing/>}/>
-              <Route path="/cardiology" element={<Cardiology/>}/>
-              <Route path="/neurology" element={<Neurology/>}/>
-              <Route path="/rheumatology" element={<Rheumatology/>}/>
-              <Route path="/gastroenterology" element={<Gastroenterology/>}/>
-              <Route path="/gynaecology" element={<Gynecology/>}/>
-              <Route path="/generalPaediatrics" element={<GeneralPediatrics/>}/>
-              <Route path="/respiratoryMedicine" element={<RespiratoryMedicine/>}/>
+              <Route path="/hospitalsDoctors !" element={<HospitalsDoctors/>} />
+              <Route path="/bookAppointment !" element={<BookAnAppointment/>} />
+              <Route path="/womenWellBeing !" element={<WomenWellBeing/>}/>
+              <Route path="/cardiology !" element={<Cardiology/>}/>
+              <Route path="/neurology !" element={<Neurology/>}/>
+              <Route path="/rheumatology !" element={<Rheumatology/>}/>
+              <Route path="/gastroenterology !" element={<Gastroenterology/>}/>
+              <Route path="/gynaecology !" element={<Gynecology/>}/>
+              <Route path="/generalPaediatrics !" element={<GeneralPediatrics/>}/>
+              <Route path="/respiratoryMedicine !" element={<RespiratoryMedicine/>}/>
            
-              <Route path="/dermatology" element={<Dermatology/>}/>
-              <Route path="/urgentCare" element={<UrgentCare/>}/>
-              <Route path="/generalMedicine" element={<GeneralMedicine/>}/>
+              <Route path="/dermatology !" element={<Dermatology/>}/>
+              <Route path="/urgentCare !" element={<UrgentCare/>}/>
+              <Route path="/generalMedicine !" element={<GeneralMedicine/>}/>
               <Route path="/travelMedicine&Vaccinations" element={<TravelMedicineAndVaccinations/>}/>
               <Route path="/services/:slug/:subServiceSlug" element={<SubServicePage />} />
              <Route path="/consentDetails/:userId?" element={<TermsAndConditions />} />
-              <Route path="/emergencyServices" element={<EmergencyPage/>} />
-                <Route path="/aboutUs" element={<AboutUs/>} />
-              <Route path="/paediatrics" element={<Paediatrics/>} />
+              <Route path="/emergencyServices !" element={<EmergencyPage/>} />
+                <Route path="/aboutUs !" element={<AboutUs/>} />
+              <Route path="/paediatrics !" element={<Paediatrics/>} />
 
             </Route>
             <Route path="*" element={<NotFound />} />
