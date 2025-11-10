@@ -25,7 +25,7 @@ const footerColumns = [
   {
     title: 'ABOUT US',
     links: [
-      { name: 'About Us', href: '/' },
+        { name: 'About Us', sectionId: '#about' },
     ],
   },
   {
@@ -87,11 +87,26 @@ const socialLinks = [
 export function Footer() {
   const navigate = useNavigate();
 
-  // Handle link click with scroll to top
-  const handleLinkClick = (e, href) => {
+    // Handle link or section click
+    const handleLinkClick = (e, link) => {
     e.preventDefault();
-    navigate(href);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+      if (link.sectionId) {
+        // If we're not on the home page, navigate to home first
+        if (location.pathname !== '/') {
+          navigate('/', { state: { scrollTo: link.sectionId } });
+        } else {
+          // If we're already on home page, scroll to the section
+          const section = document.querySelector(link.sectionId);
+          if (section) {
+            section.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      } else if (link.href) {
+        // Handle regular links
+        navigate(link.href);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
   };
 
   const socialLinksContent = React.useMemo(
@@ -124,21 +139,21 @@ export function Footer() {
         {footerColumns.map((column) => (
           <div className='space-y-4' key={column.title}>
             <h3 className='text-sm font-bold uppercase text-primary'>{column.title}</h3>
-            {column.links && (
-              <ul className='space-y-2'>
-                {column.links.map((link) => (
-                  <li key={link.name}>
-                    <a
-                      href={link.href}
-                      onClick={(e) => handleLinkClick(e, link.href)}
-                      className='text-sm text-muted-foreground hover:text-accent transition-colors cursor-pointer'
-                    >
-                      {link.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            )}  
+              {column.links && (
+                <ul className='mt-4 space-y-2'>
+                  {column.links.map((link) => (
+                    <li key={link.name}>
+                      <a
+                        href={link.sectionId || link.href}
+                        onClick={(e) => handleLinkClick(e, link)}
+                        className='text-sm text-muted-foreground hover:text-accent transition-colors cursor-pointer'
+                      >
+                        {link.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
             {column.customContent && <div className='mt-4'>{column.customContent}</div>}
           </div>
         ))}
