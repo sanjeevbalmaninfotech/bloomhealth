@@ -344,12 +344,6 @@ textarea {
     flex-direction: column;
   }
 }
-
-@media (max-width: 1280px), (max-height: 472px) {
-  .hide-card {
-    display: none !important;
-  }
-}
 @media (min-width: 1280px) {
   .hide-above-1280 {
     display: none;
