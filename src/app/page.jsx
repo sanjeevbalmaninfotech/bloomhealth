@@ -26,6 +26,7 @@ import { useEffect, useState } from 'react';
 import ContactUsForm from '../components/forms/contactUs';
 import ContactInfoAside from '../components/contact/ContactInfoAside';
 import AboutHomeSection from '../components/aboutHome/AboutSection';
+import CrawlerText from '../pages/CrawlerText';
 
 const WhyChooseUsSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -228,6 +229,7 @@ export default function HomePage() {
 
   return (
     <>
+     <CrawlerText/>
       <motion.section
         id='home'
         className='hide-card relative h-[80vh] bg-cover bg-center scroll-mt-[100px]'
@@ -236,6 +238,7 @@ export default function HomePage() {
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
+       
         <div className='absolute inset-0' />
         <motion.div
           className='container mx-auto h-full flex items-center px-4'
