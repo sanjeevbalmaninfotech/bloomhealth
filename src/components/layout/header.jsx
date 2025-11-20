@@ -71,12 +71,12 @@ export function Header() {
         <div className='container mx-auto flex h-12 items-center justify-between px-4 sm:px-6 lg:px-8'>
           <div className='flex md:hidden items-center space-x-6' />
           <div className='hidden md:flex items-center space-x-6'>
-            <div className='flex items-center space-x-2'>
+            {/* <div className='flex items-center space-x-2'>
               <PhoneIconLucide className='h-4 w-4' />
               <a href='tel:07949 301632' className='text-xs hover:underline'>
                 07949 301632
               </a>
-            </div>
+            </div> */}
             <div className='flex items-center space-x-2'>
               <Mail className='h-4 w-4' />
               <a href='mailto:info@bloom-health.co.uk' className='text-xs hover:underline'>
@@ -419,7 +419,7 @@ export function Header() {
                       </nav>
                     </nav>
                     <div className='mt-auto space-y-4 p-4 border-t border-neutral-200'>
-                      <div className='flex items-center space-x-2'>
+                      {/* <div className='flex items-center space-x-2'>
                         <PhoneIconLucide className='h-5 w-5 text-primary' />
                         <a
                           href='tel:07949 301632'
@@ -427,7 +427,7 @@ export function Header() {
                         >
                           07949 301632
                         </a>
-                      </div>
+                      </div> */}
                       <div className='flex items-center space-x-2'>
                         <Mail className='h-5 w-5 text-primary' />
                         <a

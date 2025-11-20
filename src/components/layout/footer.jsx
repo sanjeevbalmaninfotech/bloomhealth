@@ -47,7 +47,7 @@ const footerColumns = [
             </p>
           </div>
         </div>
-        <div className='flex items-start space-x-3'>
+        {/* <div className='flex items-start space-x-3'>
           <PhoneIcon className='h-6 w-6 text-primary mt-1 flex-shrink-0' />
           <div>
             <p className='text-sm font-medium text-foreground'>Phone</p>
@@ -58,7 +58,7 @@ const footerColumns = [
               07949 301632
             </a>
           </div>
-        </div>
+        </div> */}
         <div className='flex items-start space-x-3'>
           <Mail className='h-6 w-6 text-primary mt-1 flex-shrink-0' />
           <div>

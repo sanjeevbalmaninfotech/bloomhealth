@@ -28,7 +28,7 @@ const EmergencyPage = () => {
     },
     {
       type: 'Hospital Main',
-      number: '07949 301632',
+      number: '',
       description: 'General hospital inquiries and appointments',
       icon: <Heart className='h-8 w-8' style={{ color: 'hsl(203, 80%, 42%)' }} />,
       available: '24/7',
@@ -133,7 +133,7 @@ const EmergencyPage = () => {
                   <Phone className='h-6 w-6' />
                   <span>CALL 999 NOW</span>
                 </a>
-                <a
+                {/* <a
                   href='tel:07949301632'
                   className='bg-gradient-to-r from-sky-400 to-cyan-400 hover:from-sky-500 hover:to-cyan-500 text-white rounded-full px-8 py-3 shadow-xl transition-all duration-200 flex justify-center space-x-2'
                   style={{
@@ -142,7 +142,7 @@ const EmergencyPage = () => {
                 >
                   <Phone className='h-5 w-5' />
                   <span>Hospital Direct</span>
-                </a>
+                </a> */}
               </div>
             </div>
 
@@ -315,7 +315,7 @@ const EmergencyPage = () => {
                     <div className='bg-blue-50 p-2 rounded-2xl border border-blue-100'>
                       <Phone className='h-6 w-6' style={{ color: 'hsl(203, 80%, 52%)' }} />
                     </div>
-                    <div>
+                    {/* <div>
                       <h4 className='font-semibold text-gray-900'>Hospital Emergency Line</h4>
                       <a
                         href='tel:07949 301632'
@@ -324,7 +324,7 @@ const EmergencyPage = () => {
                       >
                         07949 301632
                       </a>
-                    </div>
+                    </div> */}
                   </div>
 
                   <div className='flex items-center space-x-4'>

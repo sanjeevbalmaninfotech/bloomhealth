@@ -123,10 +123,10 @@ const WomenWellBeing = () => {
             <p className='text-gray-800'>
               Our call center team is always here for you and happy to help!
             </p>
-            <p className='text-gray-800 mt-2'>
+            {/* <p className='text-gray-800 mt-2'>
               To schedule your appointment, please contact our call center every day between 7:00 am
               and 10:00 pm: <strong>07949 301632</strong>
-            </p>
+            </p> */}
           </section>
         </div>
       </div>

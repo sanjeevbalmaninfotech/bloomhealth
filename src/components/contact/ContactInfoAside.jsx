@@ -14,7 +14,7 @@ const ContactInfoAside = ({
   return (
     <aside className='space-y-6 p-8 bg-white rounded-xl shadow-lg'>
       {/* Phone Section */}
-      <div className='flex items-center space-x-4'>
+      {/* <div className='flex items-center space-x-4'>
         <PhoneIcon className='h-8 w-8 text-primary' />
         <div>
           <h4 className='font-semibold text-foreground'>Call Us</h4>
@@ -25,7 +25,7 @@ const ContactInfoAside = ({
             {phone}
           </a>
         </div>
-      </div>
+      </div> */}
 
       {/* Online Booking Section */}
       {/* <div className='flex items-center space-x-4'>

@@ -218,9 +218,9 @@ const Department = ({
             <p className='text-gray-800'>
               Our call center team is always here for you and happy to help!
             </p>
-            <p className='text-gray-800 mt-2'>
+            {/* <p className='text-gray-800 mt-2'>
               We are available 24/7, Please contact our call center every day.<br/><br/> <strong>07949 301632</strong>
-            </p>
+            </p> */}
           </section>
         </div>
       </div>

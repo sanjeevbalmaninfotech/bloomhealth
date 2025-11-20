@@ -500,7 +500,7 @@ const AboutUs = () => {
       <div className="bg-white/10 rounded-xl p-6 backdrop-blur-sm text-blue-50">
         <div className="text-3xl mb-3">📞</div>
         <h3 className="text-xl font-bold mb-2 text-gray-200">Call Us</h3>
-        <p className="text-2xl font-bold text-gray-200">07949 301632</p>
+        {/* <p className="text-2xl font-bold text-gray-200">07949 301632</p> */}
       </div>
 
       <div className="bg-white/10 rounded-xl p-6 backdrop-blur-sm text-blue-50">
