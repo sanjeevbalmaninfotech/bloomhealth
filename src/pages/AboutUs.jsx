@@ -505,7 +505,7 @@ const AboutUs = () => {
 
       <div className="bg-white/10 rounded-xl p-6 backdrop-blur-sm text-blue-50">
         <div className="text-3xl mb-3">📅</div>
-        <h3 className="text-xl font-bold mb-2 text-gray-200">Register an Interest</h3>
+        <h3 className="text-xl font-bold mb-2 text-gray-200">Register Your Interest</h3>
         <p className="font-semiboldtext-gray-200 ">Available 24/7</p>
       </div>
 

@@ -232,7 +232,8 @@ export default function HomePage() {
      <CrawlerText/>
       <motion.section
         id='home'
-        className='hide-card relative h-[80vh] bg-cover bg-center scroll-mt-[100px]'
+        // show background image only on extra-large screens and above; hide on smaller
+        className='hidden xl:block hide-card relative h-[80vh] bg-cover bg-center scroll-mt-[100px]'
         style={{ backgroundImage: 'url(/bloomHome.png)' }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -268,7 +269,8 @@ export default function HomePage() {
       </motion.section>
 
       <div>
-        <div className='hide-above-1280 mt-5'>
+        {/* show this inline image on smaller screens only (hide on xl and above) */}
+        <div className='block xl:hidden mt-5'>
           <img
             src='/herobg2.png'
             alt='Bloom Health strengths wheel'
@@ -277,7 +279,7 @@ export default function HomePage() {
             height={800}
           />
         </div>
-        <div className='hide-above-1280 mt-6 rounded-3xl w-full p-6 bg-white/90 backdrop-blur-lg shadow-2xl border border-gray-200 flex flex-col items-center text-center'>
+        <div className='xl:hidden mt-6 rounded-3xl w-full p-6 bg-white/90 backdrop-blur-lg shadow-2xl border border-gray-200 flex flex-col items-center text-center'>
           <h1 className='text-2xl sm:text-3xl font-headline font-extrabold text-gray-900 leading-tight drop-shadow mb-1'>
             {heroData.headingLine1}
           </h1>

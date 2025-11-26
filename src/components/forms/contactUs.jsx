@@ -28,7 +28,7 @@ const ContactUsForm = ({
       className='space-y-6 p-8 bg-white rounded-xl shadow-lg'
     >
       <h3 className='text-2xl font-semibold text-foreground mb-6'>
-        Register an Interest
+        Register Your Interest
       </h3>
 
       {/* Dynamic Fields */}

@@ -35,7 +35,7 @@ const BookAnAppointment = () => {
     <div>
       <div className='bg-[#157fc1] border-b border-gray-300 py-3 px-4 sm:px-6'>
         <h2 className='text-xl sm:text-2xl md:text-3xl lg:text-[30px] font-semibold text-white sm:ml-6 lg:ml-12'>
-          Register an Interest
+          Register Your Interest
         </h2>
       </div>
       <div className='appointment-container'>
